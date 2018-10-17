@@ -1,0 +1,25 @@
+      <td id="pravy_panel">
+        <h4>Přehled odpovědí na problém "<?php echo($problem); ?>"</h4>
+        <?php
+           $pocet=count($answers);
+           if (!$pocet) {
+             ?><div style="font-size: 13px; font-weight: bold;">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem); ?>"<br /><a href="<?php echo("./?odpovedi=2&idp=".$this->post_get('idp')); ?>"><img src="icons/add.png" width="10" height="10" />Přidat odpověď</a></div>
+             <?php
+           } else {
+           ?>
+             <table class="prehled">
+               <tr><td colspan="5" class="hlavicka">Odpovědi na problém "<?php echo($problem); ?>"</td></tr>
+               <tr><th>Název</th><th>Kognitivní schéma</th><th>Editace</th><th>Smazat</th></tr>
+               <?php
+                 foreach($answers as $answer) {
+                   ?> <tr>
+                     <td><?php echo($answer['odpoved']); ?></td>
+                     <td><strong><?php echo($answer['nazev']); ?></strong></td>
+                     <td class="center"><?php echo("<a href=\"./?odpovedi=2&idp=".$this->post_get('idp')."&idks=".$answer['id_kog_schematu']."\">"); ?><img src="icons/pencil.png" width="16" height="16" /></a></td>
+                     <td class="center"><?php echo("<a href=\"./?odpovedi=3&idp=".$this->post_get('idp')."&idks=".$answer['id_kog_schematu']."\">"); ?><img src="icons/bin_closed.png" width="16" height="16" /></a></td>
+                   </tr>
+                   <?php } ?>
+                   <tr><td colspan="4" align="left"><a href="<?php echo("./?odpovedi=2&idp=".$this->post_get('idp')); ?>"><img src="icons/add.png" width="10" height="10" />Přidat odpověď</a></td>
+           <?php } ?>
+           </table>
+       </td><!-- /pravy_panel -->

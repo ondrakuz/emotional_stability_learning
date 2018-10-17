@@ -1,0 +1,10 @@
+Options -Indexes
+
+RewriteEngine On 
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^((cs|de|en|fr|it|po|ru|sk|sp|ur)/)?([^/]+)?/?/?([^/]+)?/?$ ?lang=$2&id=$3&idc=$4 [QSA]
+
+AddType application/x-httpd-php .php .phtml
