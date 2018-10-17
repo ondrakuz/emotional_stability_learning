@@ -1,0 +1,24 @@
+        <td id="pravy_panel">
+        <h4>Přehled kognitivních schémat</h4>
+       <?php
+             $pocet = count($kschemas);
+             if (!$pocet) {
+              ?><div style="font-size: 13px; font-weight: bold;">Nejsou uloženy žádné problémy</div><?php
+            } else {
+            ?>
+          <table class="prehled">
+            <tr><td colspan="5" class="hlavicka">Kognitivní schémata</td></tr>
+            <tr><th>Název</th><th>Editace</th><th>Smazat</th></tr>
+            <?php
+              foreach ($kschemas as $kschema) {
+                ?> <tr>
+                    <td><?php echo($kschema['nazev']); ?></td>
+                    <td class="center"><?php echo("<a href=\"./?kschema=2&id=".$kschema['id']."\">"); ?><img src="icons/pencil.png" width="16" height="16" /></a></td>
+                    <td class="center"><?php echo("<a href=\"./?kschema=3&id=".$kschema['id']."\">"); ?><img src="icons/bin_closed.png" width="16" height="16" /></a></td>
+                  </tr>
+                <?php
+              }
+            }
+          ?>
+          </table>
+        </td><!-- /pravy_panel -->

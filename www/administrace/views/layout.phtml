@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs-cz" lang="cs-cz">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta http-equiv="Content-language" content="cs" />
+      <meta name="author" content="Softstar s.r.o.; mailto:softstar.cz@gmail.com"/>
+      <meta name="copyright" content="Softstar s.r.o." />
+      <link rel="stylesheet" href="css/style.css" type="text/css" />
+      <title>Emotion Stability Learning Administration - <?php echo htmlspecialchars($title, ENT_QUOTES);?></title>
+    </head>
+    <body>
+      <div id="hlavicka">
+        <table class="hlavicka" ><tr><td class="hlavicka"><h1><strong>Emotion Stability Learning Administration</strong></h1></td></tr></table>
+      </div>
+      <table id="page">
+        <td id="levy_panel">
+          <div class="kategorie">
+            <img src="./icons/application_side_list.png" width="16" height="16" /> <span class="nadpis">Problémy</span><br />
+            <ul>
+              <li><a href="./?prob=1">Přehled problémů</a></li>
+              <li><a href="./?prob=2">Přidat problém</a></li>
+            </ul>
+          </div>
+          <div class="kategorie">
+            <img src="./icons/lightbulb.png" width="16" height="16" /> <span class="nadpis">Kognitivní schémata</span><br/>
+            <ul>
+              <li><a href="./?kschema=1">Přehled schémat</a></li>
+              <li><a href="./?kschema=2">Přidat schéma</a></li>
+            </ul>
+          </div>
+        </td><!-- /levy panel -->
+<?php $this->controller->showView(); // vložení aktuálního pohledu do šablony ?>
+      </table><!-- /page -->
+      <div id="paticka">
+        Copyright &copy; <?php echo date("Y"); ?> <a href="http://sofstar.cz" >Softstar s.r.o.</a><br />
+        <a href="http://validator.w3.org/check?uri=referer" title="" onclick="return !window.open(this.href);">XHTML 1.1</a> a <a href="http://jigsaw.w3.org/css-validator/check/referer" title="" onclick="return !window.open(this.href);">CSS 2.0</a>
+      </div>
+      <hr class="cistic"/>
+  </body>
+</html>
+        
