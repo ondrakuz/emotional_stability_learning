@@ -9,7 +9,7 @@ class ProblemOverviewController extends Controller
       $problems = $model->selectAll("problem");
       
       $this->header['title'] = "Přehled problémů";
-      $this->data['problems'] = $problems;
+      $this->data = array( 'problems' => $problems );
       $this->view = 'problemOverview';
     }
     else

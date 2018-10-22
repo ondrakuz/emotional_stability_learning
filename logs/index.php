@@ -35,11 +35,28 @@
           </div></li>
           </ul>
         </div>
-<?php $this->controller->showView(); // vložení aktuálního pohledu do šablony ?>
-        <div class="panel panel-default text-center margintop30">
-          <div class="panel-footer" id="paticka">Copyright &copy; <?php date_default_timezone_set('Europe/Prague'); echo date("Y"); ?> <a href="http://www.sofstar.cz">Softstar s.r.o.</a><br /><a href="http://validator.w3.org/check?uri=referer" title="" onclick="return !window.open(this.href);">XHTML</a> a <a href="http://jigsaw.w3.org/css-validator/check/referer" title="" onclick="return !window.open(this.href);">CSS 3.0</a></div>
-        </div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-4">
+          <h4>Vložení nového problému</h4>
+          <form method="post" action="./">
+            <div class="form-group">
+              <label for="nazev">Název:</label>
+              <input type="text" class="form-control" id="nazev">
+            </div>
+            <div class="form-group">
+              <label for="popis">Popis:</label>
+              <textarea class="form-control" rows="5" id="popis"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default"></button>
+            <td colspan="2" align="center"><input type="submit" name="prob" value="Uložit" /></td>
+          </form>
+        </div><!-- /col-sm-4 -->
+        <div class="col-sm-3"></div>
+      </div>
+      <div class="panel panel-default text-center margintop30">
+        <div class="panel-footer" id="paticka">Copyright &copy; <?php date_default_timezone_set('Europe/Prague'); echo date("Y"); ?> <a href="http://www.sofstar.cz">Softstar s.r.o.</a><br /><a href="http://validator.w3.org/check?uri=referer" title="" onclick="return !window.open(this.href);">XHTML</a> a <a href="http://jigsaw.w3.org/css-validator/check/referer" title="" onclick="return !window.open(this.href);">CSS 3.0</a></div>
       </div>
     </div><!-- /container -->
   </body>
 </html>
+

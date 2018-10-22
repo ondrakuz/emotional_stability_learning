@@ -29,6 +29,7 @@ class RouterController extends Controller
     
     $this->controller->setView();
     // Nastavení proměnných pro šablonu
+    $this->data = $this->controller->data;
     $this->data['title'] = $this->controller->header['title'];
 
     // Nastavení hlavní šablony
@@ -41,14 +42,12 @@ class RouterController extends Controller
     if ($this->post_get('prob')==1)
       {
         $this->controller = new ProblemOverviewController();
-        $this->data['problems'] = $this->controller->data['problems'];
       }
       elseif ($this->post_get('prob')==2)
       {
         if ($this->post_get('id'))
         {
           $this->controller = new ProblemEditController();
-          $this->data['problem'] = $this->controller->data['problem'];
         }
         else
         {
@@ -87,14 +86,12 @@ class RouterController extends Controller
       {
         // PREHLED KOGNITIVNICH SCHEMAT
         $this->controller = new KSchemaOverviewController();
-        $this->data['kschemas'] = $this->controller->data['kschemas'];
       }
       elseif ($this->post_get('kschema')==2)
       {
         if ($this->post_get('id')) {
           // EDITACE KOGNITIVNIHO SCHEMATU
           $this->controller = new KSchemaEditController();
-          $this->data['kschema'] = $this->controller->data['kschema'];
         }
         else
         {
@@ -134,7 +131,6 @@ class RouterController extends Controller
       {
        // PREHLED ODPOVEDI DANEHO PROBLEMU
         $this->controller = new AnswerOverviewController();
-        $this->data['answers'] = $this->controller->data['answers'];
       }
       elseif ($this->post_get('odpovedi')==2)
       {
@@ -142,15 +138,11 @@ class RouterController extends Controller
         {
           // EDITACE OPOVEDI
         $this->controller = new AnswerEditController();
-        $this->data['answer'] = $this->controller->data['answer'];
-        $this->data['kschemas'] = $this->controller->data['kschemas'];
         }
         elseif (($this->post_get('idp'))&&(!($this->post_get('idks'))))
         {
           // VLOZENI NOVE ODPOVEDI
           $this->controller = new AnswerNewController();
-          $this->data['problem'] = $this->controller->data['problem'];
-          $this->data['kschemas'] = $this->controller->data['kschemas'];
         }
       }
       elseif ($this->post_get('odpovedi')==3)

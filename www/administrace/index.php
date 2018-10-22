@@ -1,19 +1,20 @@
 <?php
-  error_reporting(E_ALL); // debug
+//   ini_set("display_errors", 1);
+//   error_reporting(E_ALL); // debug
   //error_reporting(E_ERROR); // production
-mb_internal_encoding("UTF-8");
+  mb_internal_encoding("UTF-8");
 
-function fautoload($class)
-{
-    if (preg_match('/Controller$/', $class))
-        require("controllers/" . $class . ".php");
-    else
-        require("models/" . $class . ".php");
-}
-spl_autoload_register("fautoload");
+  function fautoload($class)
+  {
+      if (preg_match('/Controller$/', $class))
+          require("./controllers/" . $class . ".php");
+      else
+          require("./models/" . $class . ".php");
+  }
+  spl_autoload_register("fautoload");
 
-$router = new RouterController();
-$router->setView();
+  $router = new RouterController();
+  $router->setView();
 
-$router->showView();
+  $router->showView();
 ?>

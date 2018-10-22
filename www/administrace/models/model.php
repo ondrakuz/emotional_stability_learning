@@ -5,12 +5,15 @@
     
     function model()
     {
-      $this->db = new db();
-      require('./cfg/sql.php');
-      
-      $this->db->connect();
+      $this->db = new cdb();
+      if (!($this->db->connect())) {echo "Nepodařilo se připojit k databázi";}
       
       $this->server_name = $_SERVER['SERVER_NAME'];
+    }
+    
+    function __destruct()
+    {
+      $this->db->closedb();
     }
     
     function ifconnected()

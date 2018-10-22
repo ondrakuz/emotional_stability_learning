@@ -1,28 +1,37 @@
-        <td id="pravy_panel">
-        <h4>Přehled problémů</h4>
-       <?php
+        <div class="col-sm-10">
+          <h4>Přehled problémů</h4>
+          <?php
             $pocet=count($problems);
             if (!$pocet) {
-              ?><div style="font-size: 13px; font-weight: bold;">Nejsou uloženy žádné problémy</div><?php
+          ?>
+          <div class="hlaska">Nejsou uloženy žádné problémy</div>
+          <?php
             } else {
-            ?>
-          <table class="prehled">
-            <tr><td colspan="5" class="hlavicka">Problémy</td></tr>
-            <tr><th>Název</th><th>Popis</th><th>Editace</th><th>Odpovědi</th><th>Smazat</th></tr>
+          ?>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <caption class="text-center">Problémy</caption>
+              <thead><tr><th>Název</th><th>Popis</th><th class="text-center">Editace</th><th class="text-center">Odpovědi</th><th class="text-center">Smazat</th></tr></thead>
+              <tbody>
             <?php
               foreach ($problems as $problem) {
                 if (!$problem['smazano']) {
-                ?> <tr>
+            ?>
+                   <tr>
                     <td><?php echo($problem['nazev']); ?></td>
                     <td><?php echo($problem['popis']); ?></td>
-                    <td class="center"><?php echo("<a href=\"./?prob=2&id=".$problem['id']."\">"); ?><img src="icons/pencil.png" width="16" height="16" /></a></td>
-                    <td class="center"><?php echo("<a href=\"./?odpovedi=1&idp=".$problem['id']."\">"); ?><img src="icons/comment.png" width="16" height="16" /></a></td>
-                    <td class="center"><?php echo("<a href=\"./?prob=3&id=".$problem['id']."\">"); ?><img src="icons/bin_closed.png" width="16" height="16" /></a></td>
+                    <td class="text-center"><?php echo("<a href=\"./?prob=2&id=".$problem['id']."\">"); ?><img src="icons/pencil.png" width="16" height="16" /></a></td>
+                    <td class="text-center"><?php echo("<a href=\"./?odpovedi=1&idp=".$problem['id']."\">"); ?><img src="icons/comment.png" width="16" height="16" /></a></td>
+                    <td class="text-center"><?php echo("<a href=\"./?prob=3&id=".$problem['id']."\">"); ?><img src="icons/bin_closed.png" width="16" height="16" /></a></td>
                   </tr>
                 <?php
                 }
               }
             }
           ?>
-          </table>
-      </td><!-- /pravy_panel -->
+              </tbody>
+            </table>
+          </div><!-- /col-sm-10 -->
+        </div>
+
+        
