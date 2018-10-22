@@ -19,10 +19,10 @@ class cdb { // trida cdb bude slouzit k praci s databazi
     $this->error=0;
     if (!($this->data=mysqli_query($this->conn,$dotaz))) {
       $this->error=1;
-      $this->data=0;
+      $this->data=null;
     };
     if ($this->data) { return 1; }
-    else  {return 0;};
+    else  {return 0;}
   }
 
   function get_resource() {
@@ -34,11 +34,13 @@ class cdb { // trida cdb bude slouzit k praci s databazi
   }
 
   function get_row() {
-    return (mysqli_fetch_row($this->data));
+    if ($this->data) { return (mysqli_fetch_row($this->data)); }
+    else { return 0; }
   }
 
   function get_array() {
-    return (mysqli_fetch_array($this->data));
+    if ($this->data) {return (mysqli_fetch_array($this->data)); }
+    else { return 0; }
   }
 
   function get_error() {
