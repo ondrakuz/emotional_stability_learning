@@ -3,7 +3,7 @@
   {
     private $db, $sever_name;
     
-    function model()
+    function __construct()
     {
       $this->db = new cdb();
       if (!($this->db->connect())) {echo "Nepodařilo se připojit k databázi";}
@@ -33,7 +33,7 @@
       $i = 0;
       while ($item=$this->db->get_array())
       {
-        if (!empty($item[0]))
+        if (!empty($item['0']))
         { 
           $arr[$i] = $item;
           $i++;
@@ -133,7 +133,7 @@
       {
          if ($i)
         {
-          $query .= ", $name='$value'";
+          $query .= " $name='$value',";
         }
         else
         {

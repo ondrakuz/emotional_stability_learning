@@ -8,6 +8,8 @@ abstract class Controller
     protected $view = "";
 	// Hlavička HTML stránky
 	protected $header = array('title' => '', 'key_words' => '', 'description' => '');
+	
+	public function __construct(){}
 
 	public function getView()
 	{

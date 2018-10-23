@@ -3,7 +3,7 @@ class cdb { // trida cdb bude slouzit k praci s databazi
   private $data, $querystring, $error, $conn;
   public $server, $user, $password, $db_name;
   
-  function cdb()
+  function __construct()
   {
     require("./cfg/sql.php");
   }
