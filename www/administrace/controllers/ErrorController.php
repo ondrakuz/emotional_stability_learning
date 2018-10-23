@@ -6,14 +6,14 @@ class ErrorController extends Controller
     $data['text'] = $text;
   }
   
-    public function setView()
-    {
-		// Hlavička požadavku
-		header("Chyba");
-		// Hlavička stránky
-		$this->header['title'] = 'Chyba';
-		// Nastavení šablony
-		$this->view = 'error';
-    }
+  public function setView()
+  {
+  // Hlavička požadavku
+  header("Chyba");
+  // Hlavička stránky
+  $this->header['title'] = 'Chyba';
+  // Nastavení šablony
+  $this->view = 'error';
+  }
 }
 ?>
