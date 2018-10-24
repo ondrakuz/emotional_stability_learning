@@ -8,7 +8,7 @@ td a:hover { text-decoration: underline; color: black; }
 
 #hlavicka { /*position: relative; width: 100%;*/ height: 128px; background-color: #acacac; border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 30px; text-align: center; vertical-align: center; }
 #hlavicka h1 { margin: 0; padding: 40px 20px 20px 20px; font-weight: bold; }
-#paticka { /*position: relative; width: 100%;*/ font-size: 10px; color: #8c8c8c; /*padding: 0; margin: 0;*/ text-align: center; }
+#paticka { *position: relative; width: 100%; font-size: 10px; color: #8c8c8c; /*padding: 0; margin: 0;*/ text-align: center; }
 
 /*table#login { margin-top: 0px; }*/
 
@@ -35,6 +35,8 @@ td a:hover { text-decoration: underline; color: black; }
 .kategorie a:hover { text-decoration: underline; }
 
 .hlaska { font-size: 13px; font-weight: bold;/* width: 173px; text-align: center;*/  }
+.hlaska a { color: black; text-decoration: none;  }
+.hlaska a:hover { text-decoration: underline; }
 /* .ftglr-header { float: left;text-align: left; margin: 0; padding: 0; font-size: 14px; } */
 .red { color: red; }
 .margintop30 { margin-top: 30px; }
