@@ -42,8 +42,7 @@ INSERT INTO `kognitivni_schema` (`id`, `nazev`, `smazano`) VALUES
 (1, 'ChybnÃ¡ odpovÄ›Ä', 0),
 (2, 'OtÃ¡ÄenÃ­ emocÃ­', 0),
 (3, 'Princip subjektivity', 0),
-(4, 'VÃ­ra v Boha', 0),
-(5, 'schema, kt. se mi nelibi', 1);
+(4, 'VÃ­ra v Boha', 0);
 
 -- --------------------------------------------------------
 
@@ -93,8 +92,7 @@ INSERT INTO `problem` (`id`, `nazev`, `popis`, `smazano`) VALUES
 (1, 'VÃ½smÄ›ch okolnÃ­ch lidÃ­', '', 0),
 (2, 'ZtrÃ¡ta zamÄ›stnÃ¡nÃ­', '', 0),
 (3, 'MÃ¡m chÅ™ipku', '', 0),
-(4, 'MÃ¡m chÅ™ipku', '', 1),
-(5, 'Nic nestÃ­hÃ¡m, jde mi vÅ¡echno straÅ¡nÄ› pomalu', '', 0);
+(4, 'Nic nestÃ­hÃ¡m, jde mi vÅ¡echno straÅ¡nÄ› pomalu', '', 0);
 
 --
 -- Klíče pro exportované tabulky
