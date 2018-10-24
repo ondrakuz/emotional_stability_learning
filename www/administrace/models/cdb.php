@@ -6,10 +6,22 @@ class cdb { // trida cdb bude slouzit k praci s databazi
   function __construct()
   {
     require("./cfg/sql.php");
+    $this->conn = null;
   }
 
   function connect() {
-    if (!($this->conn=mysqli_connect($this->server,$this->user,$this->password,$this->db_name))) return(0);
+    $options=array(
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+      );
+    
+    try {
+            $this->conn = @new PDO("mysql:host=".$this->server.";dbname=".$this->db_name, $this->user, $this->password, $options);
+    } catch (PDOException $e) {
+        echo 'Connection failed: ' . $e->getMessage();
+    }
+    
+    if (!($this->conn)) return(0);
     
     return(1);
   }
@@ -17,9 +29,16 @@ class cdb { // trida cdb bude slouzit k praci s databazi
   function query($dotaz) {
     $this->querystring=$dotaz;
     $this->error=0;
-    if (!($this->data=mysqli_query($this->conn,$dotaz))) {
+    $this->data=$this->conn->prepare($dotaz);
+    $parameters = array();
+    try {
+            $this->data->execute($parameters);
+    } catch (PDOException $e) {
+        echo 'Execution of query failed: ' . $e->getMessage();
+        $this->data=null;
+    }
+    if (!($this->data)) {
       $this->error=1;
-      $this->data=null;
     };
     if ($this->data) { return 1; }
     else  {return 0;}
@@ -34,12 +53,14 @@ class cdb { // trida cdb bude slouzit k praci s databazi
   }
 
   function get_row() {
-    if ($this->data) { return (mysqli_fetch_row($this->data)); }
+    $arr = $this->data->fetch(PDO::FETCH_NUM);
+    if ($this->data) { return $arr; }
     else { return 0; }
   }
 
   function get_array() {
-    if ($this->data) {return (mysqli_fetch_array($this->data)); }
+    $arr = $this->data->fetch(PDO::FETCH_ASSOC);
+    if ($this->data) {return ($arr); }
     else { return 0; }
   }
 
@@ -48,7 +69,7 @@ class cdb { // trida cdb bude slouzit k praci s databazi
   }
 
   function closedb() {
-    mysqli_close($this->conn);
+    $this->conn = null;
   }
 
   function ifconnected() {

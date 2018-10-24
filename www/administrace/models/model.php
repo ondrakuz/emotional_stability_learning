@@ -33,7 +33,7 @@
       $i = 0;
       while ($item=$this->db->get_array())
       {
-        if (!empty($item['0']))
+       if (!empty($item))
         { 
           $arr[$i] = $item;
           $i++;
@@ -114,7 +114,7 @@
       $i = 0;
       while ($item=$this->db->get_array())
       {
-        if (!empty($item['0']))
+        if (!empty($item))
         {
           $arr[$i] = $item;
           $i++;
@@ -133,7 +133,7 @@
       {
          if ($i)
         {
-          $query .= " $name='$value',";
+          $query .= ", $name='$value'";
         }
         else
         {

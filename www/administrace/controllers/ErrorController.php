@@ -10,7 +10,7 @@ class ErrorController extends Controller
   public function setView()
   {
   // Hlavička požadavku
-  //header("Chyba");
+  header("Chyba");
   // Hlavička stránky
   $this->header['title'] = 'Chyba';
   // Nastavení šablony

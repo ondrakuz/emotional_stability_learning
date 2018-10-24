@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.7.8
+-- https://www.phpmyadmin.net/
 --
 -- Počítač: localhost
--- Vytvořeno: Stř 24. říj 2018, 13:13
--- Verze serveru: 5.7.22-0ubuntu0.16.04.1
--- Verze PHP: 7.0.30-0ubuntu0.16.04.1
+-- Vytvořeno: Stř 24. říj 2018, 19:54
+-- Verze serveru: 10.1.35-MariaDB
+-- Verze PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -37,10 +39,10 @@ CREATE TABLE `kognitivni_schema` (
 --
 
 INSERT INTO `kognitivni_schema` (`id`, `nazev`, `smazano`) VALUES
-(1, 'ChybnÃ¡ odpovÄ›Ä', 0),
-(2, 'OtÃ¡ÄenÃ­ emocÃ­', 0),
+(1, 'Chybná odpověď', 0),
+(2, 'Otáčení emocí', 0),
 (3, 'Princip subjektivity', 0),
-(4, 'VÃ­ra v Boha', 0);
+(4, 'Ví­ra v Boha', 0);
 
 -- --------------------------------------------------------
 
@@ -60,16 +62,16 @@ CREATE TABLE `odpoved` (
 --
 
 INSERT INTO `odpoved` (`id_problemu`, `id_kog_schematu`, `odpoved`, `smazano`) VALUES
-(1, 1, 'Je to dost nepÅ™Ã­jemnÃ©, dost mÄ› to zlobÃ­ a ovlivÅˆuje dalÅ¡Ã­ vÄ›ci.', 0),
-(1, 2, 'MÅ¯Å¾e to bÃ½t dobrÃ© k tomu, Å¾e ÄlovÄ›k hned vidÃ­ koho si nevÅ¡Ã­mat.', 0),
-(1, 3, 'NedÃ¡ se s tÃ­m nic dÄ›lat, ale je to bezvÃ½znamnÃ©.', 0),
-(1, 4, 'NedÃ¡ se s tÃ­m nic dÄ›lat, ale bÅ¯h tomu tak zÅ™ejmÄ› z nÄ›jakÃ©ho dÅ¯vodu chce.', 0),
-(2, 1, 'ZtrÃ¡ta zamÄ›stnÃ¡nÃ­ je velmi Å¡patnÃ¡ a mÃ¡ spoustu negativnÃ­ch dÅ¯sledkÅ¯', 0),
-(2, 2, 'MÅ¯Å¾e to bÃ½t dobrÃ© k tomu, Å¾e ÄlovÄ›k bude mÃ­t nÄ›jakou dobu vÃ­ce Äasu, a pak tÅ™eba poznÃ¡ zase jinÃ© zamÄ›stnÃ¡nÃ­.', 0),
-(2, 3, 'ZtrÃ¡ta zamÄ›stnÃ¡nÃ­ ani Å¾Ã¡dnÃ½ jejÃ­ dÅ¯sledek ve skuteÄnosti nebrÃ¡nÃ­ tomu, aby byl ÄlovÄ›k spokojen.', 0),
-(2, 4, 'ZtrÃ¡ta zamÄ›stnÃ¡nÃ­ je moÅ¾nÃ¡ nÄ›jakÃ¡ vyÅ¡Å¡Ã­ vÅ¯le a nemÃ¡ cenu se s tÃ­m nÄ›jak trÃ¡pit.', 0),
-(3, 1, 'Je to nanic, spoustu vÄ›cÃ­ musÃ­m odloÅ¾it a cÃ­tÃ­m se zle.', 0),
-(3, 2, 'OnemocnÄ›t Äas od Äasu zaktivuje imunitnÃ­ systÃ©m', 0);
+(1, 1, 'Je to dost nepříjemné, dost mě to zlobí a ovlivňuje další věci', 0),
+(1, 2, 'Může to být dobré k tomu, že člověk hned vidí koho si nevšímat.', 0),
+(1, 3, 'Nedá se s tím nic dělat, ale je to bezvýznamné.', 0),
+(1, 4, 'Nedá se s tím nic dělat, ale bůh tomu tak zřejmě z nějakého důvodu chce.', 0),
+(2, 1, 'Ztráta zaměstnání je velmi špatná a má spoustu negativních důsledků', 0),
+(2, 2, 'Může to být dobré k tomu, že člověk bude mít nějakou dobu více času, a pak třeba pozná zase jiné zaměstnání.', 0),
+(2, 3, 'Ztráta zaměstnání ani žádný její důsledek ve skutečnosti nebrání tomu, aby byl člověk spokojen.', 0),
+(2, 4, 'Ztráta zaměstnání je možná nějaká vyšší vůle a nemá cenu se s tím nějak trápit.', 0),
+(3, 1, 'Je to nanic, spoustu věcí musím odložit a cítím se zle.', 0),
+(3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0);
 
 -- --------------------------------------------------------
 
@@ -89,18 +91,18 @@ CREATE TABLE `problem` (
 --
 
 INSERT INTO `problem` (`id`, `nazev`, `popis`, `smazano`) VALUES
-(1, 'VÃ½smÄ›ch okolnÃ­ch lidÃ­', '', 0),
-(2, 'ZtrÃ¡ta zamÄ›stnÃ¡nÃ­', '', 0),
-(3, 'MÃ¡m chÅ™ipku', '', 0),
-(4, 'Nic nestÃ­hÃ¡m, jde mi vÅ¡echno straÅ¡nÄ› pomalu', '', 0),
-(6, 'ZtrÃ¡ta partnera', '', 0),
-(7, 'ProblÃ©my v rodinÄ›', '', 0),
-(8, 'ZtrÃ¡ta penÄ›Å¾enky', '', 0),
-(9, 'Å patnÃ© investice penÄ›z', '', 0),
+(1, 'Výsměch okolních lidí', '', 0),
+(2, 'Ztráta zaměstnání', '', 0),
+(3, 'Mám chřipku', '', 0),
+(4, 'Nic nestíhám, jde mi všechno strašně pomalu', '', 0),
+(6, 'Ztráta partnera', '', 0),
+(7, 'Problémy v rodině', '', 0),
+(8, 'Ztráta peněženky', '', 0),
+(9, 'Špatná investice peněz', '', 0),
 (10, 'Nerozhodnost', '', 0),
 (11, 'Hlasy', '', 0),
-(12, 'Å patnÃ½ spÃ¡nek', '', 0),
-(13, 'Å patnÃ© vstÃ¡vÃ¡nÃ­', '', 0);
+(12, 'Špatný spánek', '', 0),
+(13, 'Špatné vstávání', '', 0);
 
 --
 -- Klíče pro exportované tabulky
@@ -133,11 +135,14 @@ ALTER TABLE `problem`
 --
 ALTER TABLE `kognitivni_schema`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT pro tabulku `problem`
 --
 ALTER TABLE `problem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
