@@ -1,12 +1,24 @@
 <?php
 class RouterController extends Controller
 {
-  protected $controller, $error;
-  static protected $instance;
+  protected $controller;
+  protected $error = '';
+  protected $isError = false;
+  static private $instance = null;
+  
+  static function getInstance()
+  {
+    if (self::$instance == null) 
+    {
+      self::$instance = new RouterController();
+    }
+    return self::$instance;
+  }
   
   public function setError($text)
   {
     $this->error = $text;
+    $this->isError = true;
   }
   
   public function getError()
@@ -14,15 +26,6 @@ class RouterController extends Controller
     return $this->error;
   }
   
-  static public function getInstance()
-  {
-    if (empty($this->instance)) 
-    {
-      $this->instance = new RouterController();
-    }
-    return $this->instance;
-  }
-
   public function setView()
   {
     if($this->post_get('prob'))
@@ -42,12 +45,15 @@ class RouterController extends Controller
       $this->controller = new HomePageController();
     }
     
-    if ($this->controller->getView() == 'error')
-    {
-      $this->controller = new ErrorController('Nepodařilo se připojit k databázi');
-    }
-    
     $this->controller->setView();
+    
+    if ($this->isError)
+    {
+      $this->controller = null;
+      $this->controller = new ErrorController($this->error);
+      $this->controller->setView();
+    }
+
     // Nastavení proměnných pro šablonu
     $this->data = $this->controller->data;
     $this->data['title'] = $this->controller->header['title'];

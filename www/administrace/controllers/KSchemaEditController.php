@@ -13,9 +13,5 @@ class KSchemaEditController extends Controller
       $this->data['kschema'] = $kschema;
       $this->view = 'kschemaEdit';
     }
-    else
-    {
-      $this->view = 'error';
-    }
   }
 }

@@ -16,9 +16,5 @@ class AnswerEditController extends Controller
       $this->data['kschemas'] = $kschemas;
       $this->view = 'answerEdit';
     }
-    else
-    {
-      $this->view = 'error';
-    }
   }
 }

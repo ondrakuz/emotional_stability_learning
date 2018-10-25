@@ -8,7 +8,7 @@
       $this->db = new cdb();
       if (!($this->db->connect())) 
       {
-        RouterController::getInstance()->setError($this->db->getError());
+        RouterController::getInstance()->setError($this->db->get_error());
       }
       
       $this->server_name = $_SERVER['SERVER_NAME'];
@@ -34,7 +34,7 @@
       $query = "select * from $table where smazano='0';";
       if (!$this->db->query($query))
       {
-        RouterController::getInstance()->setError($this->db->getError());
+        RouterController::getInstance()->setError($this->db->get_error());
       }
       else
       {
@@ -69,7 +69,10 @@
       }
       $query .= ";";
       
-      $this->db->query($query);
+      if (!$this->db->query($query))
+      {
+        RouterController::getInstance()->setError($this->db->get_error());
+      }
       return $this->db->get_row();
     }
     
@@ -119,17 +122,22 @@
       }
       $query .= ";";
       
-      $this->db->query($query);
-      $i = 0;
-      while ($item=$this->db->get_array())
+      if (!$this->db->query($query))
       {
-        if (!empty($item))
+        RouterController::getInstance()->setError($this->db->get_error());
+      }
+      else
+      {
+        $i = 0;
+        while ($item=$this->db->get_array())
         {
-          $arr[$i] = $item;
-          $i++;
+          if (!empty($item))
+          {
+            $arr[$i] = $item;
+            $i++;
+          }
         }
       }
-
       return $arr;
     }
     
@@ -166,7 +174,12 @@
       }
       $query .= ";";
       
-      return $this->db->query($query);
+      $result = $this->db->query($query);
+      if (!$result)
+      {
+        RouterController::getInstance()->setError($this->db->get_error());
+      }
+      return $result;
     }
     
     function insert($table, array $values)
@@ -189,7 +202,12 @@
       }
       $query .= ") values ($data);";
       
-      return $this->db->query($query);
+      $result = $this->db->query($query);
+      if (!$result)
+      {
+        RouterController::getInstance()->setError($this->db->get_error());
+      }
+      return $result;
     }
   }
 ?>

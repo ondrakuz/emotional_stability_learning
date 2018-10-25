@@ -15,10 +15,6 @@ class AnswerNewController extends Controller
       $this->data['kschemas'] = $kschemas;
       $this->view = 'answerNew';
     }
-    else
-    {
-      $this->view = 'error';
-    }
   }
 }
 ?>

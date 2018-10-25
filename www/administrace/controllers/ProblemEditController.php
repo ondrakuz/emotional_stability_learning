@@ -13,9 +13,5 @@ class ProblemEditController extends Controller
       $this->data['problem'] = $problem;
       $this->view = 'problemEdit';
     }
-    else
-    {
-      $this->view = 'error';
-    }
   }
 }

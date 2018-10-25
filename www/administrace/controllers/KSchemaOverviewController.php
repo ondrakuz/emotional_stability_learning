@@ -12,9 +12,5 @@ class KSchemaOverviewController extends Controller
       $this->data['kschemas'] = $kschemas;
       $this->view = 'kschemaOverview';
     }
-    else
-    {
-      $this->view = 'error';
-    }
   }
 }

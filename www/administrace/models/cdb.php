@@ -18,7 +18,7 @@ class cdb { // trida cdb bude slouzit k praci s databazi
     try {
             $this->conn = @new PDO("mysql:host=".$this->server.";dbname=".$this->db_name, $this->user, $this->password, $options);
     } catch (PDOException $e) {
-        $error = 'Connection failed: ' . $e->getMessage();
+        $error = 'DB connection failed: ' . $e->getMessage();
     }
     
     if (!($this->conn)) 
@@ -58,13 +58,13 @@ class cdb { // trida cdb bude slouzit k praci s databazi
 
   function get_row() {
     $arr = $this->data->fetch(PDO::FETCH_NUM);
-    if ($this->data) { return $arr; }
+    if (!empty($arr)) { return $arr; }
     else { return 0; }
   }
 
   function get_array() {
     $arr = $this->data->fetch(PDO::FETCH_ASSOC);
-    if ($this->data) {return ($arr); }
+    if (!empty($arr)) {return ($arr); }
     else { return 0; }
   }
 

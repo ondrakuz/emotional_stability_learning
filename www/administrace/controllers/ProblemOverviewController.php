@@ -12,10 +12,6 @@ class ProblemOverviewController extends Controller
       $this->data = array( 'problems' => $problems );
       $this->view = 'problemOverview';
     }
-    else
-    {
-      $this->view = 'error';
-    }
   }
 }
 ?>

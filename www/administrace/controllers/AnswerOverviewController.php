@@ -15,9 +15,5 @@ class AnswerOverviewController extends Controller
       $this->data['problem'] = $problem;
       $this->view = 'answerOverview';
     }
-    else
-    {
-      $this->view = 'error';
-    }
   }
 }
