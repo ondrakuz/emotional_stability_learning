@@ -4,12 +4,12 @@ class RouterController extends Controller
   protected $controller, $error;
   static protected $instance;
   
-  public setError($text)
+  public function setError($text)
   {
     $this->error = $text;
   }
   
-  public getError()
+  public function getError()
   {
     return $this->error;
   }
