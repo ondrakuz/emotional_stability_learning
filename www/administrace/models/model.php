@@ -6,7 +6,10 @@
     function __construct()
     {
       $this->db = new cdb();
-      if (!($this->db->connect())) {echo "Nepodařilo se připojit k databázi";}
+      if (!($this->db->connect())) 
+      {
+        RouterController::getInstance()->setError($this->db->getError());
+      }
       
       $this->server_name = $_SERVER['SERVER_NAME'];
     }
@@ -29,14 +32,20 @@
     function selectAll($table)
     {
       $query = "select * from $table where smazano='0';";
-      $this->db->query($query);
-      $i = 0;
-      while ($item=$this->db->get_array())
+      if (!$this->db->query($query))
       {
-       if (!empty($item))
-        { 
-          $arr[$i] = $item;
-          $i++;
+        RouterController::getInstance()->setError($this->db->getError());
+      }
+      else
+      {
+        $i = 0;
+        while ($item=$this->db->get_array())
+        {
+        if (!empty($item))
+          { 
+            $arr[$i] = $item;
+            $i++;
+          }
         }
       }
       return $arr;

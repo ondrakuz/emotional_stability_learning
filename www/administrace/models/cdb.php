@@ -18,27 +18,31 @@ class cdb { // trida cdb bude slouzit k praci s databazi
     try {
             $this->conn = @new PDO("mysql:host=".$this->server.";dbname=".$this->db_name, $this->user, $this->password, $options);
     } catch (PDOException $e) {
-        echo 'Connection failed: ' . $e->getMessage();
+        $error = 'Connection failed: ' . $e->getMessage();
     }
     
-    if (!($this->conn)) return(0);
+    if (!($this->conn)) 
+    {
+      $this->error = $error;
+      return(0);
+    }
     
     return(1);
   }
 
   function query($dotaz) {
     $this->querystring=$dotaz;
-    $this->error=0;
+    $this->error=null;
     $this->data=$this->conn->prepare($dotaz);
     $parameters = array();
     try {
             $this->data->execute($parameters);
     } catch (PDOException $e) {
-        echo 'Execution of query failed: ' . $e->getMessage();
+        $error = 'Execution of query failed: ' . $e->getMessage();
         $this->data=null;
     }
     if (!($this->data)) {
-      $this->error=1;
+      $this->error=$error;
     };
     if ($this->data) { return 1; }
     else  {return 0;}

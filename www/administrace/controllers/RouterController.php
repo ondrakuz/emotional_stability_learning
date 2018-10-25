@@ -1,7 +1,27 @@
 <?php
 class RouterController extends Controller
 {
-  protected $controller;
+  protected $controller, $error;
+  static protected $instance;
+  
+  public setError($text)
+  {
+    $this->error = $text;
+  }
+  
+  public getError()
+  {
+    return $this->error;
+  }
+  
+  static public function getInstance()
+  {
+    if (empty($this->instance)) 
+    {
+      $this->instance = new RouterController();
+    }
+    return $this->instance;
+  }
 
   public function setView()
   {
