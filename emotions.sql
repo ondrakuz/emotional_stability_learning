@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.8
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Počítač: localhost
--- Vytvořeno: Stř 24. říj 2018, 19:54
--- Verze serveru: 10.1.35-MariaDB
--- Verze PHP: 5.6.38
+-- Počítač: 127.0.0.1
+-- Vytvořeno: Pát 26. říj 2018, 18:21
+-- Verze serveru: 5.7.22
+-- Verze PHP: 7.1.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databáze: `emotions`
+-- Databáze: `ondrejkuzcz1`
 --
 
 -- --------------------------------------------------------
@@ -71,7 +71,13 @@ INSERT INTO `odpoved` (`id_problemu`, `id_kog_schematu`, `odpoved`, `smazano`) V
 (2, 3, 'Ztráta zaměstnání ani žádný její důsledek ve skutečnosti nebrání tomu, aby byl člověk spokojen.', 0),
 (2, 4, 'Ztráta zaměstnání je možná nějaká vyšší vůle a nemá cenu se s tím nějak trápit.', 0),
 (3, 1, 'Je to nanic, spoustu věcí musím odložit a cítím se zle.', 0),
-(3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0);
+(3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0),
+(3, 3, 'Onemocnět chřipkou a všechny důsledky ve skutečnosti nejsou důležité, nebrání spokojenosti v přítomném okamžiku.', 0),
+(3, 4, 'Zdraví lidí a věci s tím spojené jsou v rukou boha a každopádně je to v pořádku.', 0),
+(4, 1, 'Asi bude moje budoucnost temná...', 0),
+(4, 2, 'Alespoň v případě, že něco dělám špatně, toho nevyrobím špatně moc.', 0),
+(4, 3, 'V případě, že mi jde všechno pomalu a neumím s tím nic udělat, rychlost mojí práce není podstatná.', 0),
+(4, 4, 'Rychlost mojí práce je výslednicí sil přesahujících naše vědění.', 0);
 
 -- --------------------------------------------------------
 
