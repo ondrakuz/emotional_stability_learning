@@ -15,7 +15,7 @@ class ErrorController extends Controller
     $this->data['text'] = 'Chyba přihlášení: zadali jste špatné heslo, nebo špatné uživatelské jméno';
   }
   // Hlavička požadavku
-  header("Chyba ");
+//   header("Chyba");
   // Hlavička stránky
   $this->header['title'] = 'Chyba';
   // Nastavení šablony

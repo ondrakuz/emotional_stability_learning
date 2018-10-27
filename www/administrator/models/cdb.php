@@ -33,14 +33,14 @@ class cdb { // trida cdb bude slouzit k praci s databazi
   function query($dotaz) {
     $this->querystring=$dotaz;
     $this->error=null;
-//     $error = RouterController::getInstance()->getError();
-//     echo "$error";
+    
     try {
       $this->data=$this->conn->prepare($dotaz);
     } catch (PDOException $e) {
       $error = 'Preparation of query failed: ' . $e->getMessage();
       $this->data=null;
     }
+    
     $parameters = array();
     try {
             $this->data->execute($parameters);
