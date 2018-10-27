@@ -26,8 +26,8 @@ abstract class Controller
     if ($this->view)
     {
       extract($this->data);
-//       require("./administrator/views/" . $this->view.".phtml");
-      require("./views/" . $this->view.".phtml");
+      require("./administrator/views/" . $this->view.".phtml");
+//       require("./views/" . $this->view.".phtml");
     }
   }
 	

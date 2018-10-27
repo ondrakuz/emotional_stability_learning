@@ -5,7 +5,7 @@ class cdb { // trida cdb bude slouzit k praci s databazi
   
   function __construct()
   {
-    require("./cfg/sql.php");
+    require("./administrator/cfg/sql.php");
     $this->conn = null;
   }
 

@@ -58,12 +58,11 @@ class RouterController extends Controller
 
     if ((empty($parsedURL[1]))&&((empty($_SESSION['user']))&&(empty($_POST['login']))))
     {
-      $this->controller = new LoginController();
+      $this->controller = new LoginViewController();
     }
     else if (($parsedURL[1] == 'login')&&((empty($_SESSION['user']))&&(!(empty($_POST['login'])))))
     {
       $this->controller = new LoginController();
-      $this->controller->action();
     }
     else if ((empty($parsedURL[1]))&&(!(empty($_SESSION['user'])))&&((empty($_POST['login']))))
     { 
@@ -76,7 +75,7 @@ class RouterController extends Controller
       $view = array_shift($parsedURL);
       $controllerClass = $this->camelNotation($view) . 'Controller';
       
-      if (file_exists('./controllers/' . $controllerClass . '.php'))
+      if (file_exists('./administrator/controllers/' . $controllerClass . '.php'))
       {
         if ($view == 'error')
         {
