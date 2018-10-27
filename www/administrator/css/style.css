@@ -7,7 +7,7 @@ td a { text-decoration: none; color: black; }
 td a:hover { text-decoration: underline; color: black; }
 
 table.hlavicka { width: 98%; }
-td.logo { width: 60%; }
+td.logo { width: 80%; }
 td.hlavicka { background-color:#acacac; color:white; font-size:14px; font-weight: bold; text-align: center; }
 td.right { text-align: right; }
 

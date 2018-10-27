@@ -15,7 +15,7 @@
     <div class="container-fluid">
       <div id="hlavicka">
         <table class="hlavicka"><tr>
-          <td class="logo"><h1>CMS system - <?php echo htmlspecialchars($title, ENT_QUOTES);?></h1></td>
+          <td class="logo"><h1>Emotional Stability Learning Administration</h1></td>
           <?php if ($title!="Přihlášení") { ?>
             <td class="user">Uživatel: <img src="http://<?=$this->siteName?>/administrator/icons/<?php if ($_SESSION['prava']) {echo "admin";} else {echo "user";}; ?>.png"/> <span<?php if ($_SESSION['prava']) echo " class='red' "; ?>><?php echo $_SESSION['user']; ?></span><br /><a href="http://<?=$this->siteName?>/administrator/logout">Odhlášení</a></td>
           <?php }; ?>
