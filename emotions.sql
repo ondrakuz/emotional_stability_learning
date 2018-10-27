@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.8
 -- https://www.phpmyadmin.net/
 --
--- Počítač: 127.0.0.1
--- Vytvořeno: Pát 26. říj 2018, 18:21
--- Verze serveru: 5.7.22
--- Verze PHP: 7.1.23
+-- Počítač: localhost
+-- Vytvořeno: Sob 27. říj 2018, 19:41
+-- Verze serveru: 10.1.35-MariaDB
+-- Verze PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databáze: `ondrejkuzcz1`
+-- Databáze: `emotions`
 --
 
 -- --------------------------------------------------------
@@ -71,13 +71,7 @@ INSERT INTO `odpoved` (`id_problemu`, `id_kog_schematu`, `odpoved`, `smazano`) V
 (2, 3, 'Ztráta zaměstnání ani žádný její důsledek ve skutečnosti nebrání tomu, aby byl člověk spokojen.', 0),
 (2, 4, 'Ztráta zaměstnání je možná nějaká vyšší vůle a nemá cenu se s tím nějak trápit.', 0),
 (3, 1, 'Je to nanic, spoustu věcí musím odložit a cítím se zle.', 0),
-(3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0),
-(3, 3, 'Onemocnět chřipkou a všechny důsledky ve skutečnosti nejsou důležité, nebrání spokojenosti v přítomném okamžiku.', 0),
-(3, 4, 'Zdraví lidí a věci s tím spojené jsou v rukou boha a každopádně je to v pořádku.', 0),
-(4, 1, 'Asi bude moje budoucnost temná...', 0),
-(4, 2, 'Alespoň v případě, že něco dělám špatně, toho nevyrobím špatně moc.', 0),
-(4, 3, 'V případě, že mi jde všechno pomalu a neumím s tím nic udělat, rychlost mojí práce není podstatná.', 0),
-(4, 4, 'Rychlost mojí práce je výslednicí sil přesahujících naše vědění.', 0);
+(3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0);
 
 -- --------------------------------------------------------
 
@@ -110,6 +104,28 @@ INSERT INTO `problem` (`id`, `nazev`, `popis`, `smazano`) VALUES
 (12, 'Špatný spánek', '', 0),
 (13, 'Špatné vstávání', '', 0);
 
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `jmeno` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
+  `prijmeni` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
+  `nick` varchar(20) COLLATE utf8_czech_ci NOT NULL,
+  `heslo` varchar(128) COLLATE utf8_czech_ci NOT NULL,
+  `prava` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1 - admin, 0- user'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+
+--
+-- Vypisuji data pro tabulku `users`
+--
+
+INSERT INTO `users` (`id`, `jmeno`, `prijmeni`, `nick`, `heslo`, `prava`) VALUES
+(1, '', '', 'admin', '9e09ecf8a371ebd409cf98ce3e3158a078831fad', 1);
+
 --
 -- Klíče pro exportované tabulky
 --
@@ -133,6 +149,13 @@ ALTER TABLE `problem`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Klíče pro tabulku `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nick` (`nick`);
+
+--
 -- AUTO_INCREMENT pro tabulky
 --
 
@@ -140,13 +163,19 @@ ALTER TABLE `problem`
 -- AUTO_INCREMENT pro tabulku `kognitivni_schema`
 --
 ALTER TABLE `kognitivni_schema`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pro tabulku `problem`
 --
 ALTER TABLE `problem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT pro tabulku `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

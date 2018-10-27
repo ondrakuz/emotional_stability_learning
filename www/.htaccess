@@ -1,10 +1,11 @@
 Options -Indexes
 
-RewriteEngine On 
+RewriteEngine On
 RewriteBase /
 
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^((cs|de|en|fr|it|po|ru|sk|sp|ur)/)?([^/]+)?/?/?([^/]+)?/?$ ?lang=$2&id=$3&idc=$4 [QSA]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule \/administrator\/  ./administrator/index.php [L]
+RewriteRule !(\.pdf|\.js|\.ico|\.gif|\.jpg|\.png|\.css|\.rar|\.zip|\.tar\.gz)$ index.php [L]
 
 AddType application/x-httpd-php .php .phtml

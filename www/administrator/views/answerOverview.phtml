@@ -1,0 +1,31 @@
+        <div class="col-sm-10">
+          <h4>Přehled odpovědí na problém "<?php echo($problem); ?>"</h4>
+        <?php
+           $pocet=count($answers);
+           if (!$pocet) {
+             ?>
+            <div class="hlaska">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem); ?>"<br /><a href="<?php echo("./?odpovedi=2&idp=".$answer['id_problemu']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat odpověď</a></div>
+             <?php
+           } else {
+           ?>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <caption class="text-center">Odpovědi na problém "<?php echo($problem); ?>"</caption>
+              <thead><tr><th>Název</th><th>Kognitivní schéma</th><th class="text-center">Editace</th><th class="text-center">Smazat</th></tr></thead>
+              <tbody>
+                <?php
+                 foreach($answers as $answer) {
+                ?>
+                <tr>
+                  <td><?php echo($answer['odpoved']); ?></td>
+                  <td><strong><?php echo($answer['nazev']); ?></strong></td>
+                  <td class="text-center"><?php echo("<a href=\"http://".$this->siteName."/administrator/answer-edit/".$answer['id_problemu']."/".$answer['id_kog_schematu']."\">"); ?><img src="http://<?= $this->siteName ?>/administrator/icons/pencil.png" width="16" height="16" /></a></td>
+                  <td class="text-center"><?php echo("<a href=\"http://".$this->siteName."/administrator/answer-delete/".$answer['id_problemu']."/".$answer['id_kog_schematu']."\">"); ?><img src="http://<?= $this->siteName ?>/administrator/icons/bin_closed.png" width="16" height="16" /></a></td>
+                </tr>
+                   <?php } ?>
+                <tr><td colspan="4"><a href="<?php echo("http://".$this->siteName."/administrator/answer-new/".$answer['id_problemu']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat odpověď</a></td>
+              </tbody>
+            </table>
+           <?php } ?>
+          </div>
+        </div>

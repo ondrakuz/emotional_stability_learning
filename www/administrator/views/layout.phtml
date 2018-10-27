@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs-cz" lang="cs-cz">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-language" content="cs" />
+    <meta name="author" content="Ondřej Kužel; mailto:ondrej.kuzel@gmail.com"/>
+    <meta name="copyright" content="Ondřej Kužel" />
+    <title>Emotional stability learning Administration - <?= $title ?></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://<?=$this->siteName?>/administrator/css/style.css" type="text/css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="hlavicka">
+        <table class="hlavicka"><tr>
+          <td class="logo"><h1>CMS system - <?php echo htmlspecialchars($title, ENT_QUOTES);?></h1></td>
+          <?php if ($title!="Přihlášení") { ?>
+            <td class="user">Uživatel: <img src="http://<?=$this->siteName?>/administrator/icons/<?php if ($_SESSION['prava']) {echo "admin";} else {echo "user";}; ?>.png"/> <span<?php if ($_SESSION['prava']) echo " class='red' "; ?>><?php echo $_SESSION['user']; ?></span><br /><a href="http://<?=$this->siteName?>/administrator/logout">Odhlášení</a></td>
+          <?php }; ?>
+        </tr></table>
+      </div>
+      <div class="row">
+      <?php 
+        $view = $this->controller->getView();
+        if (($view != 'login')&&(!(preg_match('/přihlášení/', $text))))
+        {
+      ?>
+        <div class="col-sm-2" >
+          <ul class="list-group" id="levy_panel">
+          <li class="list-group-item"><div class="kategorie">
+            <img src="http://<?=$this->siteName?>/administrator/icons/application_side_list.png" width="16" height="16" alt="icon" /> <span class="nadpis">Problémy</span><br />
+            <ul class="list-group">
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/problem-overview/">Přehled problémů</a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/problem-new/">Přidat problém</a></li>
+            </ul>
+          </div></li>
+          <li class="list-group-item"><div class="kategorie">
+            <img src="http://<?=$this->siteName?>/administrator/icons/lightbulb.png" width="16" height="16" alt="icon" /> <span class="nadpis">Kognitivní schémata</span><br/>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/k-schema-overview/">Přehled schémat</a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/k-schema-new/">Přidat schéma</a></li>
+            </ul>
+          </div></li>
+          </ul>
+        </div>
+      <?php 
+        }
+        $this->controller->showView(); // vložení aktuálního pohledu do šablony
+      ?>
+      </div>
+        <div class="panel panel-default text-center margintop30">
+          <div class="panel-footer" id="paticka">Copyright &copy; <?php date_default_timezone_set('Europe/Prague'); echo date("Y"); ?> <a href="http://www.ondrejkuz.cz">Ondřej Kužel</a><br /><a href="http://validator.w3.org/check?uri=referer" title="" onclick="return !window.open(this.href);">XHTML</a> a <a href="http://jigsaw.w3.org/css-validator/check/referer" title="" onclick="return !window.open(this.href);">CSS 3.0</a></div>
+        </div>
+      </div>
+    </div><!-- /container -->
+  </body>
+</html>

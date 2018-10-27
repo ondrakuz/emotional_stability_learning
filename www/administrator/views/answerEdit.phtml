@@ -1,0 +1,25 @@
+          <div class="col-sm-3"></div>
+          <div class="col-sm-4">
+          <h4>Editace odpovědi na problém "<?php echo($answer['nazev']); ?>"</h4>
+            <form method="post" action="http://<?= $this->siteName ?>/administrator/answer-update/">
+              <input type="hidden" name="idp" value="<?php echo($answer['id_problemu']); ?>" />
+              <div class="form-group">
+                <label for="idks">Kognitivní schéma:</label>
+                <select class="form-control" id="idks" name="idks">
+                <?php
+                  foreach($kschemas as $kschema)
+                  {
+                    if ($kschema['id'] == $answer['id_kog_schematu']) { echo("                  <option value=\"".$kschema['id']."\" selected=\"selected\" >".$kschema['nazev']."</option>\n"); }
+                    else { echo("                  <option value=\"".$kschema['id']."\" >".$kschema['nazev']."</option>\n"); }
+                  }
+                ?>
+              </select>
+              </div> 
+              <div class="form-group">
+                <label for="nazev">Odpověď:</label>
+                <textarea class="form-control" rows="5" id="nazev" name="nazev"><?php echo($answer['odpoved']); ?></textarea>
+              </div>
+              <button type="submit" name="odpovedi" class="btn btn-default" value="Uložit">Uložit</button>
+            </form>
+          </div><!-- /col-sm-4 -->
+          <div class="col-sm-3"></div>
