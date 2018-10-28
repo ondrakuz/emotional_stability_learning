@@ -1,7 +1,7 @@
 <?php
 class KSchemaOverviewController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $model = model::getInstance();
     if ($model->ifconnected())
@@ -13,8 +13,5 @@ class KSchemaOverviewController extends Controller
       $this->view = 'kschemaOverview';
     }
   }
-  
-  public function action(){}
-
 }
 ?>
