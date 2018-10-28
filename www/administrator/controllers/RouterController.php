@@ -92,14 +92,7 @@ class RouterController extends Controller
       }
     }
     
-    if ($controllerClass == 'LogoutController')
-    {
-      $this->controller->action();
-    }
-    else
-    {
-      $this->controller->ctrMain($parsedURL);
-    }
+    $this->controller->ctrMain($parsedURL);
         
     if ($this->isError)
     {
