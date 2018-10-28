@@ -1,7 +1,7 @@
 <?php
 class ProblemOverviewController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $model = model::getInstance();
     if ($model->ifconnected())
@@ -13,8 +13,5 @@ class ProblemOverviewController extends Controller
       $this->view = 'problemOverview';
     }
   }
-  
-  public function action(){}
-
 }
 ?>

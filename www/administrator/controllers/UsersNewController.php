@@ -1,13 +1,10 @@
 <?php
 class UsersNewController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $this->header['title'] = "Nový uživatel";
     $this->view = 'usersNew';
   }
-  
-  public function action(){}
-
 }
 ?>

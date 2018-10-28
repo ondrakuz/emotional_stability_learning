@@ -1,7 +1,7 @@
 <?php
 class ProblemEditController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $id = array_shift($parameters);
     $model = model::getInstance();
@@ -15,8 +15,5 @@ class ProblemEditController extends Controller
       $this->view = 'problemEdit';
     }
   }
-
-  public function action(){}
-
 }
 ?>

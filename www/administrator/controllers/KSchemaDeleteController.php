@@ -8,7 +8,7 @@ class KSchemaDeleteController extends Controller
     if ($model->ifconnected())
     {
       $model->update('kognitivni_schema', array('id' => htmlspecialchars($id, ENT_QUOTES)), array('smazano' => 1));
-      $this->redirect('/administrator/k-schema-overview/');
+      $this->redirect('/administrator/k-schema-overview');
     }
   }
   

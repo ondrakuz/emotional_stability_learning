@@ -2,13 +2,10 @@
 class LogoutController extends Controller
 {
 
-  public function setView($parameters)
-  {}
-  
-  public function action()
+  public function ctrMain($parameters)
   {
     session_destroy();
-    $this->redirect("/administrator/");
+    $this->redirect("/administrator");
   }
 }
 ?>

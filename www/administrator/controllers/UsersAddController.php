@@ -1,7 +1,7 @@
 <?php
 class UsersAddController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $model = model::getInstance();
     if ($model->ifconnected())
@@ -22,13 +22,10 @@ class UsersAddController extends Controller
           // and insert in db
           $model->insert('users', array('nick' => htmlspecialchars($_POST['nick'], ENT_QUOTES), 'jmeno' => htmlspecialchars($jmeno, ENT_QUOTES), 'prijmeni' => htmlspecialchars($prijmeni, ENT_QUOTES), 'prava' => $prava, 'heslo' => sha1($_POST['heslo1']) ));
           
-          $this->redirect('/administrator/users-overview/');
+          $this->redirect('/administrator/users-overview');
         }
       }
     }
   }
-  
-  public function action(){}
-
 }
 ?>

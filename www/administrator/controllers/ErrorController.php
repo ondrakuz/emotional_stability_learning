@@ -7,7 +7,7 @@ class ErrorController extends Controller
     $this->data['text'] = $text;
   }
   
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
   $error = array_shift($parameters);
   if ($error == 'login')
@@ -21,7 +21,5 @@ class ErrorController extends Controller
   // Nastavení šablony
   $this->view = 'error';
   }
-  
-  public function action(){}
 }
 ?>

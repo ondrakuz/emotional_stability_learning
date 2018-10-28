@@ -9,7 +9,7 @@
   spl_autoload_register("fautoload");
 
   $router = RouterController::getInstance();
-  $router->setView(array($_SERVER['REQUEST_URI']));
+  $router->ctrMain(array($_SERVER['REQUEST_URI']));
 
   $router->showView();
 ?>

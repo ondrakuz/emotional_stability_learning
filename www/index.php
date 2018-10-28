@@ -5,7 +5,7 @@
   mb_internal_encoding("UTF-8");
   
   $uri = $_SERVER['REQUEST_URI'];
-  if (preg_match('/\/administrator\//', $uri))
+  if (preg_match('/\/administrator/', $uri))
   {
     require('./administrator/index.php');
   }

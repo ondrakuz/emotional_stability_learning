@@ -1,7 +1,7 @@
 <?php
 class AnswerNewController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $idp = array_shift($parameters);
     $model = model::getInstance();
@@ -17,8 +17,5 @@ class AnswerNewController extends Controller
       $this->view = 'answerNew';
     }
   }
-  
-  public function action(){}
-
 }
 ?>

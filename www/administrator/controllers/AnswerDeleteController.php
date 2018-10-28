@@ -1,7 +1,7 @@
 <?php
 class AnswerDeleteController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $idp = array_shift($parameters);
     $idks = array_shift($parameters);
@@ -12,8 +12,5 @@ class AnswerDeleteController extends Controller
       $this->redirect('/administrator/answer-overview/'.htmlspecialchars($idp, ENT_QUOTES));
     }
   }
-  
-  public function action(){}
-
 }
 ?>

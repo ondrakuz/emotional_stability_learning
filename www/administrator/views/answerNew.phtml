@@ -1,7 +1,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-4">
         <h4>Vložení nové odpovědi na problém "<?php echo($problem['nazev']); ?>"</h4>
-          <form method="post" action="http://<?= $this->siteName ?>/administrator/answer-add/">
+          <form method="post" action="http://<?= $this->siteName ?>/administrator/answer-add">
             <input type="hidden" name="idp" value="<?php echo($problem['id']); ?>" />
             <div class="form-group">
               <label for="ksid">Kognitivní schéma:</label>

@@ -1,7 +1,7 @@
 <?php
 class UsersOverviewController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $model = model::getInstance();
     if ($model->ifconnected())
@@ -13,8 +13,5 @@ class UsersOverviewController extends Controller
       $this->view = 'usersOverview';
     }
   }
-  
-  public function action(){}
-
 }
 ?>

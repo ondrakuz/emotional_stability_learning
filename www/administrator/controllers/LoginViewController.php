@@ -2,16 +2,12 @@
 class LoginViewController extends Controller
 {
 
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
   // Hlavička stránky
   $this->header['title'] = 'Přihlášení';
   // Nastavení šablony
   $this->view = 'loginView';
   }
-  
-  public function action()
-  {}
-  
 }
 ?>

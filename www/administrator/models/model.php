@@ -229,5 +229,31 @@
       }
       return $result;
     }
+    
+    function delete($table, array $keys)
+    {
+      $query = "delete from $table where ";
+      $i = 0;
+      foreach($keys as $key => $value)
+      {
+        if ($i)
+        {
+          $query .= " and $key=$value";
+        }
+        else
+        {
+          $query .= " $key=$value";
+          $i = 1;
+        }
+      }
+      $query .= ";";
+      
+      $result = $this->db->query($query);
+      if (!$result)
+      {
+        RouterController::getInstance()->setError($this->db->get_error().'<br /><br />'.$query);
+      }
+      return $result;      
+    }
   }
 ?>

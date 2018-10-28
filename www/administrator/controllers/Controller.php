@@ -48,7 +48,6 @@ abstract class Controller
   }
   
 	// Hlavní metody controlleru
-    abstract function setView($parameters);
-    abstract function action();
+    abstract function ctrMain($parameters);
 }
 ?>

@@ -1,14 +1,12 @@
 <?php
 class HomePageController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
   // Hlavička stránky
   $this->header['title'] = 'Hlavní stránka';
   // Nastavení šablony
   $this->view = 'homePage';
   }
-    
-  public function action(){}
 }
 ?>

@@ -47,7 +47,7 @@ class RouterController extends Controller
     return $this->error;
   }
   
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $parsedURL = $this->parseURL($parameters[0]);
     
@@ -98,14 +98,14 @@ class RouterController extends Controller
     }
     else
     {
-      $this->controller->setView($parsedURL);
+      $this->controller->ctrMain($parsedURL);
     }
         
     if ($this->isError)
     {
       $this->controller = null;
       $this->controller = new ErrorController($this->error);
-      $this->controller->setView($parameters);
+      $this->controller->ctrMain($parameters);
     }
     
     
@@ -116,8 +116,5 @@ class RouterController extends Controller
     // Nastavení hlavní šablony
     $this->view = 'layout';
   }
-  
-  public function action(){}
-
 }  
 ?>

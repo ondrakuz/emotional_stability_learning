@@ -1,7 +1,7 @@
 <?php
 class UsersUpdateController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $model = model::getInstance();
     if ($model->ifconnected())
@@ -17,7 +17,7 @@ class UsersUpdateController extends Controller
 
           if ($model->update('users', array ('id' => $_POST['id']), array ('jmeno' => "'".htmlspecialchars($_POST['jmeno'])."'", 'prijmeni' => "'".htmlspecialchars($_POST['prijmeni'])."'", 'heslo' => "'".sha1($_POST['heslo2'])."'")))
           { 
-            $this->redirect('/administrator/users-overview/');
+            $this->redirect('/administrator/users-overview');
           }
         }else{
           //User input incorrect data
@@ -30,13 +30,10 @@ class UsersUpdateController extends Controller
 
         if ($model->update('users', array ('id' => $_POST['id']), array ('jmeno' => "'".htmlspecialchars($jmeno)."'", 'prijmeni' => "'".htmlspecialchars($prijmeni)."'")))
         {
-          $this->redirect('/administrator/users-overview/');
+          $this->redirect('/administrator/users-overview');
         }
       }
     }
   }
-  
-  public function action(){}
-
 }
 ?>

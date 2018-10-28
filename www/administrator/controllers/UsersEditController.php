@@ -1,7 +1,7 @@
 <?php
 class UsersEditController extends Controller
 {
-  public function setView($parameters)
+  public function ctrMain($parameters)
   {
     $id = array_shift($parameters);
     $model = model::getInstance();
@@ -13,8 +13,5 @@ class UsersEditController extends Controller
       $this->view = 'usersEdit';
     }
   }
-  
-  public function action(){}
-
 }
 ?>
