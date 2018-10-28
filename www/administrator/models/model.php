@@ -1,7 +1,7 @@
 <?php
   class model
   {
-    private $db/*, $sever_name*/;
+    private $db;
     static private $instance = null;
 
     static function getInstance()
@@ -33,14 +33,16 @@
       return $this->db->ifconnected();
     }
     
-    function server_name()
+    function selectAll($table, $order = '')
     {
-      return $this->server_name;
-    }
-    
-    function selectAll($table)
-    {
-      $query = "select * from $table where smazano='0';";
+      $query = "select * from $table where smazano='0'";
+      if ($order != '') {
+        $query .= " order by $order;";
+      }
+      else
+      {
+        $query .= ';';
+      }
       if (!$this->db->query($query))
       {
         RouterController::getInstance()->setError($this->db->get_error());
@@ -85,7 +87,7 @@
       return $this->db->get_row();
     }
     
-    function selectArray(array $tables, array $collums, array $keys)
+    function selectArray(array $tables, array $collums, array $keys, $order = '')
     {
       $query = "select ";
       $i = 0;
@@ -115,21 +117,30 @@
           $i = 1;
         }
       }
-      $query .= " where";
-      $i = 0;
-      foreach($keys as $name => $value)
+      if (!empty($keys))
       {
-        if ($i) 
+        $query .= " where";
+        $i = 0;
+        foreach($keys as $name => $value)
         {
-          $query .= " and $name=$value";
-        }
-        else
-        {
-          $query .= " $name=$value";
-          $i = 1;
+          if ($i) 
+          {
+            $query .= " and $name=$value";
+          }
+          else
+          {
+            $query .= " $name=$value";
+            $i = 1;
+          }
         }
       }
-      $query .= ";";
+      if ($order != '') {
+        $query .= " order by $order;";
+      }
+      else
+      {
+        $query .= ';';
+      }
       
       if (!$this->db->query($query))
       {
@@ -159,11 +170,11 @@
       {
          if ($i)
         {
-          $query .= ", $name='$value'";
+          $query .= ", $name=$value";
         }
         else
         {
-          $query .= " $name='$value'";
+          $query .= " $name=$value";
           ++$i;
         }
       }
@@ -173,11 +184,11 @@
       {
         if ($i) 
         {
-          $query .= " and $name='$value'";
+          $query .= " and $name=$value";
         }
         else
         {
-          $query .= " $name='$value'";
+          $query .= " $name=$value";
           $i = 1;
         }
       }

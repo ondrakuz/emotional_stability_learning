@@ -1,6 +1,6 @@
 body { /*min-width:800px;*/ font-family: 'Helvetica CE','Arial CE',sans-serif; font-size: 12px; /*background-color: #fff; padding: 0; margin: 0;*/ }
 h4 { font-size: 14px; font-weight: bold; color: green; margin-top: 20px; }
-table caption { font-weight: bold; background-color:#acacac; color:black; font-size:14px; }
+table caption { font-weight: bold; background-color:#acacac; color:white; font-size:14px; }
 thead { font-size: 13px; font-weight: bold; color: green; }
 /* td { text-align: left; } */
 td a { text-decoration: none; color: black; }
