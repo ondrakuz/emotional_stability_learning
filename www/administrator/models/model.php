@@ -144,7 +144,7 @@
       
       if (!$this->db->query($query))
       {
-        RouterController::getInstance()->setError($this->db->get_error());
+        RouterController::getInstance()->setError($this->db->get_error().'<br /><br />'.$query);
       }
       else
       {

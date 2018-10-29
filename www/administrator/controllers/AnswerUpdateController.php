@@ -6,8 +6,10 @@ class AnswerUpdateController extends Controller
     $model = model::getInstance();
     if ($model->ifconnected())
     {
-      $model->update('odpoved', array('id_problemu' => htmlspecialchars($this->post_get('idp'), ENT_QUOTES), 'id_kog_schematu' => htmlspecialchars($this->post_get('idks'), ENT_QUOTES)), array('odpoved' => htmlspecialchars($this->post_get('nazev'), ENT_QUOTES)));
-      $this->redirect('/administrator/answer-overview/'.htmlspecialchars($this->post_get('idp'), ENT_QUOTES));
+      if ($model->update('odpoved', array('id' => htmlspecialchars($_POST['id'], ENT_QUOTES)), array('odpoved' => "'".htmlspecialchars($_POST['nazev'], ENT_QUOTES)."'", 'id_kog_schematu' => htmlspecialchars($_POST['idks'], ENT_QUOTES))))
+      {
+        $this->redirect('/administrator/answer-overview/'.$_POST['idp']);
+      }
     }
   }
 }

@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.8
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2.1
+-- http://www.phpmyadmin.net
 --
--- Počítač: localhost
--- Vytvořeno: Sob 27. říj 2018, 19:41
--- Verze serveru: 10.1.35-MariaDB
--- Verze PHP: 5.6.38
+-- Počítač: localhost:22
+-- Vytvořeno: Pon 29. říj 2018, 12:25
+-- Verze serveru: 5.7.23-0ubuntu0.16.04.1
+-- Verze PHP: 7.0.32-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -51,6 +49,7 @@ INSERT INTO `kognitivni_schema` (`id`, `nazev`, `smazano`) VALUES
 --
 
 CREATE TABLE `odpoved` (
+  `id` int(11) NOT NULL,
   `id_problemu` int(11) NOT NULL,
   `id_kog_schematu` int(11) NOT NULL,
   `odpoved` text COLLATE utf8_czech_ci NOT NULL,
@@ -61,17 +60,17 @@ CREATE TABLE `odpoved` (
 -- Vypisuji data pro tabulku `odpoved`
 --
 
-INSERT INTO `odpoved` (`id_problemu`, `id_kog_schematu`, `odpoved`, `smazano`) VALUES
-(1, 1, 'Je to dost nepříjemné, dost mě to zlobí a ovlivňuje další věci', 0),
-(1, 2, 'Může to být dobré k tomu, že člověk hned vidí koho si nevšímat.', 0),
-(1, 3, 'Nedá se s tím nic dělat, ale je to bezvýznamné.', 0),
-(1, 4, 'Nedá se s tím nic dělat, ale bůh tomu tak zřejmě z nějakého důvodu chce.', 0),
-(2, 1, 'Ztráta zaměstnání je velmi špatná a má spoustu negativních důsledků', 0),
-(2, 2, 'Může to být dobré k tomu, že člověk bude mít nějakou dobu více času, a pak třeba pozná zase jiné zaměstnání.', 0),
-(2, 3, 'Ztráta zaměstnání ani žádný její důsledek ve skutečnosti nebrání tomu, aby byl člověk spokojen.', 0),
-(2, 4, 'Ztráta zaměstnání je možná nějaká vyšší vůle a nemá cenu se s tím nějak trápit.', 0),
-(3, 1, 'Je to nanic, spoustu věcí musím odložit a cítím se zle.', 0),
-(3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0);
+INSERT INTO `odpoved` (`id`, `id_problemu`, `id_kog_schematu`, `odpoved`, `smazano`) VALUES
+(1, 1, 1, 'Je to dost nepříjemné, dost mě to zlobí a ovlivňuje další věci', 0),
+(2, 1, 2, 'Může to být dobré k tomu, že člověk hned vidí koho si nevšímat.', 0),
+(3, 1, 3, 'Nedá se s tím nic dělat, ale je to bezvýznamné.', 0),
+(4, 1, 4, 'Nedá se s tím nic dělat, ale bůh tomu tak zřejmě z nějakého důvodu chce.', 0),
+(5, 2, 1, 'Ztráta zaměstnání je velmi špatná a má spoustu negativních důsledků', 0),
+(6, 2, 2, 'Může to být dobré k tomu, že člověk bude mít nějakou dobu více času, a pak třeba pozná zase jiné zaměstnání.', 0),
+(7, 2, 3, 'Ztráta zaměstnání ani žádný její důsledek ve skutečnosti nebrání tomu, aby byl člověk spokojen.', 0),
+(8, 2, 4, 'Ztráta zaměstnání je možná nějaká vyšší vůle a nemá cenu se s tím nějak trápit.', 0),
+(9, 3, 1, 'Je to nanic, spoustu věcí musím odložit a cítím se zle.', 0),
+(10, 3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0);
 
 -- --------------------------------------------------------
 
@@ -140,7 +139,7 @@ ALTER TABLE `kognitivni_schema`
 -- Klíče pro tabulku `odpoved`
 --
 ALTER TABLE `odpoved`
-  ADD PRIMARY KEY (`id_problemu`,`id_kog_schematu`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Klíče pro tabulku `problem`
@@ -164,20 +163,21 @@ ALTER TABLE `users`
 --
 ALTER TABLE `kognitivni_schema`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+--
+-- AUTO_INCREMENT pro tabulku `odpoved`
+--
+ALTER TABLE `odpoved`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pro tabulku `problem`
 --
 ALTER TABLE `problem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
 --
 -- AUTO_INCREMENT pro tabulku `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

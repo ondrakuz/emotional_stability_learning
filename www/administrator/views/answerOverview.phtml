@@ -19,8 +19,8 @@
                 <tr>
                   <td><?php echo($answer['odpoved']); ?></td>
                   <td><strong><?php echo($answer['nazev']); ?></strong></td>
-                  <td class="text-center"><?php echo("<a href=\"http://".$this->siteName."/administrator/answer-edit/".$answer['id_problemu']."/".$answer['id_kog_schematu']."\">"); ?><img src="http://<?= $this->siteName ?>/administrator/icons/pencil.png" width="16" height="16" /></a></td>
-                  <td class="text-center"><?php echo("<a href=\"http://".$this->siteName."/administrator/answer-delete/".$answer['id_problemu']."/".$answer['id_kog_schematu']."\">"); ?><img src="http://<?= $this->siteName ?>/administrator/icons/bin_closed.png" width="16" height="16" /></a></td>
+                  <td class="text-center"><?php echo("<a href=\"http://".$this->siteName."/administrator/answer-edit/".$answer['id']."\">"); ?><img src="http://<?= $this->siteName ?>/administrator/icons/pencil.png" width="16" height="16" /></a></td>
+                  <td class="text-center"><?php echo("<a href=\"http://".$this->siteName."/administrator/answer-delete/".$answer['id']."\">"); ?><img src="http://<?= $this->siteName ?>/administrator/icons/bin_closed.png" width="16" height="16" /></a></td>
                 </tr>
                    <?php } ?>
                 <tr><td colspan="4"><a href="<?php echo("http://".$this->siteName."/administrator/answer-new/".$answer['id_problemu']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat odpověď</a></td>
