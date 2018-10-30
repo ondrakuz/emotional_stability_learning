@@ -3,7 +3,7 @@ h4 { font-size: 14px; font-weight: bold; color: #0dcaff; margin-top: 20px; }
 table caption { font-weight: bold; background-color:#0dcaff; color:white; font-size:14px; }
 thead { font-size: 13px; font-weight: bold; color: #0dcaff; }
 /* td { text-align: left; } */
-td a { text-decoration: none; color: #0dcaff; }
+td a { text-decoration: none; color: black; }
 td a:hover { text-decoration: underline; color: black; }
 
 table.hlavicka { width: 98%; }
