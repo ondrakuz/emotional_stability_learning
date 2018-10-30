@@ -1,0 +1,35 @@
+        <div class="col-sm-10">
+          <h4>Přehled problémů</h4>
+          <?php
+            $pocet=count($problems);
+            if (!$pocet) {
+          ?>
+          <div class="hlaska">Nejsou uloženy žádné problémy</div>
+          <?php
+            } else {
+          ?>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <caption class="text-center">Problémy</caption>
+              <thead><tr><th>Název</th><th>Popis</th><th class="text-center">Odpovědi</th></tr></thead>
+              <tbody>
+            <?php
+              foreach ($problems as $problem) {
+                if (!$problem['smazano']) {
+            ?>
+                   <tr>
+                    <td><?php echo($problem['nazev']); ?></td>
+                    <td><?php echo($problem['popis']); ?></td>
+                    <td class="text-center"><?php echo("<a href=\"http://".$this->siteName."/answer-overview/".$problem['id']."\">"); ?><img src="http://<?=$this->siteName?>/administrator/icons/comment.png" width="16" height="16" /></a></td>
+                    </tr>
+                <?php
+                }
+              } ?>
+              </tbody>
+            </table>
+          </div>
+      <?php }
+          ?>
+        </div><!-- /col-sm-10 -->
+
+        

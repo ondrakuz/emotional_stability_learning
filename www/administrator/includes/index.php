@@ -1,7 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <body>
-    <center><h1><strong>Emotional Stability Learning</strong></h1></center>
-  </body>
-</html>
+<?php
+  function fautoload($class)
+  {
+    if (preg_match('/Controller$/', $class))
+    {
+       require_once("administrator/includes/controllers/" . $class . ".php");
+    }
+    else
+      require_once("administrator/models/" . $class . ".php");
+  }
+  spl_autoload_register("fautoload");
+  
+  $router = RouterController::getInstance();
+  $router->ctrMain(array($_SERVER['REQUEST_URI']));
 
+  $router->showView();
+?>

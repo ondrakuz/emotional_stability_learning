@@ -4,7 +4,7 @@
            $pocet=count($answers);
            if (!$pocet) {
              ?>
-            <div class="hlaska">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem); ?>"<br /><a href="<?php echo("./?odpovedi=2&idp=".$answer['id_problemu']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat odpověď</a></div>
+            <div class="hlaska">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem); ?>"<br /><a href="<?php echo("./answer-new/".$answer['id_problemu']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat odpověď</a></div>
              <?php
            } else {
            ?>
