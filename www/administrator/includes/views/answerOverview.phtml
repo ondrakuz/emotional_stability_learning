@@ -10,8 +10,10 @@
            ?>
           <div class="table-responsive">
             <table class="table table-hover">
-              <caption class="text-center">Odpovědi na problém "<?= $problem['nazev'] ?>"</caption>
-              <thead><tr><th>Název</th><th>Kognitivní schéma</th></tr></thead>
+              <thead>
+                <tr><th colspan="2" class="caption text-center">Odpovědi na problém "<?= $problem['nazev'] ?>"</th></tr>
+                <tr><th>Název</th><th>Kognitivní schéma</th></tr>
+              </thead>
               <tbody>
                 <?php
                  foreach($answers as $answer) {

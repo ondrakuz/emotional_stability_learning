@@ -1,6 +1,6 @@
 body { /*min-width:800px;*/ font-family: 'Helvetica CE','Arial CE',sans-serif; font-size: 12px; /*background-color: #fff; padding: 0; margin: 0;*/ }
 h4 { font-size: 14px; font-weight: bold; color: #0dcaff; margin-top: 20px; }
-table caption { font-weight: bold; background-color:#0dcaff; color:white; font-size:14px; }
+table thead tr th.caption { font-weight: bold; background-color:#0dcaff; color:white; font-size:14px; }
 thead { font-size: 13px; font-weight: bold; color: #0dcaff; }
 /* td { text-align: left; } */
 td a { text-decoration: none; color: black; }
@@ -11,10 +11,13 @@ td.logo { width: 80%; }
 td.hlavicka { background-color:#ffa101; color:white; font-size:14px; font-weight: bold; text-align: center; }
 td.right { text-align: right; }
 
-#hlavicka { /*position: relative; width: 100%;*/ min-height: 128px; background-color: #ffa101; border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 30px; text-align: center; vertical-align: center; }
+button.btn { background-color:#0dcaff; color: white; }
+label { font-size: 14px; font-weight: bold; }
+
+#hlavicka { /*position: relative; width: 100%;*/ min-height: 128px; background-color: #ffa101; border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 20px; text-align: center; vertical-align: center; }
 #hlavicka h1 { width: 100%; margin: 0; padding: 40px 20px 20px 20px; color: white; font-weight: bold; text-align: center; }
 #hlavicka a { color: white; text-decoration: none; }
-#paticka { position: relative; width: 100%; font-size: 10px; color: #8c8c8c; background-color: #fde5bd; /*padding: 0; margin: 0;*/ text-align: center; }
+#paticka { position: relative; width: 100%; font-size: 10px; color: #8c8c8c; background-color: #fde5bd; padding: 10px; margin-top: 20px text-align: center; border-radius: 5px; }
 
 /*table#login { margin-top: 0px; }*/
 
