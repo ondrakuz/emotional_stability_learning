@@ -4,7 +4,7 @@
            $pocet=count($answers);
            if (!$pocet) {
              ?>
-            <div class="hlaska">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem['nazev']); ?>"<br /><a href="<?php echo("http://".$this->siteName."/answer-new/".$problem['id']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat odpověď</a></div>
+            <div class="hlaska">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem['nazev']); ?>"<br /><a href="<?php echo("http://".$this->siteName."/answer-new/".$problem['id']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer"/>Přidat odpověď</a></div>
              <?php
            } else {
            ?>
@@ -23,7 +23,7 @@
                   <td><strong><?php echo($answer['nazev']); ?></strong></td>
                 </tr>
                    <?php } ?>
-                <tr><td colspan="4"><a href="<?php echo("http://".$this->siteName."/answer-new/".$answer['id_problemu']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat odpověď</a></td>
+                <tr><td colspan="2"><a href="<?php echo("http://".$this->siteName."/answer-new/".$answer['id_problemu']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer" />Přidat odpověď</a></td>
               </tbody>
             </table>
            <?php } ?>
