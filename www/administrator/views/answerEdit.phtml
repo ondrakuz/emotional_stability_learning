@@ -10,7 +10,7 @@
                 <?php
                   foreach($cschemas as $cschema)
                   {
-                    if ($cschema['id'] == $answer['id_kog_schematu']) { echo("                  <option value=\"".$cschema['id']."\" selected=\"selected\" >".$cschema['name']."</option>\n"); }
+                    if ($cschema['id'] == $answer['id_cog_schema']) { echo("                  <option value=\"".$cschema['id']."\" selected=\"selected\" >".$cschema['name']."</option>\n"); }
                     else { echo("                  <option value=\"".$cschema['id']."\" >".$cschema['name']."</option>\n"); }
                   }
                 ?>
