@@ -8,10 +8,10 @@ class AnswerNewController extends Controller
     if ($model->ifconnected())
     {
       $arr = $model->selectOne('problem', array('id' => htmlspecialchars($idp, ENT_QUOTES)));
-      $problem = array('id' => $arr[0], 'nazev' => $arr[1], 'popis' => $arr[2], 'smazano' => $arr[3]);
-      $kschemas = $model->selectAll("kognitivni_schema");
+      $problem = array('id' => $arr[0], 'name' => $arr[1], 'description' => $arr[2], 'deleted' => $arr[3]);
+      $kschemas = $model->selectAll("cog_schema");
       
-      $this->header['title'] = "Editace odpovědi na problém \"".$problem['nazev']."\"";
+      $this->header['title'] = "Editace odpovědi na problém \"".$problem['name']."\"";
       $this->data['problem'] = $problem;
       $this->data['kschemas'] = $kschemas;
       $this->view = 'answerNew';

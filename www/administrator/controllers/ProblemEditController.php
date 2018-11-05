@@ -8,7 +8,7 @@ class ProblemEditController extends Controller
     if ($model->ifconnected())
     {
       $arr = $model->selectOne("problem", array('id' => $id));
-      $problem = array('id' => $arr[0], 'nazev' => $arr[1], 'popis' => $arr[2], 'smazano' => $arr[3]);
+      $problem = array('id' => $arr[0], 'name' => $arr[1], 'description' => $arr[2], 'deleted' => $arr[3]);
       
       $this->header['title'] = "Editace problému";
       $this->data['problem'] = $problem;

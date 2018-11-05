@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Počítač: localhost:22
--- Vytvořeno: Pon 29. říj 2018, 12:25
+-- Vytvořeno: Pon 05. lis 2018, 15:03
 -- Verze serveru: 5.7.23-0ubuntu0.16.04.1
 -- Verze PHP: 7.0.32-0ubuntu0.16.04.1
 
@@ -23,44 +23,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `kognitivni_schema`
+-- Struktura tabulky `answers`
 --
 
-CREATE TABLE `kognitivni_schema` (
+CREATE TABLE `answers` (
   `id` int(11) NOT NULL,
-  `nazev` varchar(40) COLLATE utf8_czech_ci NOT NULL,
-  `smazano` int(1) NOT NULL DEFAULT '0'
+  `id_problem` int(11) NOT NULL,
+  `id_cog_schema` int(11) NOT NULL,
+  `answer` text COLLATE utf8_czech_ci NOT NULL,
+  `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
--- Vypisuji data pro tabulku `kognitivni_schema`
+-- Vypisuji data pro tabulku `answers`
 --
 
-INSERT INTO `kognitivni_schema` (`id`, `nazev`, `smazano`) VALUES
-(1, 'Chybná odpověď', 0),
-(2, 'Otáčení emocí', 0),
-(3, 'Princip subjektivity', 0),
-(4, 'Ví­ra v Boha', 0);
-
--- --------------------------------------------------------
-
---
--- Struktura tabulky `odpoved`
---
-
-CREATE TABLE `odpoved` (
-  `id` int(11) NOT NULL,
-  `id_problemu` int(11) NOT NULL,
-  `id_kog_schematu` int(11) NOT NULL,
-  `odpoved` text COLLATE utf8_czech_ci NOT NULL,
-  `smazano` int(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
-
---
--- Vypisuji data pro tabulku `odpoved`
---
-
-INSERT INTO `odpoved` (`id`, `id_problemu`, `id_kog_schematu`, `odpoved`, `smazano`) VALUES
+INSERT INTO `answers` (`id`, `id_problem`, `id_cog_schema`, `answer`, `deleted`) VALUES
 (1, 1, 1, 'Je to dost nepříjemné, dost mě to zlobí a ovlivňuje další věci', 0),
 (2, 1, 2, 'Může to být dobré k tomu, že člověk hned vidí koho si nevšímat.', 0),
 (3, 1, 3, 'Nedá se s tím nic dělat, ale je to bezvýznamné.', 0),
@@ -70,7 +48,30 @@ INSERT INTO `odpoved` (`id`, `id_problemu`, `id_kog_schematu`, `odpoved`, `smaza
 (7, 2, 3, 'Ztráta zaměstnání ani žádný její důsledek ve skutečnosti nebrání tomu, aby byl člověk spokojen.', 0),
 (8, 2, 4, 'Ztráta zaměstnání je možná nějaká vyšší vůle a nemá cenu se s tím nějak trápit.', 0),
 (9, 3, 1, 'Je to nanic, spoustu věcí musím odložit a cítím se zle.', 0),
-(10, 3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0);
+(10, 3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0),
+(11, 2, 2, 'Člověk si může nějakou dobu odpočinout.', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `cog_schema`
+--
+
+CREATE TABLE `cog_schema` (
+  `id` int(11) NOT NULL,
+  `name` varchar(40) COLLATE utf8_czech_ci NOT NULL,
+  `deleted` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+
+--
+-- Vypisuji data pro tabulku `cog_schema`
+--
+
+INSERT INTO `cog_schema` (`id`, `name`, `deleted`) VALUES
+(1, 'Chybná odpověď', 0),
+(2, 'Otáčení emocí', 0),
+(3, 'Princip subjektivity', 0),
+(4, 'Ví­ra v Boha', 0);
 
 -- --------------------------------------------------------
 
@@ -80,16 +81,16 @@ INSERT INTO `odpoved` (`id`, `id_problemu`, `id_kog_schematu`, `odpoved`, `smaza
 
 CREATE TABLE `problem` (
   `id` int(11) NOT NULL,
-  `nazev` varchar(60) COLLATE utf8_czech_ci NOT NULL,
-  `popis` text COLLATE utf8_czech_ci,
-  `smazano` int(1) NOT NULL DEFAULT '0'
+  `name` varchar(60) COLLATE utf8_czech_ci NOT NULL,
+  `decription` text COLLATE utf8_czech_ci,
+  `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
 -- Vypisuji data pro tabulku `problem`
 --
 
-INSERT INTO `problem` (`id`, `nazev`, `popis`, `smazano`) VALUES
+INSERT INTO `problem` (`id`, `name`, `decription`, `deleted`) VALUES
 (1, 'Výsměch okolních lidí', '', 0),
 (2, 'Ztráta zaměstnání', '', 0),
 (3, 'Mám chřipku', '', 0),
@@ -111,34 +112,34 @@ INSERT INTO `problem` (`id`, `nazev`, `popis`, `smazano`) VALUES
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `jmeno` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
-  `prijmeni` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
+  `name` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
+  `surname` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
   `nick` varchar(20) COLLATE utf8_czech_ci NOT NULL,
-  `heslo` varchar(128) COLLATE utf8_czech_ci NOT NULL,
-  `prava` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1 - admin, 0- user'
+  `password` varchar(128) COLLATE utf8_czech_ci NOT NULL,
+  `permissions` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1 - admin, 0- user'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
 -- Vypisuji data pro tabulku `users`
 --
 
-INSERT INTO `users` (`id`, `jmeno`, `prijmeni`, `nick`, `heslo`, `prava`) VALUES
-(1, '', '', 'admin', '9e09ecf8a371ebd409cf98ce3e3158a078831fad', 1);
+INSERT INTO `users` (`id`, `name`, `surname`, `nick`, `password`, `permissions`) VALUES
+(1, '', '', 'admin', 'aea3d8b41c3de679dbadef94dd94aa7ca9c41912', 1);
 
 --
 -- Klíče pro exportované tabulky
 --
 
 --
--- Klíče pro tabulku `kognitivni_schema`
+-- Klíče pro tabulku `answers`
 --
-ALTER TABLE `kognitivni_schema`
+ALTER TABLE `answers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Klíče pro tabulku `odpoved`
+-- Klíče pro tabulku `cog_schema`
 --
-ALTER TABLE `odpoved`
+ALTER TABLE `cog_schema`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -159,15 +160,15 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT pro tabulku `kognitivni_schema`
+-- AUTO_INCREMENT pro tabulku `answers`
 --
-ALTER TABLE `kognitivni_schema`
+ALTER TABLE `answers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT pro tabulku `cog_schema`
+--
+ALTER TABLE `cog_schema`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT pro tabulku `odpoved`
---
-ALTER TABLE `odpoved`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT pro tabulku `problem`
 --

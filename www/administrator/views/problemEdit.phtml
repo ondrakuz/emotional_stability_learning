@@ -4,12 +4,12 @@
           <form method="post" action="http://<?= $this->siteName ?>/administrator/problem-update">
             <input type="hidden" name="id" value="<?php echo($problem['id']); ?>" />
             <div class="form-group">
-              <label for="nazev">Název:</label>
-              <input type="text" class="form-control" id="nazev" name="nazev" value="<?php echo($problem['nazev']) ?>"/>
+              <label for="name">Název:</label>
+              <input type="text" class="form-control" id="name" name="name" value="<?php echo($problem['name']) ?>"/>
             </div>
             <div class="form-group">
-              <label for="popis">Popis:</label>
-              <textarea class="form-control" rows="5" id="popis" name="popis"><?php echo($problem['popis']) ?></textarea>
+              <label for="description">Popis:</label>
+              <textarea class="form-control" rows="5" id="description" name="description"><?php echo($problem['description']) ?></textarea>
             </div>
             <button type="submit" name="prob" class="btn btn-default" value="Uložit">Uložit</button>
           </form>

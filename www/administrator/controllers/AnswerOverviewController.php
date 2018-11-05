@@ -7,7 +7,7 @@ class AnswerOverviewController extends Controller
     $model = model::getInstance();
     if ($model->ifconnected())
     {
-      $answers = $model->selectArray(array("odpoved", 'kognitivni_schema'), array('odpoved.id', 'odpoved', 'nazev', 'id_problemu', 'id_kog_schematu') , array('id_problemu' => (htmlspecialchars($idp, ENT_QUOTES)), 'kognitivni_schema.id' => 'id_kog_schematu', 'odpoved.smazano' => 0));
+      $answers = $model->selectArray(array("answers", 'cog_schema'), array('answers.id', 'answer', 'name', 'id_problem', 'id_cog_schema') , array('id_problemu' => (htmlspecialchars($idp, ENT_QUOTES)), 'cog_schema.id' => 'id_cog_schema', 'answers.deleted' => 0));
       $arr = $model->selectOne("problem", array('id' => (htmlspecialchars($idp, ENT_QUOTES))));
       $problem = $arr[1];
 	  	

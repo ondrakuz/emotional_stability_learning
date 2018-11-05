@@ -35,7 +35,7 @@
     
     function selectAll($table, $order = '')
     {
-      $query = "select * from $table where smazano='0'";
+      $query = "select * from $table where deleted='0'";
       if ($order != '') {
         $query .= " order by $order;";
       }
