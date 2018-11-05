@@ -43,6 +43,9 @@
       {
         $query .= ';';
       }
+//       echo('<br />'.$query.'<br />');
+//       exit;
+      
       if (!$this->db->query($query))
       {
         RouterController::getInstance()->setError($this->db->get_error());
@@ -59,6 +62,9 @@
           }
         }
       }
+//       print_r($arr);
+//       exit;
+      
       return $arr;
     }
     

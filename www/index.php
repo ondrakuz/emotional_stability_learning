@@ -7,8 +7,6 @@
   $uri = $_SERVER['REQUEST_URI'];
   if (preg_match('/\/administrator/', $uri))
   {
-//     echo('FUnguje!');
-//     exit;
     require('./administrator/admin.php');
   }
   else

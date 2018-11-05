@@ -1,10 +1,10 @@
         <div class="col-sm-10">
           <h4>Přehled odpovědí na problém "<?= $problem['name'] ?>"</h4>
         <?php
-           $number=count($answers);
-           if (!$number) {
+           $num=count($answers);
+           if (!$num) {
              ?>
-            <div class="hlaska">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem['name']); ?>"<br /><a href="<?php echo("http://".$this->siteName."/answer-new/".$problem['id']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer"/>Přidat odpověď</a></div>
+            <div class="message">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem['name']); ?>"<br /><a href="<?php echo("http://".$this->siteName."/answer-new/".$problem['id']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer"/>Přidat odpověď</a></div>
              <?php
            } else {
            ?>

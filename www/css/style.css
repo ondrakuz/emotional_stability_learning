@@ -6,46 +6,46 @@ thead { font-size: 13px; font-weight: bold; color: #0dcaff; }
 td a { text-decoration: none; color: black; }
 td a:hover { text-decoration: underline; color: black; }
 
-table.hlavicka { width: 98%; }
+table.header { width: 98%; }
 td.logo { width: 80%; }
-td.hlavicka { background-color:#ffa101; color:white; font-size:14px; font-weight: bold; text-align: center; }
+td.header { background-color:#ffa101; color:white; font-size:14px; font-weight: bold; text-align: center; }
 td.right { text-align: right; }
 
 button.btn { background-color:#0dcaff; color: white; }
 label { font-size: 14px; font-weight: bold; }
 
-#hlavicka { /*position: relative; width: 100%;*/ min-height: 128px; background-color: #ffa101; border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 20px; text-align: center; vertical-align: center; }
-#hlavicka h1 { width: 100%; margin: 0; padding: 40px 20px 20px 20px; color: white; font-weight: bold; text-align: center; }
-#hlavicka a { color: white; text-decoration: none; }
-#paticka { position: relative; width: 100%; font-size: 10px; color: #8c8c8c; background-color: #fde5bd; padding: 10px; margin-top: 20px text-align: center; border-radius: 5px; }
+#header { /*position: relative; width: 100%;*/ min-height: 128px; background-color: #ffa101; border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 20px; text-align: center; vertical-align: center; }
+#header h1 { width: 100%; margin: 0; padding: 40px 20px 20px 20px; color: white; font-weight: bold; text-align: center; }
+#header a { color: white; text-decoration: none; }
+#footer { position: relative; width: 100%; font-size: 10px; color: #8c8c8c; background-color: #fde5bd; padding: 10px; margin-top: 20px text-align: center; border-radius: 5px; }
 
 /*table#login { margin-top: 0px; }*/
 
 
-#levy_panel li { text-align: left; }
-#pravy_panel { font-size: 12px!important; margin:0; padding: 20px; text-align: center; vertical-align: top; }
+#left_panel li { text-align: left; }
+#right_panel { font-size: 12px!important; margin:0; padding: 20px; text-align: center; vertical-align: top; }
 
-#paticka a { color: #8c8c8c; }
-#hlavicka td.logo { text-align: left; }
-#hlavicka td.user { margin: 0 0 0 5px; text-align: right; }
-#hlavicka a { color: white; }
+#footer a { color: #8c8c8c; }
+#header td.logo { text-align: left; }
+#header td.user { margin: 0 0 0 5px; text-align: right; }
+#header a { color: white; }
 
-#levy_panel li { background-color: #f7f7f7; }
-#levy_panel li ul li { background-color: #ffffff; }
+#left_panel li { background-color: #f7f7f7; }
+#left_panel li ul li { background-color: #ffffff; }
 
-#pravy_panel a { color: black; }
-#pravy_panel a img { border: none; }
-#pravy_panel h4 { width: 100%; text-align: center; }
-#pravy_panel table { font-size: 12px!important; }
+#right_panel a { color: black; }
+#right_panel a img { border: none; }
+#right_panel h4 { width: 100%; text-align: center; }
+#right_panel table { font-size: 12px!important; }
 
-.kategorie { margin-top: 0; }
-.kategorie .nadpis { font-size: 13px; font-weight: bold; color: #0dcaff; text-decoration: underline; }
-.kategorie a { color:black; text-decoration: none; }
-.kategorie a:hover { text-decoration: underline; }
+.category { margin-top: 0; }
+.category .title { font-size: 13px; font-weight: bold; color: #0dcaff; text-decoration: underline; }
+.category a { color:black; text-decoration: none; }
+.category a:hover { text-decoration: underline; }
 
-.hlaska { font-size: 13px; font-weight: bold;/* width: 173px; text-align: center;*/  }
-.hlaska a { color: black; text-decoration: none;  }
-.hlaska a:hover { text-decoration: underline; }
+.message { font-size: 13px; font-weight: bold;/* width: 173px; text-align: center;*/  }
+.message a { color: black; text-decoration: none;  }
+.message a:hover { text-decoration: underline; }
 /* .ftglr-header { float: left;text-align: left; margin: 0; padding: 0; font-size: 14px; } */
 .red { color: red; }
 .margintop30 { margin-top: 30px; }

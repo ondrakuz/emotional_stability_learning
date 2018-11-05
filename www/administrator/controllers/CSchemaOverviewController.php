@@ -6,7 +6,7 @@ class CSchemaOverviewController extends Controller
     $model = model::getInstance();
     if ($model->ifconnected())
     {
-      $kschemas = $model->selectAll("cog_schema");
+      $cschemas = $model->selectAll("cog_schema");
       
       $this->header['title'] = "Přehled kognitivních schémat";
       $this->data['cschemas'] = $cschemas;

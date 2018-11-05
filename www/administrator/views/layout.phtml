@@ -13,8 +13,8 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div id="hlavicka">
-        <table class="hlavicka"><tr>
+      <div id="header">
+        <table class="header"><tr>
           <td class="logo"><a href="http://<?=$this->siteName?>/administrator/"><h1>Emotional Stability Learning Administration</h1></a></td>
           <?php if (!empty($_SESSION)) { ?>
             <td class="user">Uživatel: <img src="http://<?=$this->siteName?>/administrator/icons/<?php if ($_SESSION['permissions']) {echo "admin";} else {echo "user";}; ?>.png"/> <span<?php if ($_SESSION['permissions']) echo " class='red' "; ?>><?php echo $_SESSION['user']; ?></span><br /><a href="http://<?=$this->siteName?>/administrator/logout">Odhlášení</a></td>
@@ -28,23 +28,23 @@
         {
       ?>
         <div class="col-sm-2" >
-          <ul class="list-group" id="levy_panel">
-          <li class="list-group-item"><div class="kategorie">
-            <img src="http://<?=$this->siteName?>/administrator/icons/application_side_list.png" width="16" height="16" alt="icon" /> <span class="nadpis">Problémy</span><br />
+          <ul class="list-group" id="left_panel">
+          <li class="list-group-item"><div class="category">
+            <img src="http://<?=$this->siteName?>/administrator/icons/application_side_list.png" width="16" height="16" alt="icon" /> <span class="title">Problémy</span><br />
             <ul class="list-group">
               <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/problem-overview">Přehled problémů</a></li>
               <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/problem-new">Přidat problém</a></li>
             </ul>
           </div></li>
-          <li class="list-group-item"><div class="kategorie">
-            <img src="http://<?=$this->siteName?>/administrator/icons/lightbulb.png" width="16" height="16" alt="icon" /> <span class="nadpis">Kognitivní schémata</span><br/>
+          <li class="list-group-item"><div class="category">
+            <img src="http://<?=$this->siteName?>/administrator/icons/lightbulb.png" width="16" height="16" alt="icon" /> <span class="title">Kognitivní schémata</span><br/>
             <ul class="list-group">
               <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/c-schema-overview">Přehled schémat</a></li>
               <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/c-schema-new">Přidat schéma</a></li>
             </ul>
           </div></li>
-            <li class="list-group-item"><div class="kategorie">
-              <img src="http://<?=$this->siteName?>/administrator/icons/user.png" width="16" height="16" /> <span class="nadpis">Uživatelé</span><br/>
+            <li class="list-group-item"><div class="category">
+              <img src="http://<?=$this->siteName?>/administrator/icons/user.png" width="16" height="16" /> <span class="title">Uživatelé</span><br/>
               <ul class="list-group">
                 <?php if ($_SESSION['permissions']) { ?>
                 <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/users-overview">Přehled uživatelů</a></li>
@@ -62,7 +62,7 @@
       ?>
       </div>
         <div class="panel panel-default text-center margintop30">
-          <div class="panel-footer" id="paticka">Copyright &copy; <?php date_default_timezone_set('Europe/Prague'); echo date("Y"); ?> <a href="http://www.softstar.cz">Softstar s.r.o.</a><br /><a href="http://validator.w3.org/check?uri=referer" title="" onclick="return !window.open(this.href);">XHTML</a> a <a href="http://jigsaw.w3.org/css-validator/check/referer" title="" onclick="return !window.open(this.href);">CSS 3.0</a></div>
+          <div class="panel-footer" id="footer">Copyright &copy; <?php date_default_timezone_set('Europe/Prague'); echo date("Y"); ?> <a href="http://www.softstar.cz">Softstar s.r.o.</a><br /><a href="http://validator.w3.org/check?uri=referer" title="" onclick="return !window.open(this.href);">XHTML</a> a <a href="http://jigsaw.w3.org/css-validator/check/referer" title="" onclick="return !window.open(this.href);">CSS 3.0</a></div>
         </div>
       </div>
     </div><!-- /container -->
