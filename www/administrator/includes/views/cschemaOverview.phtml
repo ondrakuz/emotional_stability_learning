@@ -1,8 +1,8 @@
         <div class="col-sm-10">
           <h4>Přehled kognitivních schémat</h4>
           <?php
-             $pocet = count($kschemas);
-             if (!$pocet) {
+             $number = count($cschemas);
+             if (!$number) {
           ?>
           <div class="hlaska">Nejsou uloženy žádná kognitivní schémata</div>
           <?php
@@ -16,10 +16,10 @@
               </thead>
               <tbody>
             <?php
-              foreach ($kschemas as $kschema) {
+              foreach ($cschemas as $cschema) {
             ?> 
                 <tr>
-                  <td><?php echo($kschema['nazev']); ?></td>
+                  <td><?php echo($cschema['name']); ?></td>
                 </tr>
         <?php } ?>
               </tbody>

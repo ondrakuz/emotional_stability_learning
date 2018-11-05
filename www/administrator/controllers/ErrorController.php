@@ -12,12 +12,12 @@ class ErrorController extends Controller
   $error = array_shift($parameters);
   if ($error == 'login')
   {
-    $this->data['text'] = 'Chyba přihlášení: zadali jste špatné heslo, nebo špatné uživatelské jméno';
+    $this->data['text'] = 'Chyba přihlášení: zadal jste špatné heslo, nebo špatné uživatelské jméno';
   }
   // Hlavička požadavku
 //   header("Chyba");
   // Hlavička stránky
-  $this->header['title'] = 'Chyba';
+  $this->headr['title'] = 'Chyba';
   // Nastavení šablony
   $this->view = 'error';
   }

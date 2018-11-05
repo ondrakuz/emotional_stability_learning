@@ -79,6 +79,8 @@
         }
       }
       $query .= ";";
+//       echo('<br />'.$query.'<br />');
+//       exit;
       
       if (!$this->db->query($query))
       {
@@ -221,6 +223,8 @@
         }
       }
       $query .= ") values ($data);";
+//       echo('<br />'.$query.'<br />');
+//       exit;
       
       $result = $this->db->query($query);
       if (!$result)

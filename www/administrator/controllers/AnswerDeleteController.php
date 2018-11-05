@@ -7,10 +7,10 @@ class AnswerDeleteController extends Controller
     $model = model::getInstance();
     if ($model->ifconnected())
     {
-      $odpoved = $model->selectOne('odpoved', array('id' => htmlspecialchars($id, ENT_QUOTES)));
-      if($model->update('odpoved', array('id' => htmlspecialchars($id, ENT_QUOTES)), array('smazano' => 1)))
+      $answer = $model->selectOne('answers', array('id' => htmlspecialchars($id, ENT_QUOTES)));
+      if($model->update('answers', array('id' => htmlspecialchars($id, ENT_QUOTES)), array('deleted' => 1)))
       {
-        $this->redirect('/administrator/answer-overview/'.$odpoved[1]);
+        $this->redirect('/administrator/answer-overview/'.$answer[1]);
       }
     }
   }

@@ -8,17 +8,17 @@ class UsersAdminController extends Controller
     if ($model->ifconnected())
     {
       $arr = $model->selectOne('users', array ('id' => htmlspecialchars($id, ENT_QUOTES)));
-      $prava = $arr[5];
-      if ($prava) 
+      $permissions = $arr[5];
+      if ($permissions) 
       {
-        if ($model->update('users', array ('id' => htmlspecialchars($id, ENT_QUOTES)), array ('prava' => 0)))
+        if ($model->update('users', array ('id' => htmlspecialchars($id, ENT_QUOTES)), array ('permissions' => 0)))
         {
           $this->redirect('/administrator/users-overview');
         }
       }
       else
       {
-        if ($model->update('users', array ('id' => htmlspecialchars($id, ENT_QUOTES)), array ('prava' => 1)))
+        if ($model->update('users', array ('id' => htmlspecialchars($id, ENT_QUOTES)), array ('permissions' => 1)))
         {
           $this->redirect('/administrator/users-overview');
         }

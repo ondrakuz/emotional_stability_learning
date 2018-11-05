@@ -1,24 +1,24 @@
           <div class="col-sm-3"></div>
           <div class="col-sm-4">
-          <h4>Editace odpovědi na problém "<?php echo($answer['nazev']); ?>"</h4>
+          <h4>Editace odpovědi na problém "<?php echo($answer['name']); ?>"</h4>
             <form method="post" action="http://<?= $this->siteName ?>/administrator/answer-update">
               <input type="hidden" name="id" value="<?php echo($answer['id']); ?>" />
-              <input type="hidden" name="idp" value="<?php echo($answer['id_problemu']); ?>" />
+              <input type="hidden" name="idp" value="<?php echo($answer['id_problem']); ?>" />
               <div class="form-group">
-                <label for="idks">Kognitivní schéma:</label>
-                <select class="form-control" id="idks" name="idks">
+                <label for="idcs">Kognitivní schéma:</label>
+                <select class="form-control" id="idcs" name="idcs">
                 <?php
-                  foreach($kschemas as $kschema)
+                  foreach($cschemas as $cschema)
                   {
-                    if ($kschema['id'] == $answer['id_kog_schematu']) { echo("                  <option value=\"".$kschema['id']."\" selected=\"selected\" >".$kschema['nazev']."</option>\n"); }
-                    else { echo("                  <option value=\"".$kschema['id']."\" >".$kschema['nazev']."</option>\n"); }
+                    if ($cschema['id'] == $answer['id_kog_schematu']) { echo("                  <option value=\"".$cschema['id']."\" selected=\"selected\" >".$cschema['name']."</option>\n"); }
+                    else { echo("                  <option value=\"".$cschema['id']."\" >".$cschema['name']."</option>\n"); }
                   }
                 ?>
               </select>
               </div> 
               <div class="form-group">
-                <label for="nazev">Odpověď:</label>
-                <textarea class="form-control" rows="5" id="nazev" name="nazev"><?php echo($answer['odpoved']); ?></textarea>
+                <label for="name">Odpověď:</label>
+                <textarea class="form-control" rows="5" id="name" name="name"><?php echo($answer['answer']); ?></textarea>
               </div>
               <button type="submit" name="odpovedi" class="btn btn-default" value="Uložit">Uložit</button>
             </form>

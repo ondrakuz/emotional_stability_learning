@@ -17,7 +17,7 @@ class ErrorController extends Controller
   // Hlavička požadavku
 //   header("Chyba");
   // Hlavička stránky
-  $this->header['title'] = 'Chyba';
+  $this->headr['title'] = 'Chyba';
   // Nastavení šablony
   $this->view = 'error';
   }

@@ -7,7 +7,7 @@ class ProblemDeleteController extends Controller
     $model = model::getInstance();
     if ($model->ifconnected())
     {
-      if ($model->update('problem', array('id' => (htmlspecialchars($id, ENT_QUOTES))), array('smazano' => 1)))
+      if ($model->update('problem', array('id' => (htmlspecialchars($id, ENT_QUOTES))), array('deleted' => 1)))
       {
         $this->redirect('/administrator/problem-overview');
       }

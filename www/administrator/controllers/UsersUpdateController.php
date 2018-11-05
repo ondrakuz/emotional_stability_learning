@@ -6,16 +6,16 @@ class UsersUpdateController extends Controller
     $model = model::getInstance();
     if ($model->ifconnected())
     {
-      if (($_POST['heslo1']!='')||($_POST['heslo2']!='')||($_POST['heslo3']!='')) {
+      if (($_POST['password1']!='')||($_POST['password2']!='')||($_POST['password3']!='')) {
         //Changing password?
         $arr = $model->selectOne('users', array ('id' => $_POST['id']));
-        $heslo = $arr[4];
-        if ((sha1($_POST['heslo1'])===$heslo)&&(($_POST['heslo2']!='')&&($_POST['heslo3']!=''))&&($_POST['heslo2']===$_POST['heslo3'])) {
+        $password = $arr[4];
+        if ((sha1($_POST['password1'])===$password)&&(($_POST['password2']!='')&&($_POST['password3']!=''))&&($_POST['password2']===$_POST['password3'])) {
           //Yes, changing password
-          if ($_POST['jmeno']=='')  { $jmeno=NULL; } else { $jmeno=$_POST['jmeno']; };
-          if ($_POST['prijmeni']=='')  { $prijmeni=NULL; } else { $prijmeni=$_POST['prijmeni']; };
+          if ($_POST['name']=='')  { $name=NULL; } else { $name=$_POST['name']; };
+          if ($_POST['surname']=='')  { $surname=NULL; } else { $surname=$_POST['surname']; };
 
-          if ($model->update('users', array ('id' => $_POST['id']), array ('jmeno' => "'".htmlspecialchars($_POST['jmeno'])."'", 'prijmeni' => "'".htmlspecialchars($_POST['prijmeni'])."'", 'heslo' => "'".sha1($_POST['heslo2'])."'")))
+          if ($model->update('users', array ('id' => $_POST['id']), array ('name' => "'".htmlspecialchars($_POST['name'])."'", 'surname' => "'".htmlspecialchars($_POST['surname'])."'", 'password' => "'".sha1($_POST['password2'])."'")))
           { 
             $this->redirect('/administrator/users-overview');
           }
@@ -25,10 +25,10 @@ class UsersUpdateController extends Controller
         };
       }else{
         //Changing only name and surname
-        if ($_POST['jmeno']=='')  { $jmeno=NULL; } else { $jmeno=$_POST['jmeno']; };
-        if ($_POST['prijmeni']=='')  { $prijmeni=NULL; } else { $prijmeni=$_POST['prijmeni']; };
+        if ($_POST['name']=='')  { $name=NULL; } else { $name=$_POST['name']; };
+        if ($_POST['surname']=='')  { $surname=NULL; } else { $surname=$_POST['surname']; };
 
-        if ($model->update('users', array ('id' => $_POST['id']), array ('jmeno' => "'".htmlspecialchars($jmeno)."'", 'prijmeni' => "'".htmlspecialchars($prijmeni)."'")))
+        if ($model->update('users', array ('id' => $_POST['id']), array ('name' => "'".htmlspecialchars($name)."'", 'surname' => "'".htmlspecialchars($surname)."'")))
         {
           $this->redirect('/administrator/users-overview');
         }

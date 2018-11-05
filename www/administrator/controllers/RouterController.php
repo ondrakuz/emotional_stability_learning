@@ -104,7 +104,7 @@ class RouterController extends Controller
     
     // Nastavení proměnných pro šablonu
     $this->data = $this->controller->data;
-    $this->data['title'] = $this->controller->header['title'];
+    $this->data['title'] = $this->controller->headr['title'];
 
     // Nastavení hlavní šablony
     $this->view = 'layout';

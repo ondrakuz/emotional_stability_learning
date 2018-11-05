@@ -6,8 +6,8 @@ class ProblemAddController extends Controller
     $model = model::getInstance();
     if ($model->ifconnected())
     {
-      $model->insert('problem', array('nazev' => htmlspecialchars($this->post_get('nazev'), ENT_QUOTES), 'popis' => htmlspecialchars($this->post_get('popis'), ENT_QUOTES)));
-      $this->redirect('problem-overview');
+      $model->insert('problem', array('name' => htmlspecialchars($this->post_get('name'), ENT_QUOTES), 'description' => htmlspecialchars($this->post_get('description'), ENT_QUOTES)));
+      $this->redirect('/problem-overview');
     }
   }
 }

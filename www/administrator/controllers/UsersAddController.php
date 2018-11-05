@@ -14,13 +14,13 @@ class UsersAddController extends Controller
       else
       {
         // Nick is not in db
-        if (($_POST['nick']!='')&&((($_POST['heslo1']!='')&&($_POST['heslo2']!=''))&&($_POST['heslo1']===$_POST['heslo2']))) {
+        if (($_POST['nick']!='')&&((($_POST['password1']!='')&&($_POST['password2']!=''))&&($_POST['password1']===$_POST['password2']))) {
         // Check if data are correct
-          if ($_POST['prava']) { $prava=1; };
-          if ($_POST['jmeno']=='')  { $jmeno=NULL; } else { $jmeno=$_POST['jmeno']; };
-          if ($_POST['prijmeni']=='')  { $prijmeni=NULL; } else { $prijmeni=$_POST['prijmeni']; };
+          if ($_POST['permissions']) { $permissions=1; };
+          if ($_POST['name']=='')  { $name=NULL; } else { $name=$_POST['name']; };
+          if ($_POST['surname']=='')  { $surname=NULL; } else { $surname=$_POST['surname']; };
           // and insert in db
-          $model->insert('users', array('nick' => htmlspecialchars($_POST['nick'], ENT_QUOTES), 'jmeno' => htmlspecialchars($jmeno, ENT_QUOTES), 'prijmeni' => htmlspecialchars($prijmeni, ENT_QUOTES), 'prava' => $prava, 'heslo' => sha1($_POST['heslo1']) ));
+          $model->insert('users', array('nick' => htmlspecialchars($_POST['nick'], ENT_QUOTES), 'name' => htmlspecialchars($name, ENT_QUOTES), 'surname' => htmlspecialchars($surname, ENT_QUOTES), 'permissions' => $permissions, 'password' => sha1($_POST['password1']) ));
           
           $this->redirect('/administrator/users-overview');
         }

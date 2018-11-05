@@ -1,17 +1,17 @@
         <div class="col-sm-10">
-          <h4>Přehled odpovědí na problém "<?= $problem['nazev'] ?>"</h4>
+          <h4>Přehled odpovědí na problém "<?= $problem['name'] ?>"</h4>
         <?php
-           $pocet=count($answers);
-           if (!$pocet) {
+           $number=count($answers);
+           if (!$number) {
              ?>
-            <div class="hlaska">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem['nazev']); ?>"<br /><a href="<?php echo("http://".$this->siteName."/answer-new/".$problem['id']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer"/>Přidat odpověď</a></div>
+            <div class="hlaska">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem['name']); ?>"<br /><a href="<?php echo("http://".$this->siteName."/answer-new/".$problem['id']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer"/>Přidat odpověď</a></div>
              <?php
            } else {
            ?>
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
-                <tr><th colspan="2" class="caption text-center">Odpovědi na problém "<?= $problem['nazev'] ?>"</th></tr>
+                <tr><th colspan="2" class="caption text-center">Odpovědi na problém "<?= $problem['name'] ?>"</th></tr>
                 <tr><th>Název</th><th>Kognitivní schéma</th></tr>
               </thead>
               <tbody>
@@ -19,11 +19,11 @@
                  foreach($answers as $answer) {
                 ?>
                 <tr>
-                  <td><?php echo($answer['odpoved']); ?></td>
-                  <td><strong><?php echo($answer['nazev']); ?></strong></td>
+                  <td><?php echo($answer['answer']); ?></td>
+                  <td><strong><?php echo($answer['name']); ?></strong></td>
                 </tr>
                    <?php } ?>
-                <tr><td colspan="2"><a href="<?php echo("http://".$this->siteName."/answer-new/".$answer['id_problemu']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer" />Přidat odpověď</a></td>
+                <tr><td colspan="2"><a href="<?php echo("http://".$this->siteName."/answer-new/".$answer['id_problem']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer" />Přidat odpověď</a></td>
               </tbody>
             </table>
            <?php } ?>

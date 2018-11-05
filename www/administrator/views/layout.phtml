@@ -16,15 +16,15 @@
       <div id="hlavicka">
         <table class="hlavicka"><tr>
           <td class="logo"><a href="http://<?=$this->siteName?>/administrator/"><h1>Emotional Stability Learning Administration</h1></a></td>
-          <?php if ($title!="Přihlášení") { ?>
-            <td class="user">Uživatel: <img src="http://<?=$this->siteName?>/administrator/icons/<?php if ($_SESSION['prava']) {echo "admin";} else {echo "user";}; ?>.png"/> <span<?php if ($_SESSION['prava']) echo " class='red' "; ?>><?php echo $_SESSION['user']; ?></span><br /><a href="http://<?=$this->siteName?>/administrator/logout">Odhlášení</a></td>
+          <?php if (!empty($_SESSION)) { ?>
+            <td class="user">Uživatel: <img src="http://<?=$this->siteName?>/administrator/icons/<?php if ($_SESSION['permissions']) {echo "admin";} else {echo "user";}; ?>.png"/> <span<?php if ($_SESSION['permissions']) echo " class='red' "; ?>><?php echo $_SESSION['user']; ?></span><br /><a href="http://<?=$this->siteName?>/administrator/logout">Odhlášení</a></td>
           <?php }; ?>
         </tr></table>
       </div>
       <div class="row">
       <?php 
         $view = $this->controller->getView();
-        if (($view != 'loginView')&&(!(preg_match('/přihlášení/', $text))))
+        if (!empty($_SESSION))
         {
       ?>
         <div class="col-sm-2" >
@@ -39,25 +39,26 @@
           <li class="list-group-item"><div class="kategorie">
             <img src="http://<?=$this->siteName?>/administrator/icons/lightbulb.png" width="16" height="16" alt="icon" /> <span class="nadpis">Kognitivní schémata</span><br/>
             <ul class="list-group">
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/k-schema-overview">Přehled schémat</a></li>
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/k-schema-new">Přidat schéma</a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/c-schema-overview">Přehled schémat</a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/c-schema-new">Přidat schéma</a></li>
             </ul>
           </div></li>
             <li class="list-group-item"><div class="kategorie">
               <img src="http://<?=$this->siteName?>/administrator/icons/user.png" width="16" height="16" /> <span class="nadpis">Uživatelé</span><br/>
               <ul class="list-group">
-                <?php if ($_SESSION['prava']) { ?>
+                <?php if ($_SESSION['permissions']) { ?>
                 <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/users-overview">Přehled uživatelů</a></li>
                 <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/users-new">Přidat uživatele</a></li>
                 <?php }; ?>
-                <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/users-edit/<?php echo($_SESSION['id_usera']); ?>">Změna údajů</a></li>
+                <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/users-edit/<?php echo($_SESSION['id_user']); ?>">Změna údajů</a></li>
               </ul>
             </div></li>
           </ul>
         </div>
       <?php 
-        }
-        $this->controller->showView(); // vložení aktuálního pohledu do šablony
+      }
+//       echo('view:'.$view);
+      if (!empty($_SESSION)||($view == 'loginView' || $view == 'error')) { $this->controller->showView(); } // vložení aktuálního pohledu do šablony
       ?>
       </div>
         <div class="panel panel-default text-center margintop30">

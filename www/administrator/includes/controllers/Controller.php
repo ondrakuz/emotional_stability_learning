@@ -7,7 +7,7 @@ abstract class Controller
 	// Název šablony bez přípony
     protected $view = "";
 	// Hlavička HTML stránky
-	protected $header = array('title' => '', 'key_words' => '', 'description' => '');
+	protected $headr = array('title' => '', 'key_words' => '', 'description' => '');
   protected $siteName;
 	
 	public function __construct()
