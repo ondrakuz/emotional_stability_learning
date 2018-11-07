@@ -8,7 +8,7 @@ class UsersAdminController extends Controller
     if ($model->ifconnected())
     {
       $arr = $model->selectOne('users', array ('id' => htmlspecialchars($id, ENT_QUOTES)));
-      $permissions = $arr[5];
+      $permissions = $arr['permissions'];
       if ($permissions) 
       {
         if ($model->update('users', array ('id' => htmlspecialchars($id, ENT_QUOTES)), array ('permissions' => 0)))

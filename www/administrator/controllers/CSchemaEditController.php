@@ -7,9 +7,9 @@ class CSchemaEditController extends Controller
     $model = model::getInstance();
     if ($model->ifconnected())
     {
-      $arr = $model->selectOne("cog_schema", array('id' => htmlspecialchars($id, ENT_QUOTES)));
-      $cschema = array('id' => $arr[0], 'name' => $arr[1], 'deleted' => $arr[2]);
-      print_r($cschema);
+      $cschema = $model->selectOne("cog_schema", array('id' => htmlspecialchars($id, ENT_QUOTES)));
+//       print_r($cschema);
+//       exit;
       
       $this->headr['title'] = "Editace kognitivního schematu";
       $this->data['cschema'] = $cschema;

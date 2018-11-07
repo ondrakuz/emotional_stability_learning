@@ -7,8 +7,7 @@ class AnswerNewController extends Controller
     $model = model::getInstance();
     if ($model->ifconnected())
     {
-      $arr = $model->selectOne('problem', array('id' => htmlspecialchars($idp, ENT_QUOTES)));
-      $problem = array('id' => $arr[0], 'name' => $arr[1], 'description' => $arr[2], 'deleted' => $arr[3]);
+      $problem = $model->selectOne('problem', array('id' => htmlspecialchars($idp, ENT_QUOTES)));
       $cschemas = $model->selectAll("cog_schema");
       
       $this->headr['title'] = "Vložení nové odpovědi na problém \"".$problem['name']."\"";

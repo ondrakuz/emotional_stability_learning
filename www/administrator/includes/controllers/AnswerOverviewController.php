@@ -8,9 +8,8 @@ class AnswerOverviewController extends Controller
     if ($model->ifconnected())
     {
       $answers = $model->selectArray(array("answers", 'cog_schema'), array('answers.id', 'answer', 'name', 'id_problem', 'id_cog_schema') , array('id_problem' => (htmlspecialchars($idp, ENT_QUOTES)), 'cog_schema.id' => 'id_cog_schema', 'answers.deleted' => 0));
-      $arr = $model->selectOne("problem", array('id' => (htmlspecialchars($idp, ENT_QUOTES))));
-      $problem = array ('id' => $arr[0], 'name' => $arr[1]);
-	  	
+      $problem = $model->selectOne("problem", array('id' => (htmlspecialchars($idp, ENT_QUOTES))));
+      
       $this->headr['title'] = "Řešení problému";
       $this->data['answers'] = $answers;
       $this->data['problem'] = $problem;

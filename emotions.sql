@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- Počítač: localhost:22
--- Vytvořeno: Pon 05. lis 2018, 15:03
--- Verze serveru: 5.7.23-0ubuntu0.16.04.1
--- Verze PHP: 7.0.32-0ubuntu0.16.04.1
+-- Počítač: 127.0.0.1
+-- Vytvořeno: Stř 07. lis 2018, 17:18
+-- Verze serveru: 5.7.22
+-- Verze PHP: 7.1.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databáze: `emotions`
+-- Databáze: `ondrejkuzcz1`
 --
 
 -- --------------------------------------------------------
@@ -82,7 +84,7 @@ INSERT INTO `cog_schema` (`id`, `name`, `deleted`) VALUES
 CREATE TABLE `problem` (
   `id` int(11) NOT NULL,
   `name` varchar(60) COLLATE utf8_czech_ci NOT NULL,
-  `decription` text COLLATE utf8_czech_ci,
+  `description` text COLLATE utf8_czech_ci,
   `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
@@ -90,7 +92,7 @@ CREATE TABLE `problem` (
 -- Vypisuji data pro tabulku `problem`
 --
 
-INSERT INTO `problem` (`id`, `name`, `decription`, `deleted`) VALUES
+INSERT INTO `problem` (`id`, `name`, `description`, `deleted`) VALUES
 (1, 'Výsměch okolních lidí', '', 0),
 (2, 'Ztráta zaměstnání', '', 0),
 (3, 'Mám chřipku', '', 0),
@@ -164,21 +166,26 @@ ALTER TABLE `users`
 --
 ALTER TABLE `answers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT pro tabulku `cog_schema`
 --
 ALTER TABLE `cog_schema`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT pro tabulku `problem`
 --
 ALTER TABLE `problem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT pro tabulku `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

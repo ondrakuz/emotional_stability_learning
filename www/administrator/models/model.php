@@ -90,9 +90,12 @@
       
       if (!$this->db->query($query))
       {
-        RouterController::getInstance()->setError($this->db->get_error());
+        RouterController::getInstance()->setError("model::selectOne():".$this->db->get_error().'<br /><br />'.$query.'<br />');
       }
-      return $this->db->get_row();
+      $arr = $this->db->get_array();
+//       print_r($arr);
+//       exit;
+      return $arr;
     }
     
     function selectArray(array $tables, array $collums, array $keys, $order = '')
@@ -201,6 +204,8 @@
         }
       }
       $query .= ";";
+//       echo('<br />'.$query.'<br />');
+//       exit;
       
       $result = $this->db->query($query);
       if (!$result)
@@ -219,12 +224,12 @@
         if($i)
         {
           $query .= ", $name";
-          $data .= ", '$value'";
+          $data .= ", $value";
         }
         else
         {
           $query .= "$name";
-          $data .= "'$value'";
+          $data .= "$value";
           ++$i;
         }
       }
@@ -235,7 +240,7 @@
       $result = $this->db->query($query);
       if (!$result)
       {
-        RouterController::getInstance()->setError($this->db->get_error());
+        RouterController::getInstance()->setError("model::insert():".$this->db->get_error()."<br /><br />$query<br />");
       }
       return $result;
     }

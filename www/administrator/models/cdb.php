@@ -64,13 +64,15 @@ class cdb { // trida cdb bude slouzit k praci s databazi
   }
 
   function get_row() {
-    $arr = $this->data->fetch(PDO::FETCH_NUM);
+    $arr = array();
+    if ($this->data) $arr = $this->data->fetch(PDO::FETCH_NUM);
     if (!empty($arr)) { return $arr; }
     else { return 0; }
   }
 
   function get_array() {
-    $arr = $this->data->fetch(PDO::FETCH_ASSOC);
+    $arr = array();
+    if ($this->data) $arr = $this->data->fetch(PDO::FETCH_ASSOC);
     if (!empty($arr)) {return ($arr); }
     else { return 0; }
   }

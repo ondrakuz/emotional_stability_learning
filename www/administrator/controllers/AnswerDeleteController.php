@@ -10,7 +10,7 @@ class AnswerDeleteController extends Controller
       $answer = $model->selectOne('answers', array('id' => htmlspecialchars($id, ENT_QUOTES)));
       if($model->update('answers', array('id' => htmlspecialchars($id, ENT_QUOTES)), array('deleted' => 1)))
       {
-        $this->redirect('/administrator/answer-overview/'.$answer[1]);
+        $this->redirect('/administrator/answer-overview/'.$answer['id_problem']);
       }
     }
   }

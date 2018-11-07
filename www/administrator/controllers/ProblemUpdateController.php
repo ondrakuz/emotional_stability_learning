@@ -6,7 +6,7 @@ class ProblemUpdateController extends Controller
     $model = model::getInstance();
     if ($model->ifconnected())
     {
-      $model->update('problem', array('id' => htmlspecialchars($this->post_get('id'), ENT_QUOTES)), array('name' => htmlspecialchars($this->post_get('name'), ENT_QUOTES), 'description' => htmlspecialchars($this->post_get('description'), ENT_QUOTES)));
+      $model->update('problem', array('id' => htmlspecialchars($_POST['id'], ENT_QUOTES)), array('name' => "'".htmlspecialchars($_POST['name'], ENT_QUOTES)."'", 'description' => "'".htmlspecialchars($_POST['description'], ENT_QUOTES)."'"));
       $this->redirect('/administrator/problem-overview');
     }
   }
