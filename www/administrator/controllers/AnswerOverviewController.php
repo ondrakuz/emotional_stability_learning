@@ -12,7 +12,7 @@ class AnswerOverviewController extends Controller
 //       print_r($problem);
 //       exit;
       
-      $this->header['title'] = "Řešení problému";
+      $this->headr['title'] = "Řešení problému \"$problem[name]\"";
       $this->data['answers'] = $answers;
       $this->data['problem'] = $problem;
       $this->view = 'answerOverview';

@@ -3,9 +3,9 @@ abstract class Controller
 {
 
 	// Pole, jehož indexy jsou poté viditelné v šabloně jako běžné proměnné
-    protected $data = array();
+  protected $data = array();
 	// Název šablony bez přípony
-    protected $view = "";
+  protected $view = "";
 	// Hlavička HTML stránky
 	protected $headr = array('title' => '', 'key_words' => '', 'description' => '');
   protected $siteName;

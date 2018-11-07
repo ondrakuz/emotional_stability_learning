@@ -12,7 +12,7 @@ class AnswerNewController extends Controller
 //       exit;
       $cschemas = $model->selectAll("cog_schema");
       
-      $this->header['title'] = "Editace odpovědi na problém \"".$problem['name']."\"";
+      $this->headr['title'] = "Vložení nové odpovědi na problém \"".$problem['name']."\"";
       $this->data['problem'] = $problem;
       $this->data['cschemas'] = $cschemas;
       $this->view = 'answerNew';

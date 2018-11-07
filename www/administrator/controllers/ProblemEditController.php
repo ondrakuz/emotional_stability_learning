@@ -9,7 +9,7 @@ class ProblemEditController extends Controller
     {
       $problem = $model->selectOne("problem", array('id' => $id));
       
-      $this->header['title'] = "Editace problému \"$problem[name]\"";
+      $this->headr['title'] = "Editace problému \"$problem[name]\"";
       $this->data['problem'] = $problem;
       $this->view = 'problemEdit';
     }

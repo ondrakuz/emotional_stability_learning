@@ -10,7 +10,7 @@ class AnswerOverviewController extends Controller
       $answers = $model->selectArray(array("answers", 'cog_schema'), array('answers.id', 'answer', 'name', 'id_problem', 'id_cog_schema') , array('id_problem' => (htmlspecialchars($idp, ENT_QUOTES)), 'cog_schema.id' => 'id_cog_schema', 'answers.deleted' => 0));
       $problem = $model->selectOne("problem", array('id' => (htmlspecialchars($idp, ENT_QUOTES))));
       
-      $this->headr['title'] = "Řešení problému";
+      $this->headr['title'] = "Řešení problému $problem[name]";
       $this->data['answers'] = $answers;
       $this->data['problem'] = $problem;
       $this->view = 'answerOverview';

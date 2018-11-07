@@ -7,7 +7,7 @@ class LoginController extends Controller
     $model = model::getInstance();
     $login_user = htmlspecialchars($_POST['login_user'], ENT_QUOTES);
     $user = $model->selectOne("users", array( "nick" => "'$login_user'" ));
-    if ($user[4]!=sha1($_POST['login_passw']))
+    if ($user['password']!=sha1($_POST['login_passw']))
     {
 //       echo("'".$_POST['login_passw']."'<br />'".$user[4]."'<br />'".sha1($_POST['login_passw'])."'<br /><br />");
 //       print_r($user);
@@ -16,9 +16,9 @@ class LoginController extends Controller
     }
     else
     {
-      $_SESSION['id_user']=$user[0];
+      $_SESSION['id_user']=$user['id'];
       $_SESSION['user']=$login_user;
-      $_SESSION['permissions']=$user[5];
+      $_SESSION['permissions']=$user['permissions'];
       $this->redirect("/administrator");
     }
   }

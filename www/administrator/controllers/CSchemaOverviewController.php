@@ -8,7 +8,7 @@ class CSchemaOverviewController extends Controller
     {
       $cschemas = $model->selectAll("cog_schema");
       
-      $this->header['title'] = "Přehled kognitivních schémat";
+      $this->headr['title'] = "Přehled kognitivních schémat";
       $this->data['cschemas'] = $cschemas;
       $this->view = 'cschemaOverview';
     }

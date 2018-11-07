@@ -11,7 +11,7 @@ class AnswerEditController extends Controller
       $answer = $answr[0];
       $cschemas = $model->selectAll("cog_schema");
       
-      $this->header['title'] = "Editace odpovědi na problém \"".$answer['name']."\"";
+      $this->headr['title'] = "Editace odpovědi na problém \"".$answer['name']."\"";
       $this->data['answer'] = $answer;
       $this->data['cschemas'] = $cschemas;
       $this->view = 'answerEdit';

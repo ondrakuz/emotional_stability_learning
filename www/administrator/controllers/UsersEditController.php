@@ -8,7 +8,7 @@ class UsersEditController extends Controller
     if ($model->ifconnected()) {
       $user = $model->selectOne('users', array ('id' => $id));
 
-      $this->header['title'] = "Editace uživatele";
+      $this->headr['title'] = "Editace uživatele $user[nick]";
       $this->data['user'] = $user;
       $this->view = 'usersEdit';
     }
