@@ -1,23 +1,23 @@
 body { /*min-width:800px;*/ font-family: 'Helvetica CE','Arial CE',sans-serif; font-size: 12px; /*background-color: #fff; padding: 0; margin: 0;*/ }
-h4 { font-size: 14px; font-weight: bold; color: #0dcaff; margin-top: 20px; }
-table thead tr th.caption { font-weight: bold; background-color:#0dcaff; color:white; font-size:14px; }
-thead { font-size: 13px; font-weight: bold; color: #0dcaff; }
+h4 { font-size: 14px; font-weight: bold; color: green; margin-top: 20px; }
+table thead tr th.caption { font-weight: bold; background-color: #acacac; color:white; font-size:14px; }
+thead { font-size: 13px; font-weight: bold; color: green; }
 /* td { text-align: left; } */
 td a { text-decoration: none; color: black; }
 td a:hover { text-decoration: underline; color: black; }
 
 table.header { width: 98%; }
 td.logo { width: 80%; }
-td.header { background-color:#ffa101; color:white; font-size:14px; font-weight: bold; text-align: center; }
+td.header { background-color:#acacac; color:white; font-size:14px; font-weight: bold; text-align: center; }
 td.right { text-align: right; }
 
-button.btn { background-color:#0dcaff; color: white; }
+button.btn { background-color:white; color: black; }
 label { font-size: 14px; font-weight: bold; }
 
-#header { /*position: relative; width: 100%;*/ min-height: 128px; background-color: #ffa101; border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 20px; text-align: center; vertical-align: center; }
-#header h1 { width: 100%; margin: 0; padding: 40px 20px 20px 20px; color: white; font-weight: bold; text-align: center; }
+#header { /*position: relative; width: 100%;*/ min-height: 128px; background-color: #acacac; border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 20px; text-align: center; vertical-align: center; }
+#header h1 { width: 100%; margin: 0; padding: 40px 20px 20px 20px; color: black; font-weight: bold; text-align: center; }
 #header a { color: white; text-decoration: none; }
-#footer { position: relative; width: 100%; font-size: 10px; color: #8c8c8c; background-color: #fde5bd; padding: 10px; margin-top: 20px text-align: center; border-radius: 5px; }
+#footer { position: relative; width: 100%; font-size: 10px; color: #8c8c8c; background-color: #f7f7f7; padding: 10px; margin-top: 20px text-align: center; border-radius: 5px; border: 1px solid #dcdcdc }
 
 /*table#login { margin-top: 0px; }*/
 
@@ -39,7 +39,7 @@ label { font-size: 14px; font-weight: bold; }
 #right_panel table { font-size: 12px!important; }
 
 .category { margin-top: 0; }
-.category .title { font-size: 13px; font-weight: bold; color: #0dcaff; text-decoration: underline; }
+.category .title { font-size: 13px; font-weight: bold; color: green; text-decoration: underline; }
 .category a { color:black; text-decoration: none; }
 .category a:hover { text-decoration: underline; }
 
