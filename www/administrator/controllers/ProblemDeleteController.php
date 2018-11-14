@@ -4,13 +4,10 @@ class ProblemDeleteController extends Controller
   public function ctrMain($parameters)
   {
     $id = array_shift($parameters);
-    $model = model::getInstance();
-    if ($model->ifconnected())
+    $problemModel = new ProblemModel();
+    if ($problemModel->delete(htmlspecialchars($id, ENT_QUOTES)))
     {
-      if ($model->update('problem', array('id' => (htmlspecialchars($id, ENT_QUOTES))), array('deleted' => 1)))
-      {
-        $this->redirect('/administrator/problem-overview');
-      }
+      $this->redirect('/administrator/problem-overview');
     }
   }
 }

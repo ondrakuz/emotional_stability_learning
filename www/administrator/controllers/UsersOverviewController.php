@@ -3,11 +3,9 @@ class UsersOverviewController extends Controller
 {
   public function ctrMain($parameters)
   {
-    $model = model::getInstance();
-    if ($model->ifconnected())
+    $usersModel = new UsersModel();
+    if ($users = $usersModel->selectAll())
     {
-      $users = $model->selectArray(array ("users"), array ("*"), array (), $order = 'id asc');
-      
       $this->headr['title'] = "Přehled uživatelů";
       $this->data = array( 'users' => $users );
       $this->view = 'usersOverview';
