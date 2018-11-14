@@ -4,13 +4,10 @@ class UsersDeleteController extends Controller
   public function ctrMain($parameters)
   {
     $id = array_shift($parameters);
-    $model = model::getInstance();
-    if ($model->ifconnected())
+    $usersModel = new UsersModel();
+    if ($usersModel->delete(htmlspecialchars($id, ENT_QUOTES)))
     {
-      if ($model->delete('users', array ('id' => $id)))
-      {
-        $this->redirect('/administrator/users-overview');
-      }
+      $this->redirect('/administrator/users-overview');
     }
   }
 }

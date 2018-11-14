@@ -13,7 +13,7 @@ class UsersUpdateController extends Controller
         if ($_POST['name']=='')  { $name=NULL; } else { $name=$_POST['name']; };
         if ($_POST['surname']=='')  { $surname=NULL; } else { $surname=$_POST['surname']; };
 
-        if ($usersModel->update($_POST['id'], array ('name' => "'".htmlspecialchars($_POST['name'])."'", 'surname' => "'".htmlspecialchars($_POST['surname'])."'", 'password' => "'".sha1($_POST['password2'])."'")))
+        if ($usersModel->update($_POST['id'], array ('name' => "'".htmlspecialchars($_POST['name'], ENT_QUOTES)."'", 'surname' => "'".htmlspecialchars($_POST['surname'], ENT_QUOTES)."'", 'password' => "'".sha1($_POST['password2'])."'")))
         { 
           $this->redirect('/administrator/users-overview');
         }
@@ -26,7 +26,7 @@ class UsersUpdateController extends Controller
       if ($_POST['name']=='')  { $name=NULL; } else { $name=$_POST['name']; };
       if ($_POST['surname']=='')  { $surname=NULL; } else { $surname=$_POST['surname']; };
 
-      if ($usersModel->update($_POST['id'], array ('name' => "'".htmlspecialchars($name)."'", 'surname' => "'".htmlspecialchars($surname)."'")))
+      if ($usersModel->update($_POST['id'], array ('name' => "'".htmlspecialchars($name, ENT_QUOTES)."'", 'surname' => "'".htmlspecialchars($surname, ENT_QUOTES)."'")))
       {
         $this->redirect('/administrator/users-overview');
       }

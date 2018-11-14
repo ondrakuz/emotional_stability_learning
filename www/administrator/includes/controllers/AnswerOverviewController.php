@@ -4,12 +4,20 @@ class AnswerOverviewController extends Controller
   public function ctrMain($parameters)
   {
     $idp = array_shift($parameters);
-    $model = model::getInstance();
-    if ($model->ifconnected())
+    $answerModel = new AnswerModel();
+    $answers = $answerModel->selectByIdP(htmlspecialchars($idp, ENT_QUOTES));
+    $cschemaModel = new CSchemaModel();
+    $num = count($answers);
+    for($i = 0; $i < $num; $i++)
     {
-      $answers = $model->selectArray(array("answers", 'cog_schema'), array('answers.id', 'answer', 'name', 'id_problem', 'id_cog_schema') , array('id_problem' => (htmlspecialchars($idp, ENT_QUOTES)), 'cog_schema.id' => 'id_cog_schema', 'answers.deleted' => 0));
-      $problem = $model->selectOne("problem", array('id' => (htmlspecialchars($idp, ENT_QUOTES))));
+      $cschema = $cschemaModel->selectById($answers[$i]['id_cog_schema']);
+      $answers[$i]['name'] = $cschema['name'];
+    }
+    $problemModel = new ProblemModel();
+    $problem = $problemModel->selectById(htmlspecialchars($idp, ENT_QUOTES));
       
+    if (!empty($problem))
+    {
       $this->headr['title'] = "Řešení problému $problem[name]";
       $this->data['answers'] = $answers;
       $this->data['problem'] = $problem;

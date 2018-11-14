@@ -4,33 +4,47 @@ class UsersModel
   public function selectAll()
   {
     $model = model::getInstance();
-    $users = $model->selectAll(users, 'id asc');
+    $users = $model->selectAll('users', 'id asc');
     return $users;
   }
 
   public function selectById($id)
   {
     $model = model::getInstance();
-    $user = $model->selectOne(users, array ('id' => $id));
+    $user = $model->selectOne('users', array ('id' => $id));
+    return $user;
+  }
+
+  public function selectByNick($nick)
+  {
+    $model = model::getInstance();
+    $user = $model->selectOne('users', array ('nick' => $nick));
     return $user;
   }
 
   public function insert(array $values)
   {
     $model = model::getInstance();
-    return $model->insert(users, $values);
+    return $model->insert('users', $values);
   }
 
   public function update($id, array $values)
   {
     $model = model::getInstance();
-    return $model->update(users, array ('id' => $id), $values);
+    return $model->update('users', array ('id' => $id), $values);
   }
 
   public function delete($id)
   {
     $model = model::getInstance();
-    return $model->update(users, array ('id' => $id), array ('deleted' => 1));
+    if ($id == 1)
+    {
+      RouterController::getInstance()->setError('Uživatel \'admin\' nemůže být smazán.');
+    }
+    else
+    {
+      return $model->update('users', array ('id' => $id), array ('deleted' => 1));
+    }
   }
 }
 ?>

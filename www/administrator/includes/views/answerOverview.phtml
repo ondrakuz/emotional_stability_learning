@@ -4,7 +4,7 @@
            $num=count($answers);
            if (!$num) {
              ?>
-            <div class="message">Nejsou uloženy žádné odpovědi na problém "<?php echo($problem['name']); ?>"<br /><a href="<?php echo("http://".$this->siteName."/answer-new/".$problem['id']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer"/>Přidat odpověď</a></div>
+            <div class="message">Nejsou uloženy žádné odpovědi na problém "<?=$problem['name']?>"<br /><a href="http://<?=$this->siteName?>/answer-new/<?=$problem['id']?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer"/>Přidat odpověď</a></div>
              <?php
            } else {
            ?>
@@ -19,11 +19,11 @@
                  foreach($answers as $answer) {
                 ?>
                 <tr>
-                  <td><?php echo($answer['answer']); ?></td>
-                  <td><strong><?php echo($answer['name']); ?></strong></td>
+                  <td><?=$answer['answer']?></td>
+                  <td><strong><?=$answer['name']?></strong></td>
                 </tr>
                    <?php } ?>
-                <tr><td colspan="2"><a href="<?php echo("http://".$this->siteName."/answer-new/".$answer['id_problem']); ?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer" />Přidat odpověď</a></td>
+                <tr><td colspan="2"><a href="http://<?=$this->siteName?>/answer-new/<?=$problem['id']?>"><img src="http://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" alt="add answer" />Přidat odpověď</a></td>
               </tbody>
             </table>
            <?php } ?>

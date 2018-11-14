@@ -6,11 +6,9 @@ class AnswerNewController extends Controller
     $idp = array_shift($parameters);
     $problemModel = new ProblemModel();
     $problem = $problemModel->selectById(htmlspecialchars($idp, ENT_QUOTES));
-//       print_r($problem);
-//       exit;
     $cschemaModel = new CSchemaModel();
     $cschemas = $cschemaModel->selectAll();
-    if ($problem && $cschemas)
+    if (!empty($problem) && !empty($cschemas))
     {
       $this->headr['title'] = "Vložení nové odpovědi na problém \"".$problem['name']."\"";
       $this->data['problem'] = $problem;

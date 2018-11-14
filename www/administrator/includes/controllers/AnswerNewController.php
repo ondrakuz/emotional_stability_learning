@@ -4,12 +4,12 @@ class AnswerNewController extends Controller
   public function ctrMain($parameters)
   {
     $idp = array_shift($parameters);
-    $model = model::getInstance();
-    if ($model->ifconnected())
+    $problemModel = new ProblemModel();
+    $problem = $problemModel->selectById(htmlspecialchars($idp, ENT_QUOTES));
+    $cschemaModel = new CSchemaModel();
+    $cschemas = $cschemaModel->selectAll();
+    if (!empty($problem) && !empty($cschemas))
     {
-      $problem = $model->selectOne('problem', array('id' => htmlspecialchars($idp, ENT_QUOTES)));
-      $cschemas = $model->selectAll("cog_schema");
-      
       $this->headr['title'] = "Vložení nové odpovědi na problém \"".$problem['name']."\"";
       $this->data['problem'] = $problem;
       $this->data['cschemas'] = $cschemas;

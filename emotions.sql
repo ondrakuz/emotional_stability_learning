@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Stř 07. lis 2018, 17:18
+-- Vytvořeno: Stř 14. lis 2018, 22:44
 -- Verze serveru: 5.7.22
 -- Verze PHP: 7.1.23
 
@@ -51,7 +51,11 @@ INSERT INTO `answers` (`id`, `id_problem`, `id_cog_schema`, `answer`, `deleted`)
 (8, 2, 4, 'Ztráta zaměstnání je možná nějaká vyšší vůle a nemá cenu se s tím nějak trápit.', 0),
 (9, 3, 1, 'Je to nanic, spoustu věcí musím odložit a cítím se zle.', 0),
 (10, 3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0),
-(11, 2, 2, 'Člověk si může nějakou dobu odpočinout.', 1);
+(11, 2, 2, 'Člověk si může nějakou dobu odpočinout.', 1),
+(12, 3, 3, 'Chřipka ani všechny její důsledky nejsou ve skutečnosti důležité, můžu v klidu odpočívat než se uzdravím.', 0),
+(13, 3, 4, 'Zdraví lidí je řízeno vyšší mocí a nemá cenu se kvůli tomu trápit.', 0),
+(14, 4, 1, 'Je to strašné, vše mi jde tak pomalu, že ničeho v životě nedosáhnu.', 0),
+(15, 4, 2, 'Když mi jdou věci pomalu, alespoň toho nestihnu moc pokazit.', 0);
 
 -- --------------------------------------------------------
 
@@ -104,7 +108,8 @@ INSERT INTO `problem` (`id`, `name`, `description`, `deleted`) VALUES
 (10, 'Nerozhodnost', '', 0),
 (11, 'Hlasy', '', 0),
 (12, 'Špatný spánek', '', 0),
-(13, 'Špatné vstávání', '', 0);
+(13, 'Špatné vstávání', '', 0),
+(14, 'Špatná finanční situace', '', 0);
 
 -- --------------------------------------------------------
 
@@ -118,15 +123,16 @@ CREATE TABLE `users` (
   `surname` varchar(20) COLLATE utf8_czech_ci DEFAULT NULL,
   `nick` varchar(20) COLLATE utf8_czech_ci NOT NULL,
   `password` varchar(128) COLLATE utf8_czech_ci NOT NULL,
-  `permissions` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1 - admin, 0- user'
+  `permissions` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1 - admin, 0- user',
+  `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
 --
 -- Vypisuji data pro tabulku `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `nick`, `password`, `permissions`) VALUES
-(1, '', '', 'admin', 'aea3d8b41c3de679dbadef94dd94aa7ca9c41912', 1);
+INSERT INTO `users` (`id`, `name`, `surname`, `nick`, `password`, `permissions`, `deleted`) VALUES
+(1, '', '', 'admin', 'aea3d8b41c3de679dbadef94dd94aa7ca9c41912', 1, 0);
 
 --
 -- Klíče pro exportované tabulky
@@ -165,7 +171,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pro tabulku `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pro tabulku `cog_schema`
@@ -177,7 +183,7 @@ ALTER TABLE `cog_schema`
 -- AUTO_INCREMENT pro tabulku `problem`
 --
 ALTER TABLE `problem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pro tabulku `users`
