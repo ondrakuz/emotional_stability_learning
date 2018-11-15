@@ -9,6 +9,11 @@ class cdb { // trida cdb bude slouzit k praci s databazi
     $this->conn = null;
   }
 
+  function __destruct()
+  {
+    $this->closedb();
+  }
+  
   function connect() {
     $options=array(
       PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
