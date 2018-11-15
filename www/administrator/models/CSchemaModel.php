@@ -3,34 +3,34 @@ class CSchemaModel
 {
   public function selectAll()
   {
-    $model = model::getInstance();
-    $cog_schemas = $model->selectAll('cog_schema', 'id asc');
+    $db = DbModel::getInstance();
+    $cog_schemas = $db->selectAll('cog_schema', 'id asc');
     return $cog_schemas;
   }
 
   public function selectById($id)
   {
-    $model = model::getInstance();
-    $cog_schema = $model->selectOne('cog_schema', array ('id' => $id));
+    $db = DbModel::getInstance();
+    $cog_schema = $db->selectOne('cog_schema', array ('id' => $id));
     return $cog_schema;
   }
 
   public function insert(array $values)
   {
-    $model = model::getInstance();
-    return $model->insert('cog_schema', $values);
+    $db = DbModel::getInstance();
+    return $db->insert('cog_schema', $values);
   }
 
   public function update($id, array $values)
   {
-    $model = model::getInstance();
-    return $model->update('cog_schema', array ('id' => $id), $values);
+    $db = DbModel::getInstance();
+    return $db->update('cog_schema', array ('id' => $id), $values);
   }
 
   public function delete($id)
   {
-    $model = model::getInstance();
-    return $model->update('cog_schema', array ('id' => $id), array ('deleted' => 1));
+    $db = DbModel::getInstance();
+    return $db->update('cog_schema', array ('id' => $id), array ('deleted' => 1));
   }
 
 }

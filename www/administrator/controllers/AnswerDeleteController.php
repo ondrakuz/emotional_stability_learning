@@ -5,7 +5,10 @@ class AnswerDeleteController extends Controller
   {
     $id = array_shift($parameters);
     $answerModel = new AnswerModel();
-    if ($answerModel->delete(htmlspecialchars($id, ENT_QUOTES)))
+    $answer = $answerModel->selectById(htmlspecialchars($id, ENT_QUOTES));
+//     print_r($answer);
+//     exit;
+    if (!empty($answer) && $answerModel->delete(htmlspecialchars($id, ENT_QUOTES)))
     {
       $this->redirect('/administrator/answer-overview/'.$answer['id_problem']);
     }

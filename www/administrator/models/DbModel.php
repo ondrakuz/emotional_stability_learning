@@ -1,14 +1,14 @@
 <?php
-  class model
+  class DbModel extends cdb
   {
-    private $db;
+    //private $db;
     static private $instance = null;
 
     static function getInstance()
     {
       if (self::$instance == null) 
       {
-        self::$instance = new model();
+        self::$instance = new DbModel();
       }
       return self::$instance;
     }
@@ -16,21 +16,21 @@
     
     function __construct()
     {
-      $this->db = new cdb();
-      if (!($this->db->connect())) 
+      parent::__construct();
+      if (!($this->connect())) 
       {
-        RouterController::getInstance()->setError($this->db->get_error());
+        RouterController::getInstance()->setError("DbModel::__construct():".$this->get_error());
       }
     }
     
     function __destruct()
     {
-      $this->db->closedb();
+      parent::__destruct();
     }
     
     function ifconnected()
     {
-      return $this->db->ifconnected();
+      return $this->ifconnected();
     }
     
     function selectAll($table, $order = '')
@@ -46,14 +46,14 @@
 //       echo('<br />'.$query.'<br />');
 //       exit;
       
-      if (!$this->db->query($query))
+      if (!$this->query($query))
       {
-        RouterController::getInstance()->setError($this->db->get_error());
+        RouterController::getInstance()->setError('DbModel::selectAll():'.$this->get_error().'<br /><br />'.$query.'<br />');
       }
       else
       {
         $i = 0;
-        while ($item=$this->db->get_array())
+        while ($item=$this->get_array())
         {
         if (!empty($item))
           { 
@@ -88,11 +88,11 @@
 //       echo('<br />'.$query.'<br />');
 //       exit;
       
-      if (!$this->db->query($query))
+      if (!$this->query($query))
       {
-        RouterController::getInstance()->setError("model::selectOne():".$this->db->get_error().'<br /><br />'.$query.'<br />');
+        RouterController::getInstance()->setError("DbModel::selectOne():".$this->get_error().'<br /><br />'.$query.'<br />');
       }
-      $arr = $this->db->get_array();
+      $arr = $this->get_array();
 //       print_r($arr);
 //       exit;
       return $arr;
@@ -153,14 +153,14 @@
         $query .= ';';
       }
       
-      if (!$this->db->query($query))
+      if (!$this->query($query))
       {
-        RouterController::getInstance()->setError($this->db->get_error().'<br /><br />'.$query);
+        RouterController::getInstance()->setError('DbModel::selectArray():'.$this->get_error().'<br /><br />'.$query.'<br />');
       }
       else
       {
         $i = 0;
-        while ($item=$this->db->get_array())
+        while ($item=$this->get_array())
         {
           if (!empty($item))
           {
@@ -207,10 +207,10 @@
 //       echo('<br />'.$query.'<br />');
 //       exit;
       
-      $result = $this->db->query($query);
+      $result = $this->query($query);
       if (!$result)
       {
-        RouterController::getInstance()->setError($this->db->get_error().'<br /><br />'.$query);
+        RouterController::getInstance()->setError("DbModel::update():".$this->get_error().'<br /><br />'.$query.'<br />');
       }
       return $result;
     }
@@ -237,10 +237,10 @@
 //       echo('<br />'.$query.'<br />');
 //       exit;
       
-      $result = $this->db->query($query);
+      $result = $this->query($query);
       if (!$result)
       {
-        RouterController::getInstance()->setError("model::insert():".$this->db->get_error()."<br /><br />$query<br />");
+        RouterController::getInstance()->setError("DbModel::insert():".$this->get_error()."<br /><br />$query<br />");
       }
       return $result;
     }
@@ -263,10 +263,10 @@
       }
       $query .= ";";
       
-      $result = $this->db->query($query);
+      $result = $this->query($query);
       if (!$result)
       {
-        RouterController::getInstance()->setError($this->db->get_error().'<br /><br />'.$query);
+        RouterController::getInstance()->setError("DbModel::delete():".$this->get_error()."<br /><br />$query<br />");
       }
       return $result;      
     }

@@ -7,6 +7,12 @@ class cdb { // trida cdb bude slouzit k praci s databazi
   {
     require("./administrator/cfg/sql.php");
     $this->conn = null;
+    $this->error = '';
+  }
+  
+  function __destruct()
+  {
+    $this->closedb();
   }
 
   function connect() {
@@ -32,7 +38,7 @@ class cdb { // trida cdb bude slouzit k praci s databazi
 
   function query($dotaz) {
     $this->querystring=$dotaz;
-    $this->error=null;
+    $error = '';
     
     try {
       $this->data=$this->conn->prepare($dotaz);
@@ -41,17 +47,26 @@ class cdb { // trida cdb bude slouzit k praci s databazi
       $this->data=null;
     }
     
-    $parameters = array();
-    try {
-            $this->data->execute($parameters);
-    } catch (PDOException $e) {
-        $error = 'Execution of query failed: ' . $e->getMessage();
-        $this->data=null;
+    if ($error == '')
+    {
+      try {
+          $result2 = $this->data->execute();
+      } catch (PDOException $e) {
+          $error = 'Execution of query failed: ' . $e->getMessage();
+          $this->data=null;
+      }
+      if (!$result2) {
+        $this->error=$error;
+      }
+  //     print_r($this->data);
+  //     exit;
     }
-    if (!($this->data)) {
-      $this->error=$error;
-    };
-    if ($this->data) { return 1; }
+    else
+    {
+      $this->error = $error;
+      $result2 = false;
+    }
+    if ($result2) { return 1; }
     else  {return 0;}
   }
 

@@ -4,9 +4,9 @@ class LoginController extends Controller
 
   public function ctrMain($parameters)
   {
-    $model = model::getInstance();
+    $usersModel = new UsersModel();
     $login_user = htmlspecialchars($_POST['login_user'], ENT_QUOTES);
-    $user = $model->selectOne("users", array( "nick" => "'$login_user'" ));
+    $user = $usersModel->selectByNick("'$login_user'");
     if ($user['password']!=sha1($_POST['login_passw']))
     {
 //       echo("'".$_POST['login_passw']."'<br />'".$user[4]."'<br />'".sha1($_POST['login_passw'])."'<br /><br />");

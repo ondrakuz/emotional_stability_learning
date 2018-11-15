@@ -3,41 +3,41 @@ class AnswerModel
 {
   public function selectAll()
   {
-    $model = model::getInstance();
-    $answers = $model->selectAll('answers', 'id asc');
+    $db = DbModel::getInstance();
+    $answers = $db->selectAll('answers', 'id asc');
     return $answers;
   }
 
   public function selectById($id)
   {
-    $model = model::getInstance();
-    $answer = $model->selectOne('answers', array ('id' => $id));
+    $db = DbModel::getInstance();
+    $answer = $db->selectOne('answers', array ('id' => $id));
     return $answer;
   }
 
   public function selectByIdP($idp)
   {
-    $model = model::getInstance();
-    $answers = $model->selectArray(array('answers'), array ('*'), array ('id_problem' => $idp), 'id asc');
+    $db = DbModel::getInstance();
+    $answers = $db->selectArray(array('answers'), array ('*'), array ('id_problem' => $idp, 'deleted' => 0), 'id asc');
     return $answers;
   }
 
   public function insert(array $values)
   {
-    $model = model::getInstance();
-    return $model->insert('answers', $values);
+    $db = DbModel::getInstance();
+    return $db->insert('answers', $values);
   }
 
   public function update($id, array $values)
   {
-    $model = model::getInstance();
-    return $model->update('answers', array ('id' => $id), $values);
+    $db = DbModel::getInstance();
+    return $db->update('answers', array ('id' => $id), $values);
   }
 
   public function delete($id)
   {
-    $model = model::getInstance();
-    return $model->update('answers', array ('id' => $id), array ('deleted' => 1));
+    $db = DbModel::getInstance();
+    return $db->update('answers', array ('id' => $id), array ('deleted' => 1));
   }
 
 }
