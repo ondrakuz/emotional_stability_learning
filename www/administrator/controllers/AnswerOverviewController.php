@@ -15,6 +15,7 @@ class AnswerOverviewController extends Controller
     }
     $problemModel = new ProblemModel();
     $problem = $problemModel->selectById(htmlspecialchars($idp, ENT_QUOTES));
+//     exit;
       
     if (!empty($problem))
     {

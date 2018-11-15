@@ -5,7 +5,7 @@ class CSchemaDeleteController extends Controller
   {
     $id = array_shift($parameters);
     $cschemaModel = new CSchemaModel();
-    if ($cschemaModel->update(htmlspecialchars($id, ENT_QUOTES)))
+    if ($cschemaModel->delete(htmlspecialchars($id, ENT_QUOTES)))
     {
       $this->redirect('/administrator/c-schema-overview');
     }

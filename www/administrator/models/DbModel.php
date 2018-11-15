@@ -1,14 +1,14 @@
 <?php
   class DbModel extends cdb
   {
-//     private $db;
+    //private $db;
     static private $instance = null;
 
     static function getInstance()
     {
       if (self::$instance == null) 
       {
-        self::$instance = new model();
+        self::$instance = new DbModel();
       }
       return self::$instance;
     }
@@ -17,9 +17,9 @@
     function __construct()
     {
       parent::__construct();
-      if (!($thi->connect())) 
+      if (!($this->connect())) 
       {
-        RouterController::getInstance()->setError($this->get_error());
+        RouterController::getInstance()->setError("DbModel::__construct():".$this->get_error());
       }
     }
     
@@ -27,7 +27,7 @@
     {
       parent::__destruct();
     }
-    
+ 
     function selectAll($table, $order = '')
     {
       $query = "select * from $table where deleted='0'";
@@ -43,7 +43,7 @@
       
       if (!$this->query($query))
       {
-        RouterController::getInstance()->setError($this->get_error());
+        RouterController::getInstance()->setError('DbModel::selectAll():'.$this->get_error().'<br /><br />'.$query.'<br />');
       }
       else
       {
@@ -85,7 +85,7 @@
       
       if (!$this->query($query))
       {
-        RouterController::getInstance()->setError("model::selectOne():".$this->get_error().'<br /><br />'.$query.'<br />');
+        RouterController::getInstance()->setError("DbModel::selectOne():".$this->get_error().'<br /><br />'.$query.'<br />');
       }
       $arr = $this->get_array();
 //       print_r($arr);
@@ -150,7 +150,7 @@
       
       if (!$this->query($query))
       {
-        RouterController::getInstance()->setError($this->get_error().'<br /><br />'.$query);
+        RouterController::getInstance()->setError('DbModel::selectArray():'.$this->get_error().'<br /><br />'.$query.'<br />');
       }
       else
       {
@@ -205,7 +205,7 @@
       $result = $this->query($query);
       if (!$result)
       {
-        RouterController::getInstance()->setError($this->get_error().'<br /><br />'.$query);
+        RouterController::getInstance()->setError("DbModel::update():".$this->get_error().'<br /><br />'.$query.'<br />');
       }
       return $result;
     }
@@ -235,7 +235,7 @@
       $result = $this->query($query);
       if (!$result)
       {
-        RouterController::getInstance()->setError("model::insert():".$this->get_error()."<br /><br />$query<br />");
+        RouterController::getInstance()->setError("DbModel::insert():".$this->get_error()."<br /><br />$query<br />");
       }
       return $result;
     }
@@ -261,7 +261,7 @@
       $result = $this->query($query);
       if (!$result)
       {
-        RouterController::getInstance()->setError($this->get_error().'<br /><br />'.$query);
+        RouterController::getInstance()->setError("DbModel::delete():".$this->get_error()."<br /><br />$query<br />");
       }
       return $result;      
     }

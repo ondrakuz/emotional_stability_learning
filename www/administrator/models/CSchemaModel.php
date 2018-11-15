@@ -3,34 +3,34 @@ class CSchemaModel
 {
   public function selectAll()
   {
-    $DbModel = model::getInstance();
-    $cog_schemas = $DbModel->selectAll('cog_schema', 'id asc');
+    $db = DbModel::getInstance();
+    $cog_schemas = $db->selectAll('cog_schema', 'id asc');
     return $cog_schemas;
   }
 
   public function selectById($id)
   {
-    $DbModel = model::getInstance();
-    $cog_schema = $DbModel->selectOne('cog_schema', array ('id' => $id));
+    $db = DbModel::getInstance();
+    $cog_schema = $db->selectOne('cog_schema', array ('id' => $id));
     return $cog_schema;
   }
 
   public function insert(array $values)
   {
-    $DbModel = model::getInstance();
-    return $DbModel->insert('cog_schema', $values);
+    $db = DbModel::getInstance();
+    return $db->insert('cog_schema', $values);
   }
 
   public function update($id, array $values)
   {
-    $DbModel = model::getInstance();
-    return $DbModel->update('cog_schema', array ('id' => $id), $values);
+    $db = DbModel::getInstance();
+    return $db->update('cog_schema', array ('id' => $id), $values);
   }
 
   public function delete($id)
   {
-    $DbModel = model::getInstance();
-    return $DbModel->update('cog_schema', array ('id' => $id), array ('deleted' => 1));
+    $db = DbModel::getInstance();
+    return $db->update('cog_schema', array ('id' => $id), array ('deleted' => 1));
   }
 
 }

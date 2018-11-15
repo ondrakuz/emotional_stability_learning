@@ -3,35 +3,34 @@ class ProblemModel
 {
   public function selectAll()
   {
-    $DbModel = model::getInstance();
-    $problems = $DbModel->selectAll('problem', 'id asc');
+    $db = DbModel::getInstance();
+    $problems = $db->selectAll('problem', 'id asc');
     return $problems;
   }
 
   public function selectById($id)
   {
-    $DbModel = model::getInstance();
-    $problem = $DbModel->selectOne('problem', array ('id' => $id));
+    $db = DbModel::getInstance();
+    $problem = $db->selectOne('problem', array ('id' => $id));
     return $problem;
   }
 
   public function insert(array $values)
   {
-    $DbModel = model::getInstance();
-    return $DbModel->insert('problem', $values);
+    $db = DbModel::getInstance();
+    return $db->insert('problem', $values);
   }
 
   public function update($id, array $values)
   {
-    $DbModel = model::getInstance();
-    return $DbModel->update('problem', array ('id' => $id), $values);
+    $db = DbModel::getInstance();
+    return $db->update('problem', array ('id' => $id), $values);
   }
 
   public function delete($id)
   {
-    $DbModel = model::getInstance();
-    return $DbModel->update('problem', array ('id' => $id), array ('deleted' => 1));
+    $db = DbModel::getInstance();
+    return $db->update('problem', array ('id' => $id), array ('deleted' => 1));
   }
-
 }
 ?>
