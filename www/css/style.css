@@ -2,16 +2,17 @@ body { /*min-width:800px;*/ font-family: 'Helvetica CE','Arial CE',sans-serif; f
 h4 { font-size: 14px; font-weight: bold; color: green; margin-top: 20px; }
 table thead tr th.caption { font-weight: bold; background-color: #acacac; color:white; font-size:14px; }
 thead { font-size: 13px; font-weight: bold; color: green; }
-/* td { text-align: left; } */
 td a { text-decoration: none; color: black; }
 td a:hover { text-decoration: underline; color: black; }
+a { text-decoration: none; color: black; }
+a:hover { text-decoration: underline; color: black; }
 
 table.header { width: 98%; }
 td.logo { width: 80%; }
 td.header { background-color:#acacac; color:white; font-size:14px; font-weight: bold; text-align: center; }
 td.right { text-align: right; }
 
-button.btn { background-color:white; color: black; }
+button { background-color:white; color: acacac; border: 1px solid #acacac; border-radius: 5px; font-size: 12px; box-shadow: none; padding: 5px; }
 label { font-size: 14px; font-weight: bold; }
 
 #header { /*position: relative; width: 100%;*/ min-height: 128px; background-color: #acacac; border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 20px; text-align: center; vertical-align: center; }

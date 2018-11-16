@@ -57,7 +57,7 @@ class RouterController extends Controller
     }
     else
     {
-      // kontroler je 1. parametr URL
+      // controller is 1. parameter of URL
       $view = array_shift($parsedURL);
       $controllerClass = $this->camelNotation($view) . 'Controller';
       
@@ -88,11 +88,11 @@ class RouterController extends Controller
     }
     
     
-    // Nastavení proměnných pro šablonu
+    // setting variables of the templae
     $this->data = $this->controller->data;
     $this->data['title'] = $this->controller->headr['title'];
 
-    // Nastavení hlavní šablony
+    // main template
     $this->view = 'layout';
   }
 }  

@@ -3,7 +3,7 @@
   {
     if (preg_match('/Controller$/', $class))
     {
-       require_once("administrator/includes/controllers/" . $class . ".php");
+      require_once("administrator/includes/controllers/" . $class . ".php");
     }
     else
       require_once("administrator/models/" . $class . ".php");
