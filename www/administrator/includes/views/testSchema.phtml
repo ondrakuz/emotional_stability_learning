@@ -9,7 +9,7 @@
                 foreach($cschemas as $cschema)
                 {
                     if ($cschema['id'] != 1)
-                        echo("                  <input type='radio' id=\"idcs\" name='idcs' value=\"".$cschema['id']."\" > ".$cschema['name']."<br />\n");
+                        echo("                  <input type='radio' id=\"idcs\" name='idcs' value=\"$cschema[id]\" class=\"inline\" /> $cschema[name]<br />\n");
                 }
               ?>
             </div> 

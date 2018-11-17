@@ -52,6 +52,7 @@ label { font-size: 14px; font-weight: bold; }
 .red { color: red; }
 .margintop30 { margin-top: 30px; }
 .green { color: green; }
+.inline { display: inline; }
 
 /* UZIVATELE */
 /d#asterisk { vertical-align: top; }

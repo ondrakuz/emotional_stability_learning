@@ -10,7 +10,9 @@ class AnswerNewController extends Controller
     $cschemas = $cschemaModel->selectAll();
     if (!empty($problem) && !empty($cschemas))
     {
-      $this->headr['title'] = "Vložení nové odpovědi na problém \"".$problem['name']."\"";
+      $this->headr['title'] = "Vložení nové odpovědi na problém \"$problem[name]\"";
+      $this->headr['key_words'] = "Vložení, odpověď, Problém, $problem[name]";
+      $this->headr['description'] = "Vložení nové odpovědi na problém \"$problem[name]\"";
       $this->data['problem'] = $problem;
       $this->data['cschemas'] = $cschemas;
       $this->view = 'answerNew';

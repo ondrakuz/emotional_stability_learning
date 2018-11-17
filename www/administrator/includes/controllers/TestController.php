@@ -15,7 +15,9 @@ class TestController extends Controller
             $this->headr['title'] = "Test - výběr kognitivního schmématu";
             $this->headr['key_words'] = "Test,kognitivní schméma";
             $this->headr['description'] = "Test - výběr kognitivního schmématu";
+            
             $this->data['cschemas'] = $cschemas;
+            
             $this->view = 'testSchema';
         }
         else
@@ -27,14 +29,16 @@ class TestController extends Controller
 //                 $problem = $problems[0];
                 $answers = $answersModel->selectByIdP($problems[0]['id']);
                 
-                $this->headr['title'] = "Test - Problém  \"$problem[nazev]\"";
-                $this->headr['key_words'] = "Test, Problém, $problem[nazev]";
-                $this->headr['description'] = "Test - Problém \"$problem[nazev]\"";
+                $this->headr['title'] = "Test - Problém  \"$problems[0][name]\"";
+                $this->headr['key_words'] = "Test, Problém, $problems[0][name]";
+                $this->headr['description'] = "Test - Problém \"$problems[0][name]\"";
+                
                 $this->data['answers'] = $answers;
                 $this->data['problem'] = $problems[0];
                 $this->data['nWrong'] = 0;
                 $this->data['nCorrect'] = 0;
                 $this->data['idcs'] = $idcs;
+                
                 $this->view = 'testProblem';
             }
             else
@@ -76,11 +80,13 @@ class TestController extends Controller
                     $this->headr['title'] = "Test - Problém  \"$problem[nazev]\"";
                     $this->headr['key_words'] = "Test, Problém, $problem[nazev]";
                     $this->headr['description'] = "Test - Problém \"$problem[nazev]\"";
+                    
                     $this->data['answers'] = $answers;
                     $this->data['problem'] = $problem;
                     $this->data['nWrong'] = $nWrong;
                     $this->data['nCorrect'] = $nCorrect;
                     $this->data['idcs'] = $idcs;
+                    
                     $this->view = 'testProblem';
                 }
                 else

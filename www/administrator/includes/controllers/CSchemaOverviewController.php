@@ -7,7 +7,11 @@ class CSchemaOverviewController extends Controller
     if ($cschemas = $cschemaModel->selectAll())
     {
       $this->headr['title'] = "Přehled kognitivních schémat";
+      $this->headr['key_words'] = "Přehled, Kognitivní schémata";
+      $this->headr['description'] = "Přehled kognitivních schémat";
+      
       $this->data['cschemas'] = $cschemas;
+      
       $this->view = 'cschemaOverview';
     }
   }

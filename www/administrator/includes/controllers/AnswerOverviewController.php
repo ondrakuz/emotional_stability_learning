@@ -18,7 +18,9 @@ class AnswerOverviewController extends Controller
       
     if (!empty($problem))
     {
-      $this->headr['title'] = "Řešení problému $problem[name]";
+      $this->headr['title'] = "Řešení problému \"$problem[name]\"";
+      $this->headr['key_words'] = "Řešeni, Problém, $problem[name]";
+      $this->headr['description'] = "Řešení problému \"$problem[name]\"";
       $this->data['answers'] = $answers;
       $this->data['problem'] = $problem;
       $this->view = 'answerOverview';

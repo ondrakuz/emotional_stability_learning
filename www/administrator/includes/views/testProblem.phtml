@@ -11,7 +11,7 @@
               <?php
                 foreach($answers as $answer)
                 {
-                    echo("                  <input type='radio' name='answerCS' value=\"".$answer['id_cog_schema']."\" > ".$answer['answer']."<br />\n");
+                    echo("                  <input type='radio' name='answerCS' value=\"$answer[id_cog_schema]\"  class=\"inline\" /> $answer[answer]<br />\n");
                 }
               ?>
             </div> 
