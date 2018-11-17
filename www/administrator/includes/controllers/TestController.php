@@ -41,9 +41,6 @@ class TestController extends Controller
             {
                 $idp++;
                 $problems = $problemModel->selectAll();
-//                 echo "\$_POST['idp'] = $_POST[idp];<br />\$idp = $idp;<br /><br />Problems:";
-//                 print_r($problems);
-//                 exit;
                 $num = count($problems);
                 $deleted = true;
                 do {
@@ -55,11 +52,13 @@ class TestController extends Controller
                             break;
                         }
                     }
-                    if ($deleted) $idp++;
-                    else break;
-                } while ($deleted||($idp <= ($problems[$num-1]['id']+1)));
+                    $answers = $answersModel->selectByIdP($idp);
+                    $numa = count($answers);
+                    if (((!$deleted)&&(!empty($answers)))||($idp > ($problems[$num-1]['id']))) break;
+                    $idp++;
+                } while (1);
                 
-                if (!$deleted&&($idp < $problems[$num-1]['id']))
+                if (!$deleted&&($idp < ($problems[$num-1]['id']+1)))
                 {
                     $nWrong = $_POST['nWrong'];
                     $nCorrect = $_POST['nCorrect'];
@@ -73,7 +72,6 @@ class TestController extends Controller
                     }
                     
                     $problem = $problemModel->selectById($idp);
-                    $answers = $answersModel->selectByIdP($idp);
                     
                     $this->headr['title'] = "Test - Problém  \"$problem[nazev]\"";
                     $this->headr['key_words'] = "Test, Problém, $problem[nazev]";
@@ -88,6 +86,16 @@ class TestController extends Controller
                 else
                 {
                     $cschema = $cschemaModel->selectById($idcs);
+                    $nWrong = $_POST['nWrong'];
+                    $nCorrect = $_POST['nCorrect'];
+                    if ($_POST['answerCS'] == $idcs)
+                    {
+                        $nCorrect++;
+                    }
+                    else
+                    {
+                        $nWrong++;
+                    }
                     
                     $this->data['cschema'] = $cschema;
                     $this->data['nWrong'] = $nWrong;
