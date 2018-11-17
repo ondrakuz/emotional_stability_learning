@@ -100,6 +100,11 @@ class TestController extends Controller
                     $this->data['cschema'] = $cschema;
                     $this->data['nWrong'] = $nWrong;
                     $this->data['nCorrect'] = $nCorrect;
+                    
+                    $this->headr['title'] = "Test - Výsledky";
+                    $this->headr['key_words'] = "Test, Výsledky";
+                    $this->headr['description'] = "Výsledky Testu";
+                    
                     $this->view = 'testResults';
                 }
             }
