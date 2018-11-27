@@ -28,6 +28,7 @@ class TestController extends Controller
                 $problems = $problemModel->selectAll();
 //                 $problem = $problems[0];
                 $answers = $answersModel->selectByIdP($problems[0]['id']);
+                shuffle($answers);
                 
                 $this->headr['title'] = "Test - Problém  \"$problems[0][name]\"";
                 $this->headr['key_words'] = "Test, Problém, $problems[0][name]";
@@ -76,6 +77,7 @@ class TestController extends Controller
                     }
                     
                     $problem = $problemModel->selectById($idp);
+                    shuffle($answers);
                     
                     $this->headr['title'] = "Test - Problém  \"$problem[nazev]\"";
                     $this->headr['key_words'] = "Test, Problém, $problem[nazev]";
