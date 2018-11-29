@@ -29,6 +29,7 @@ class TestController extends Controller
 //                 $problem = $problems[0];
                 $answers = $answersModel->selectByIdP($problems[0]['id']);
                 shuffle($answers);
+                $cschema = $cschemaModel->selectById($idcs);
                 
                 $this->headr['title'] = "Test - Problém  \"$problems[0][name]\"";
                 $this->headr['key_words'] = "Test, Problém, $problems[0][name]";
@@ -38,7 +39,7 @@ class TestController extends Controller
                 $this->data['problem'] = $problems[0];
                 $this->data['nWrong'] = 0;
                 $this->data['nCorrect'] = 0;
-                $this->data['idcs'] = $idcs;
+                $this->data['cschema'] = $cschema;
                 
                 $this->view = 'testProblem';
             }
@@ -78,6 +79,7 @@ class TestController extends Controller
                     
                     $problem = $problemModel->selectById($idp);
                     shuffle($answers);
+                    $cschema = $cschemaModel->selectById($idcs);
                     
                     $this->headr['title'] = "Test - Problém  \"$problem[nazev]\"";
                     $this->headr['key_words'] = "Test, Problém, $problem[nazev]";
@@ -87,7 +89,7 @@ class TestController extends Controller
                     $this->data['problem'] = $problem;
                     $this->data['nWrong'] = $nWrong;
                     $this->data['nCorrect'] = $nCorrect;
-                    $this->data['idcs'] = $idcs;
+                    $this->data['cschema'] = $cschema;
                     
                     $this->view = 'testProblem';
                 }
