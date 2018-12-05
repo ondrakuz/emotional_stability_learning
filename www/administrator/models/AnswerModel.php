@@ -17,11 +17,18 @@ class AnswerModel
 
   public function selectByIdP($idp)
   {
-    $db = DbModel::getInstance();
-    $answers = $db->selectArray(array('answers'), array ('*'), array ('id_problem' => $idp, 'deleted' => 0), 'id asc');
-    return $answers;
+      $db = DbModel::getInstance();
+      $answers = $db->selectArray(array('answers'), array ('*'), array ('id_problem' => $idp, 'deleted' => 0), 'id asc');
+      return $answers;
   }
-
+  
+  public function selectByIds($idp, $idcs)
+  {
+      $db = DbModel::getInstance();
+      $answers = $db->selectArray(array('answers'), array ('*'), array ('id_problem' => $idp, 'id_cog_schema' => $idcs, 'deleted' => 0), 'id asc');
+      return $answers;
+  }
+  
   public function insert(array $values)
   {
     $db = DbModel::getInstance();
