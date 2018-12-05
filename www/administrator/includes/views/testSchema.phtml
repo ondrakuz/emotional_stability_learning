@@ -4,14 +4,15 @@
         <div class="message">Vyberte si testované kognitivní schéma. Vybrané odpovědi pak musí odpovídat tomuto schématu.</div><br /><br />
           <form method="post" action="http://<?= $this->siteName ?>/test">
             <div class="form-group">
-              <label for="idcs">Kognitivní schéma:</label><br />
+              <label for="idcs">Kognitivní schéma:</label><br /><br />
               <?php
                 foreach($cschemas as $cschema)
                 {
                     if ($cschema['id'] != 1)
-                        echo("                  <input type='radio' id=\"idcs\" name='idcs' value=\"$cschema[id]\" class=\"inline\" /> $cschema[name]<br />\n");
+                        echo("                  <div class=\"testbox\"><input type='radio' id=\"idcs\" name='idcs' value=\"$cschema[id]\" class=\"radio\" /> <span class=\"radiotext\">$cschema[name]</span></div><br />\n");
                 }
               ?>
+              <hr class="cleaner" />
             </div> 
             <button type="submit" name="test1" value="Continue">Pokračovat</button>
           </form>
