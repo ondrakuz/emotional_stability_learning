@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Stř 14. lis 2018, 22:44
+-- Vytvořeno: Stř 05. pro 2018, 12:49
 -- Verze serveru: 5.7.22
--- Verze PHP: 7.1.23
+-- Verze PHP: 7.1.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,7 +55,17 @@ INSERT INTO `answers` (`id`, `id_problem`, `id_cog_schema`, `answer`, `deleted`)
 (12, 3, 3, 'Chřipka ani všechny její důsledky nejsou ve skutečnosti důležité, můžu v klidu odpočívat než se uzdravím.', 0),
 (13, 3, 4, 'Zdraví lidí je řízeno vyšší mocí a nemá cenu se kvůli tomu trápit.', 0),
 (14, 4, 1, 'Je to strašné, vše mi jde tak pomalu, že ničeho v životě nedosáhnu.', 0),
-(15, 4, 2, 'Když mi jdou věci pomalu, alespoň toho nestihnu moc pokazit.', 0);
+(15, 4, 2, 'Když mi jdou věci pomalu, alespoň toho nestihnu moc pokazit.', 0),
+(16, 4, 3, 'To, že jdou člověku věci pomalu není podstatné, pokud s tím neumí nic udělat.', 0),
+(17, 4, 4, 'Rychlost, jakou se věci v lidském světě dějí, řídí bůh. Pokud něco můžu zvládnout rychleji, udělám to, jinak je to v pořádku i pomalu.', 0),
+(18, 6, 1, 'Nikdy s nikým nevydržím nebo mě jiní opustí, a štěstí v životě nikdy nedosáhnu.', 0),
+(19, 6, 2, 'Nedá se nic dělat, mám teď čas si vše srovnat v hlavě a v budoucnu se třeba ještě seznámit s někým jiným.', 0),
+(20, 6, 3, 'Pokud se ztrátou partnera nemůžu už nic udělat, není to téhle chvíli důležité.', 0),
+(21, 6, 4, 'Láska a vztahy mezi lidmi jsou řízeny vyšší mocí.', 0),
+(22, 7, 1, 'Špatné vztahy v rodině negativně ovlivňují všechny ostatní oblasti života.', 0),
+(23, 7, 2, 'Je to dobré k tomu, že mě to vede k samostatnosti.', 0),
+(24, 7, 3, 'Chování ostatních lidí se nedá moc ovlivnit, takže to není důležité.', 0),
+(25, 7, 4, 'Chování ostatních lidí je projevem boží vůle - asi v tom je nějaký vyšší smysl a nemá cenu se kvůli tomu trápit.', 0);
 
 -- --------------------------------------------------------
 
@@ -77,7 +87,8 @@ INSERT INTO `cog_schema` (`id`, `name`, `deleted`) VALUES
 (1, 'Chybná odpověď', 0),
 (2, 'Otáčení emocí', 0),
 (3, 'Princip subjektivity', 0),
-(4, 'Ví­ra v Boha', 0);
+(4, 'Ví­ra v Boha', 0),
+(5, 'Přijímání a rušení problémů', 0);
 
 -- --------------------------------------------------------
 
@@ -171,13 +182,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pro tabulku `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pro tabulku `cog_schema`
 --
 ALTER TABLE `cog_schema`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pro tabulku `problem`
