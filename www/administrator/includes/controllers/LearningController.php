@@ -27,21 +27,24 @@ class LearningController extends Controller
             {
                 $problems = $problemModel->selectAll();
                 
-                if ($idcs)
+                if ($idcs < 100)
                 {
-                    $answer = $answersModel->selectByIds($problems[0]['id'], $idcs);
-                    $answers[0] = $answer;
+//                     print_r($problems);
+//                     exit;
+                    $answers = $answersModel->selectByIds($problems[0]['id'], $idcs);
                     $cschema = $cschemaModel->selectById($idcs);
                 }
                 else
                 {
-                    $answers = $answersModel->selectByIdP($idp);
-                    $cschema['id'] = 0;
+//                     print_r($problems);
+//                     exit;
+                    $answers = $answersModel->selectByIdP($problems[0]['id']);
+                    $cschema['id'] = 100;
                 }
                 
-                $this->headr['title'] = "Test - Problém  \"$problems[0][name]\"";
-                $this->headr['key_words'] = "Test, Problém, $problems[0][name]";
-                $this->headr['description'] = "Test - Problém \"$problems[0][name]\"";
+                $this->headr['title'] = "Výuka - Problém  \"$problems[0][name]\"";
+                $this->headr['key_words'] = "Výuka, Problém, $problems[0][name]";
+                $this->headr['description'] = "Výuka - Problém \"$problems[0][name]\"";
                 
                 $this->data['answers'] = $answers;
                 $this->data['problem'] = $problems[0];
@@ -52,6 +55,8 @@ class LearningController extends Controller
             else
             {
                 $idp++;
+//                 echo("\n<br /><br />\$idp = $idp<br /><br />\n");
+//                 exit;
                 $problems = $problemModel->selectAll();
                 $num = count($problems);
                 $deleted = true;
@@ -64,64 +69,53 @@ class LearningController extends Controller
                             break;
                         }
                     }
-                    $answers = $answersModel->selectByIdP($idp);
+                    
+                    if ($idcs < 100)
+                    {
+                        $answers = $answersModel->selectByIds($idp, $idcs);
+                    }
+                    else
+                    {
+                        $answers = $answersModel->selectByIdP($idp);
+                    }
+                    
                     $numa = count($answers);
                     if (((!$deleted)&&(!empty($answers)))||($idp > ($problems[$num-1]['id']))) break;
                     $idp++;
                 } while (1);
                 
-                if (!$deleted&&($idp < ($problems[$num-1]['id']+1)))
+                if ($idcs < 100)
                 {
-                    $nWrong = $_POST['nWrong'];
-                    $nCorrect = $_POST['nCorrect'];
-                    if ($_POST['answerCS'] == $idcs)
-                    {
-                        $nCorrect++;
-                    }
-                    else
-                    {
-                        $nWrong++;    
-                    }
-                    
-                    $problem = $problemModel->selectById($idp);
-                    shuffle($answers);
                     $cschema = $cschemaModel->selectById($idcs);
-                    
-                    $this->headr['title'] = "Test - Problém  \"$problem[nazev]\"";
-                    $this->headr['key_words'] = "Test, Problém, $problem[nazev]";
-                    $this->headr['description'] = "Test - Problém \"$problem[nazev]\"";
-                    
-                    $this->data['answers'] = $answers;
-                    $this->data['problem'] = $problem;
-                    $this->data['nWrong'] = $nWrong;
-                    $this->data['nCorrect'] = $nCorrect;
-                    $this->data['cschema'] = $cschema;
-                    
-                    $this->view = 'testProblem';
                 }
                 else
                 {
-                    $cschema = $cschemaModel->selectById($idcs);
-                    $nWrong = $_POST['nWrong'];
-                    $nCorrect = $_POST['nCorrect'];
-                    if ($_POST['answerCS'] == $idcs)
-                    {
-                        $nCorrect++;
-                    }
-                    else
-                    {
-                        $nWrong++;
-                    }
+                    $cschema['id'] = 100;
+                }
+                
+                if (!$deleted&&($idp < ($problems[$num-1]['id']+1)))
+                {
+                    $problem = $problemModel->selectById($idp);
                     
+                    $this->headr['title'] = "Výuka - Problém  \"$problem[name]\"";
+                    $this->headr['key_words'] = "Výuka, Problém, $problem[name]";
+                    $this->headr['description'] = "Výuka - Problém \"$problem[name]\"";
+                    
+                    $this->data['answers'] = $answers;
+                    $this->data['problem'] = $problem;
                     $this->data['cschema'] = $cschema;
-                    $this->data['nWrong'] = $nWrong;
-                    $this->data['nCorrect'] = $nCorrect;
                     
-                    $this->headr['title'] = "Test - Výsledky";
-                    $this->headr['key_words'] = "Test, Výsledky";
-                    $this->headr['description'] = "Výsledky Testu";
+                    $this->view = 'learnProblem';
+                }
+                else
+                {
+                    $this->data['cschema'] = $cschema;
                     
-                    $this->view = 'testResults';
+                    $this->headr['title'] = "Výuka - konec";
+                    $this->headr['key_words'] = "Výuka, konec";
+                    $this->headr['description'] = "Konec výuky";
+                    
+                    $this->view = 'learnEnd';
                 }
             }
         }

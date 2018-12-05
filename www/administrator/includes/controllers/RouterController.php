@@ -82,6 +82,7 @@ class RouterController extends Controller
         
     if ($this->isError)
     {
+      $this->error.="<br /><br />View: ".$this->controller->view."<br /><br />";
       $this->controller = null;
       $this->controller = new ErrorController($this->error);
       $this->controller->ctrMain($parameters);
