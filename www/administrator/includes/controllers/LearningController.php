@@ -40,6 +40,12 @@ class LearningController extends Controller
 //                     exit;
                     $answers = $answersModel->selectByIdP($problems[0]['id']);
                     $cschema['id'] = 100;
+                    $numA = count($answers);
+                    for( $i = 0; $i < $numA; $i++)
+                    {
+                        $cschemaA = $cschemaModel->selectById($answers[$i]['id_cog_schema']);
+                        $answers[$i]['name_cog_schema'] = $cschemaA['name'];
+                    }
                 }
                 
                 $this->headr['title'] = "Výuka - Problém  \"$problems[0][name]\"";
@@ -91,6 +97,12 @@ class LearningController extends Controller
                 else
                 {
                     $cschema['id'] = 100;
+                    $numA = count($answers);
+                    for( $i = 0; $i < $numA; $i++)
+                    {
+                        $cschemaA = $cschemaModel->selectById($answers[$i]['id_cog_schema']);
+                        $answers[$i]['name_cog_schema'] = $cschemaA['name'];
+                    }
                 }
                 
                 if (!$deleted&&($idp < ($problems[$num-1]['id']+1)))

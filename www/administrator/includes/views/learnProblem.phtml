@@ -10,7 +10,14 @@
 //                 print_r($answers);
                 foreach($answers as $answer)
                 {
-                    echo("                  <div class=\"testbox\"><span class=\"radiotext\">- $answer[answer]</span></div><br />\n");
+                    if ($cschema['id'] < 100)
+                    {
+                        echo("                  <div class=\"testbox\"><span class=\"radiotext\">- $answer[answer]</span></div><br />\n");
+                    }
+                    else
+                    {
+                        if ($answer['id_cog_schema'] != 1) echo("                  <div class=\"testbox\"><span class=\"radiotext\"><strong>$answer[name_cog_schema]:</strong> $answer[answer]</span></div><br />\n");
+                    }
                 }
               ?>
             </div> 
