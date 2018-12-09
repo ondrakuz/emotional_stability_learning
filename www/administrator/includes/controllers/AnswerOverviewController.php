@@ -3,10 +3,13 @@ class AnswerOverviewController extends Controller
 {
   public function ctrMain($parameters)
   {
-    $idp = array_shift($parameters);
+    global $expressions, $lang;
+      
     $answerModel = new AnswerModel();
-    $answers = $answerModel->selectByIdP(htmlspecialchars($idp, ENT_QUOTES));
     $cschemaModel = new CSchemaModel();
+    
+    $idp = array_shift($parameters);
+    $answers = $answerModel->selectByIdP(htmlspecialchars($idp, ENT_QUOTES));
     $num = count($answers);
     for($i = 0; $i < $num; $i++)
     {
@@ -18,11 +21,13 @@ class AnswerOverviewController extends Controller
       
     if (!empty($problem))
     {
-      $this->headr['title'] = "Řešení problému \"$problem[name]\"";
-      $this->headr['key_words'] = "Řešeni, Problém, $problem[name]";
-      $this->headr['description'] = "Řešení problému \"$problem[name]\"";
+      $this->headr['title'] = $expressions["Solutions of the problem"]." \"$problem[name]\"";
+      $this->headr['key_words'] = "$expressions[Solutions], $expressions[Problem], $problem[name]";
+      $this->headr['description'] = $expressions['Solutions of the problem']." \"$problem[name]\"";
+      
       $this->data['answers'] = $answers;
       $this->data['problem'] = $problem;
+      
       $this->view = 'answerOverview';
     }
   }

@@ -1,12 +1,13 @@
+<?php global $expressions, $lang; ?>        
         <div class="col-sm-3"></div>
         <div class="col-sm-4">
-          <h4>Vložení nového kognitivního schématu</h4>
-          <form method="post" action="http://<?= $this->siteName ?>/c-schema-add">
+          <h4><?=$expressions['Add new cognitive schema']?></h4>
+          <form method="post" action="http://<?= $this->siteName."/".$lang ?>/c-schema-add">
             <div class="form-group">
-              <label for="name">Název:</label>
+              <label for="name"><?=$expressions['Name']?>:</label>
               <input type="text" class="form-control" id="name" name="name">
             </div>
-            <button type="submit" name="cschema" value="Save">Uložit</button>
+            <button type="submit" name="cschema" value="Save"><?=$expressions['Save']?></button>
           </form>
         </div><!-- /col-sm-4 -->
         <div class="col-sm-3"></div>

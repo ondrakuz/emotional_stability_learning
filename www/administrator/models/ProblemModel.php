@@ -3,8 +3,12 @@ class ProblemModel
 {
   public function selectAll()
   {
+    global $lang;
     $db = DbModel::getInstance();
-    $problems = $db->selectAll('problem', 'id asc');
+    $langModel = new LanguagesModel();
+    $language = $langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'");
+    
+    $problems = $db->selectArray(array ('problem'), array ('*'), array ('id_lang' => $language['id']), 'id asc');
     return $problems;
   }
 

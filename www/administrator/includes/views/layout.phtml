@@ -17,37 +17,38 @@
   <body>
     <div class="container-fluid margintop30">
       <div id="header" class="shadow">
-        <a href="http://<?=$this->siteName?>"><h1>Emotional Stability Learning</h1></a>
+        <a href="http://<?=$this->siteName?>/<?=$lang?>"><h1>Emotional Stability Learning</h1></a>
       </div>
       <div class="row">
         <div class="col-sm-2" >
           <ul class="list-group shadow" id="left_panel">
           <li class="list-group-item"><div class="category">
-            <img src="http://<?=$this->siteName?>/administrator/icons/asterisk_orange.png" width="16" height="16" alt="icon" /> <span class="title">Projekt Emotional Stability Learning</span><br />
+            <img src="http://<?=$this->siteName?>/administrator/icons/asterisk_orange.png" width="16" height="16" alt="icon" /> <span class="title"><?=$expressions['Project']?> Emotional Stability Learning</span><br />
             <ul class="list-group">
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/data/EmotionalStabilityLearning_projekt_cz.pdf">O projektu</a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/data/EmotionalStabilityLearning_projekt_<?=$lang?>.pdf"><?=$expressions['About project']?></a></li>
             </ul>
           </div></li>
           <li class="list-group-item"><div class="category">
-            <img src="http://<?=$this->siteName?>/administrator/icons/application_side_list.png" width="16" height="16" alt="icon" /> <span class="title">Problémy</span><br />
+            <img src="http://<?=$this->siteName?>/administrator/icons/application_side_list.png" width="16" height="16" alt="icon" /> <span class="title"><?=$expressions['Problems']?></span><br />
             <ul class="list-group">
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/problem-overview">Přehled problémů</a></li>
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/problem-new">Přidat problém</a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/<?=$lang?>/problem-overview"><?=$expressions['Problems overview']?></a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/<?=$lang?>/problem-new"><?=$expressions['Add problem']?></a></li>
             </ul>
           </div></li>
           <li class="list-group-item"><div class="category">
-            <img src="http://<?=$this->siteName?>/administrator/icons/blueprint.png" width="16" height="16" alt="icon" /> <span class="title">Kognitivní schémata</span><br/>
+            <img src="http://<?=$this->siteName?>/administrator/icons/blueprint.png" width="16" height="16" alt="icon" /> <span class="title"><?=$expressions['Cognitive schemas']?></span><br/>
             <ul class="list-group">
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/c-schema-overview">Přehled schémat</a></li>
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/c-schema-new">Přidat schéma</a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/<?=$lang?>/c-schema-overview"><?=$expressions['Schemas overview']?></a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/<?=$lang?>/c-schema-new"><?=$expressions['Add schema']?></a></li>
             </ul>
           </div></li>
           <li class="list-group-item"><div class="category">
-            <img src="http://<?=$this->siteName?>/administrator/icons/lightbulb.png" width="16" height="16" alt="icon" /> <span class="title">Výuka</span><br/>
+            <img src="http://<?=$this->siteName?>/administrator/icons/lightbulb.png" width="16" height="16" alt="icon" /> <span class="title"><?=$expressions['Learning']?></span><br/>
             <ul class="list-group">
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/learning">Výuka</a></li>
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/test">Otestovat se</a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/<?=$lang?>/learning"><?=$expressions['Learning']?></a></li>
+              <li class="list-group-item"><a href="http://<?=$this->siteName?>/<?=$lang?>/test"><?=$expressions['Test yourselves']?></a></li>
             </ul>
+            <center><a href="http://<?=$this->siteName?>/en" title="Čeština"><img src="http://<?=$this->siteName?>/administrator/lang_icons/en.png" /></a> <a href="http://<?=$this->siteName?>/cs" title="English"><img src="http://<?=$this->siteName?>/administrator/lang_icons/cs.png" /></a></center>
           </div></li>
           </ul>
         </div>

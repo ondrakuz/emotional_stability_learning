@@ -3,16 +3,19 @@ class ProblemOverviewController extends Controller
 {
   public function ctrMain($parameters)
   {
+    global $expressions, $lang;
+    
     $problemModel = new ProblemModel();
-    if ($problems = $problemModel->selectAll())
-    {
-      $this->headr['title'] = "Přehled problémů";
-      $this->headr['key_words'] = "Přehled, problémy";
-      $this->headr['description'] = "Přehled problémů";
-      
-      $this->data = array( 'problems' => $problems );
-      $this->view = 'problemOverview';
-    }
+    $problems = $problemModel->selectAll();
+
+    $this->headr['title'] = $expressions['Problems overview'];
+    $this->headr['key_words'] = "$expressions[overview], $expressions[Problems]";
+    $this->headr['description'] = $expressions['Problems overview'];
+    
+    $this->data = array( 'problems' => $problems );
+//     $this->data['path'] = '../../';
+    
+    $this->view = 'problemOverview';
   }
 }
 ?>

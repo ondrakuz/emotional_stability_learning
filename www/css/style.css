@@ -6,6 +6,7 @@ td a { text-decoration: none; color: black; }
 td a:hover { text-decoration: underline; color: black; }
 a { text-decoration: none; color: black; }
 a:hover { text-decoration: underline; color: black; }
+td { font-size: 12px!important; }
 
 table.header { width: 98%; }
 td.logo { width: 80%; }

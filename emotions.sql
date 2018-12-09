@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.8
 -- https://www.phpmyadmin.net/
 --
--- Počítač: 127.0.0.1
--- Vytvořeno: Stř 05. pro 2018, 12:49
--- Verze serveru: 5.7.22
--- Verze PHP: 7.1.24
+-- Počítač: localhost
+-- Vytvořeno: Ned 09. pro 2018, 17:12
+-- Verze serveru: 10.1.37-MariaDB
+-- Verze PHP: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databáze: `ondrejkuzcz1`
+-- Databáze: `emotions`
 --
 
 -- --------------------------------------------------------
@@ -93,6 +93,37 @@ INSERT INTO `cog_schema` (`id`, `name`, `deleted`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktura tabulky `languages`
+--
+
+CREATE TABLE `languages` (
+  `id` int(11) NOT NULL,
+  `text_id` varchar(4) COLLATE utf8_czech_ci NOT NULL,
+  `name` varchar(30) COLLATE utf8_czech_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+
+--
+-- Vypisuji data pro tabulku `languages`
+--
+
+INSERT INTO `languages` (`id`, `text_id`, `name`) VALUES
+(1, 'cs', 'Čeština'),
+(2, 'en', 'Angličtina'),
+(3, 'fi', 'Finština'),
+(4, 'fr', 'Francouzština'),
+(5, 'it', 'Italština'),
+(6, 'hu', 'Maďarština'),
+(7, 'de', 'Němčina'),
+(8, 'no', 'Norština'),
+(9, 'pl', 'Polština'),
+(10, 'pt', 'Portugalština'),
+(11, 'ru', 'Ruština'),
+(12, 'es', 'Španělština'),
+(13, 'se', 'Švédština');
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabulky `problem`
 --
 
@@ -162,6 +193,13 @@ ALTER TABLE `cog_schema`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Klíče pro tabulku `languages`
+--
+ALTER TABLE `languages`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `text_id` (`text_id`);
+
+--
 -- Klíče pro tabulku `problem`
 --
 ALTER TABLE `problem`
@@ -189,6 +227,12 @@ ALTER TABLE `answers`
 --
 ALTER TABLE `cog_schema`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pro tabulku `languages`
+--
+ALTER TABLE `languages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pro tabulku `problem`

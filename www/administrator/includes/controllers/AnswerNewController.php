@@ -3,18 +3,23 @@ class AnswerNewController extends Controller
 {
   public function ctrMain($parameters)
   {
-    $idp = array_shift($parameters);
+    global $expressions, $lang;
+      
     $problemModel = new ProblemModel();
-    $problem = $problemModel->selectById(htmlspecialchars($idp, ENT_QUOTES));
     $cschemaModel = new CSchemaModel();
+    
+    $idp = array_shift($parameters);
+    $problem = $problemModel->selectById(htmlspecialchars($idp, ENT_QUOTES));
     $cschemas = $cschemaModel->selectAll();
     if (!empty($problem) && !empty($cschemas))
     {
-      $this->headr['title'] = "Vložení nové odpovědi na problém \"$problem[name]\"";
-      $this->headr['key_words'] = "Vložení, odpověď, Problém, $problem[name]";
-      $this->headr['description'] = "Vložení nové odpovědi na problém \"$problem[name]\"";
+      $this->headr['title'] = $expressions['Add new solution of the problem']." \"$problem[name]\"";
+      $this->headr['key_words'] = "$expressions[Addition], $expressions[Solution], $expressions[Problem], $problem[name]";
+      $this->headr['description'] = $expressions['Add new solution of the problem']." \"$problem[name]\"";
+      
       $this->data['problem'] = $problem;
       $this->data['cschemas'] = $cschemas;
+      
       $this->view = 'answerNew';
     }
   }

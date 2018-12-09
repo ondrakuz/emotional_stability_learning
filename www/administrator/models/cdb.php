@@ -47,6 +47,7 @@ class cdb { // trida cdb bude slouzit k praci s databazi
       $this->data=null;
     }
     
+    $result2 = 0;
     if ($error == '')
     {
       try {

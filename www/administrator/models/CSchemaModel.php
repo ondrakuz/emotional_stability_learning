@@ -3,9 +3,13 @@ class CSchemaModel
 {
   public function selectAll()
   {
-    $db = DbModel::getInstance();
-    $cog_schemas = $db->selectAll('cog_schema', 'id asc');
-    return $cog_schemas;
+      global $lang;
+      $db = DbModel::getInstance();
+      $langModel = new LanguagesModel();
+      $language = $langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'");
+      
+      $cog_schemas = $db->selectArray(array ('cog_schema'), array ('*'), array ('id_lang' => $language['id']), 'id asc');
+      return $cog_schemas;
   }
 
   public function selectById($id)

@@ -3,9 +3,13 @@ class AnswerModel
 {
   public function selectAll()
   {
-    $db = DbModel::getInstance();
-    $answers = $db->selectAll('answers', 'id asc');
-    return $answers;
+      global $lang;
+      $db = DbModel::getInstance();
+      $langModel = new LanguagesModel();
+      $language = $langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'");
+      
+      $answers = $db->selectArray(array ('answers'), array ('*'), array ('id_lang' => $language['id']), 'id asc');
+      return $answers;
   }
 
   public function selectById($id)

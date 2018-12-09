@@ -3,9 +3,11 @@ class ProblemNewController extends Controller
 {
   public function ctrMain($parameters)
   {
-    $this->headr['title'] = "Nový problém";
-    $this->headr['key_words'] = "Nový problém";
-    $this->headr['description'] = "Nový problém";
+    global $expressions, $lang;
+      
+    $this->headr['title'] = $expression['New problem'];
+    $this->headr['key_words'] = $expression['New problem'];
+    $this->headr['description'] = $expression['New problem'];
     
     $this->view = 'problemNew';
   }

@@ -147,6 +147,8 @@
       {
         $query .= ';';
       }
+//       echo('<br />'.$query.'<br />');
+//       exit;
       
       if (!$this->query($query))
       {

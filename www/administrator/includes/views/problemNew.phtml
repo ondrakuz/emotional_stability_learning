@@ -1,16 +1,17 @@
+<?php global $expressions, $lang; ?>        
         <div class="col-sm-3"></div>
         <div class="col-sm-4">
-          <h4>Vložení nového problému</h4>
-          <form method="post" action="http://<?= $this->siteName ?>/problem-add">
+          <h4><?=$expressions['Add new problem']?></h4>
+          <form method="post" action="http://<?= $this->siteName."/".$lang ?>/problem-add">
             <div class="form-group">
-              <label for="name">Název:</label>
+              <label for="name"><?=$expressions['Name']?>:</label>
               <input type="text" class="form-control" id="name" name="name">
             </div>
             <div class="form-group">
-              <label for="description">Popis:</label>
+              <label for="description"><?=$expressions['Description']?>:</label>
               <textarea class="form-control" rows="5" id="description" name="description"></textarea>
             </div>
-            <button type="submit" name="prob" value="Save">Uložit</button>
+            <button type="submit" name="prob" value="Save"><?=$expressions['Save']?></button>
           </form>
         </div><!-- /col-sm-4 -->
         <div class="col-sm-3"></div>
