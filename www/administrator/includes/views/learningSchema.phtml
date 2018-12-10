@@ -1,11 +1,12 @@
+<?php global $expressions, $lang; ?>        
         <div class="col-sm-3"></div>
         <div class="col-sm-4">
-        <h4>Výuka</h4>
-        <div class="message">Vyberte si vyučované kognitivní schéma. Odpovědi pak budou odpovídat tomuto schématu.</div><br /><br />
-          <form method="post" action="http://<?= $this->siteName ?>/learning">
+        <h4><?=$expressions['Learning']?></h4>
+        <div class="message"><?=$expressions['Select learned cognitive schema. Solutions will correspond to this schema then.']?></div><br /><br />
+          <form method="post" action="http://<?= $this->siteName."/$lang" ?>/learning">
             <div class="form-group">
-              <label for="idcs">Kognitivní schéma:</label><br /><br />
-                <div class="testbox"><input type='radio' id="idcs" name='idcs' value="100" class="radio" /> <span class="radiotext">Všechny schémata</span></div><br />
+              <label for="idcs"><?=$expressions['Cognitive schema']?>:</label><br /><br />
+                <div class="testbox"><input type='radio' id="idcs" name='idcs' value="100" class="radio" /> <span class="radiotext"><?=$expressions['All schemas']?></span></div><br />
               <?php
                 foreach($cschemas as $cschema)
                 {
@@ -15,7 +16,7 @@
               ?>
               <hr class="cleaner" />
             </div> 
-            <button type="submit" name="test1" value="Continue">Pokračovat</button>
+            <button type="submit" name="test1" value="Continue"><?=$expressions['Next']?></button>
           </form>
         </div><!-- /col-sm-4 -->
         <div class="col-sm-3"></div>

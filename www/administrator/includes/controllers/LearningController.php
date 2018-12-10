@@ -3,18 +3,20 @@ class LearningController extends Controller
 {
     public function ctrMain($parameters)
     {
-        $idcs = $_POST['idcs'];
+        global $expressions, $lang;
+        
         $cschemaModel = new CSchemaModel();
         $problemModel = new ProblemModel();
         $answersModel = new AnswerModel();
         
+        $idcs = $_POST['idcs'];
         if (empty($idcs))
         {
             $cschemas = $cschemaModel->selectAll();
             
-            $this->headr['title'] = "Test - výběr kognitivního schmématu";
-            $this->headr['key_words'] = "Test,kognitivní schméma";
-            $this->headr['description'] = "Test - výběr kognitivního schmématu";
+            $this->headr['title'] = "$expressions[Test] - ".$expressions['Choosing of cognitive schema'];
+            $this->headr['key_words'] = "$expressions[Test], ".$expressions['Cognitive schema'];
+            $this->headr['description'] = "$expressions[Test] - ".$expressions['Choosing of cognitive schema'];
             
             $this->data['cschemas'] = $cschemas;
             
@@ -48,9 +50,9 @@ class LearningController extends Controller
                     }
                 }
                 
-                $this->headr['title'] = "Výuka - Problém  \"$problems[0][name]\"";
-                $this->headr['key_words'] = "Výuka, Problém, $problems[0][name]";
-                $this->headr['description'] = "Výuka - Problém \"$problems[0][name]\"";
+                $this->headr['title'] = "$expressions[Learning] - $expressions[Problem]  \"$problems[0][name]\"";
+                $this->headr['key_words'] = "$expressions[Learning], $expressions[Problem], $problems[0][name]";
+                $this->headr['description'] = "$expressions[Learning] - $expressions[Problem] \"$problems[0][name]\"";
                 
                 $this->data['answers'] = $answers;
                 $this->data['problem'] = $problems[0];
@@ -109,9 +111,9 @@ class LearningController extends Controller
                 {
                     $problem = $problemModel->selectById($idp);
                     
-                    $this->headr['title'] = "Výuka - Problém  \"$problem[name]\"";
-                    $this->headr['key_words'] = "Výuka, Problém, $problem[name]";
-                    $this->headr['description'] = "Výuka - Problém \"$problem[name]\"";
+                    $this->headr['title'] = "$expressions[Learning] - $expressions[Problem]  \"$problem[name]\"";
+                    $this->headr['key_words'] = "$expressions[Learning], $expressions[Problem], $problem[name]";
+                    $this->headr['description'] = "$expressions[Learning] - $expressions[Problem] \"$problem[name]\"";
                     
                     $this->data['answers'] = $answers;
                     $this->data['problem'] = $problem;
@@ -123,9 +125,9 @@ class LearningController extends Controller
                 {
                     $this->data['cschema'] = $cschema;
                     
-                    $this->headr['title'] = "Výuka - konec";
-                    $this->headr['key_words'] = "Výuka, konec";
-                    $this->headr['description'] = "Konec výuky";
+                    $this->headr['title'] = "$expressions[Learning] - $expressions[End]";
+                    $this->headr['key_words'] = "$expressions[Learning], $expressions[End]";
+                    $this->headr['description'] = $expressions['End of learning'];
                     
                     $this->view = 'learnEnd';
                 }

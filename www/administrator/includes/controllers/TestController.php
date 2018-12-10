@@ -3,18 +3,20 @@ class TestController extends Controller
 {
     public function ctrMain($parameters)
     {
-        $idcs = $_POST['idcs'];
+        global $expressions, $lang;
+        
         $cschemaModel = new CSchemaModel();
         $problemModel = new ProblemModel();
         $answersModel = new AnswerModel();
         
+        $idcs = $_POST['idcs'];
         if (empty($idcs))
         {
             $cschemas = $cschemaModel->selectAll();
             
-            $this->headr['title'] = "Test - výběr kognitivního schmématu";
-            $this->headr['key_words'] = "Test,kognitivní schméma";
-            $this->headr['description'] = "Test - výběr kognitivního schmématu";
+            $this->headr['title'] = "$expressions[Test] - ".$expressions['Choosing of cognitive schema'];
+            $this->headr['key_words'] = "$expressions[Test], ".$expressions['Cognitive schema'];
+            $this->headr['description'] = "$expressions[Test] - ".$expressions['Choosing of cognitive schema'];
             
             $this->data['cschemas'] = $cschemas;
             
@@ -31,9 +33,9 @@ class TestController extends Controller
                 shuffle($answers);
                 $cschema = $cschemaModel->selectById($idcs);
                 
-                $this->headr['title'] = "Test - Problém  \"$problems[0][name]\"";
-                $this->headr['key_words'] = "Test, Problém, $problems[0][name]";
-                $this->headr['description'] = "Test - Problém \"$problems[0][name]\"";
+                $this->headr['title'] = "$expressions[Test] - $expressions[Problem]  \"$problems[0][name]\"";
+                $this->headr['key_words'] = "$expressions[Test], $expressions[Problem], $problems[0][name]";
+                $this->headr['description'] = "$expressions[Test] - $expressions[Problem] \"$problems[0][name]\"";
                 
                 $this->data['answers'] = $answers;
                 $this->data['problem'] = $problems[0];
@@ -81,9 +83,9 @@ class TestController extends Controller
                     shuffle($answers);
                     $cschema = $cschemaModel->selectById($idcs);
                     
-                    $this->headr['title'] = "Test - Problém  \"$problem[nazev]\"";
-                    $this->headr['key_words'] = "Test, Problém, $problem[nazev]";
-                    $this->headr['description'] = "Test - Problém \"$problem[nazev]\"";
+                    $this->headr['title'] = "$expressions[Test] - $expressions[Problem]  \"$problem[nazev]\"";
+                    $this->headr['key_words'] = "$expressions[Test], $expressions[Problem], $problem[nazev]";
+                    $this->headr['description'] = "$expressions[Test] - $expressions[Problem] \"$problem[nazev]\"";
                     
                     $this->data['answers'] = $answers;
                     $this->data['problem'] = $problem;
@@ -111,9 +113,9 @@ class TestController extends Controller
                     $this->data['nWrong'] = $nWrong;
                     $this->data['nCorrect'] = $nCorrect;
                     
-                    $this->headr['title'] = "Test - Výsledky";
-                    $this->headr['key_words'] = "Test, Výsledky";
-                    $this->headr['description'] = "Výsledky Testu";
+                    $this->headr['title'] = "$expressions[Test] - $expressions[Results]";
+                    $this->headr['key_words'] = "$expressions[Test], $expressions[Results]";
+                    $this->headr['description'] = $expressions['Results of Test'];
                     
                     $this->view = 'testResults';
                 }

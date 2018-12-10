@@ -1,7 +1,8 @@
+<?php global $expressions, $lang; ?>        
         <div class="col-sm-3"></div>
         <div class="col-sm-4">
-        <h4>Výsledky testu</h4><br />
-        <div class="message">Správné odpovědi: <span class="green"><?=$nCorrect?></span></div><br />
-        <div class="message">Chybné odpovědi: <span class="red"><?=$nWrong?></span></div>
+        <h4><?=$expressions['Results of Test']?></h4><br />
+        <div class="message"><?=$expressions['Correct answers']?>: <span class="green"><?=$nCorrect?></span></div><br />
+        <div class="message"><?=$expressions['Wrong answers']?>: <span class="red"><?=$nWrong?></span></div>
         </div><!-- /col-sm-4 -->
         <div class="col-sm-3"></div>
