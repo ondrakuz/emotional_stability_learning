@@ -4,7 +4,7 @@ class LanguagesModel
   public function selectAll()
   {
     $db = DbModel::getInstance();
-    $languages = $db->selectAll('languages', 'id asc');
+    $languages = $db->selectArray(array ('languages'), array ('*'), array (), 'id asc');
     return $languages;
   }
 

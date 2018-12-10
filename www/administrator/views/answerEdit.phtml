@@ -1,9 +1,9 @@
           <div class="col-sm-3"></div>
           <div class="col-sm-4">
-          <h4>Editace odpovědi na problém "<?php echo($answer['name']); ?>"</h4>
+          <h4>Editace řešení problému "<?php echo($answer['name']); ?>"</h4>
             <form method="post" action="http://<?= $this->siteName ?>/administrator/answer-update">
               <input type="hidden" name="id" value="<?php echo($answer['id']); ?>" />
-              <input type="hidden" name="idp" value="<?php echo($answer['id_problem']); ?>" />
+              <input type="hidden" name="idp" value="<?php echo($answer['id_answer']); ?>" />
               <div class="form-group">
                 <label for="idcs">Kognitivní schéma:</label>
                 <select class="form-control" id="idcs" name="idcs">
@@ -16,8 +16,20 @@
                 ?>
               </select>
               </div> 
+            <div class="form-group">
+              <label for="lang">Jazyk:</label>
+              <select class="form-control" id="lang" name="lang">
+              <?php
+                foreach($langs as $lang)
+                {
+                  if ($lang['id'] == $answer['id_lang']) echo("                  <option value=\"".$lang['id']."\" selected=\"selected\">[".$lang['text_id']."] ".$lang['name']."</option>\n");
+                  else echo("                  <option value=\"".$lang['id']."\" >[".$lang['text_id']."] ".$lang['name']."</option>\n");
+                }
+              ?>
+            </select>
+            </div>
               <div class="form-group">
-                <label for="name">Odpověď:</label>
+                <label for="name">Řešení:</label>
                 <textarea class="form-control" rows="5" id="name" name="name"><?php echo($answer['answer']); ?></textarea>
               </div>
               <button type="submit" name="answers" class="btn btn-default" value="Save">Uložit</button>

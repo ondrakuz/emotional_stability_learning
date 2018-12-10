@@ -19,7 +19,15 @@ class CSchemaModel
         return $cog_schemas;
     }
     
-    public function selectById($id)
+    public function selectByL($id_lang)
+    {
+        $db = DbModel::getInstance();
+        
+        $cog_schemas = $db->selectArray(array ('cog_schema'), array ('*'), array ('id_lang' => $id_lang), 'id asc');
+        return $cog_schemas;
+    }
+    
+  public function selectById($id)
   {
     $db = DbModel::getInstance();
     $cog_schema = $db->selectOne('cog_schema', array ('id' => $id));

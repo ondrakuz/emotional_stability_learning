@@ -1,6 +1,13 @@
 <?php
 class AnswerModel
 {
+    public function selectA()
+    {
+        $db = DbModel::getInstance();
+        $answers = $db->selectAll('answers', 'id asc');
+        return $answers;
+    }
+    
   public function selectAll()
   {
       global $lang;

@@ -4,15 +4,23 @@ class AnswerNewController extends Controller
   public function ctrMain($parameters)
   {
     $idp = array_shift($parameters);
+    
     $problemModel = new ProblemModel();
-    $problem = $problemModel->selectById(htmlspecialchars($idp, ENT_QUOTES));
     $cschemaModel = new CSchemaModel();
-    $cschemas = $cschemaModel->selectAll();
+    $langModel = new LanguagesModel();
+    
+    $problem = $problemModel->selectById(htmlspecialchars($idp, ENT_QUOTES));
+    $cschemas = $cschemaModel->selectByL($problem['id_lang']);
+    $languages = $langModel->selectAll();
+    
     if (!empty($problem) && !empty($cschemas))
     {
-      $this->headr['title'] = "Vložení nové odpovědi na problém \"".$problem['name']."\"";
+      $this->headr['title'] = "Vložení nového řešení problému \"".$problem['name']."\"";
+      
       $this->data['problem'] = $problem;
       $this->data['cschemas'] = $cschemas;
+      $this->data['langs'] = $languages;
+      
       $this->view = 'answerNew';
     }
   }
