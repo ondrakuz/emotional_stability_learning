@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: localhost
--- Vytvořeno: Ned 09. pro 2018, 17:12
+-- Vytvořeno: Pon 10. pro 2018, 07:58
 -- Verze serveru: 10.1.37-MariaDB
 -- Verze PHP: 5.6.38
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `answers` (
   `id` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
   `id_problem` int(11) NOT NULL,
   `id_cog_schema` int(11) NOT NULL,
   `answer` text COLLATE utf8_czech_ci NOT NULL,
@@ -40,32 +41,32 @@ CREATE TABLE `answers` (
 -- Vypisuji data pro tabulku `answers`
 --
 
-INSERT INTO `answers` (`id`, `id_problem`, `id_cog_schema`, `answer`, `deleted`) VALUES
-(1, 1, 1, 'Je to dost nepříjemné, dost mě to zlobí a ovlivňuje další věci', 0),
-(2, 1, 2, 'Může to být dobré k tomu, že člověk hned vidí koho si nevšímat.', 0),
-(3, 1, 3, 'Nedá se s tím nic dělat, ale je to bezvýznamné.', 0),
-(4, 1, 4, 'Nedá se s tím nic dělat, ale bůh tomu tak zřejmě z nějakého důvodu chce.', 0),
-(5, 2, 1, 'Ztráta zaměstnání je velmi špatná a má spoustu negativních důsledků', 0),
-(6, 2, 2, 'Může to být dobré k tomu, že člověk bude mít nějakou dobu více času, a pak třeba pozná zase jiné zaměstnání.', 0),
-(7, 2, 3, 'Ztráta zaměstnání ani žádný její důsledek ve skutečnosti nebrání tomu, aby byl člověk spokojen.', 0),
-(8, 2, 4, 'Ztráta zaměstnání je možná nějaká vyšší vůle a nemá cenu se s tím nějak trápit.', 0),
-(9, 3, 1, 'Je to nanic, spoustu věcí musím odložit a cítím se zle.', 0),
-(10, 3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0),
-(11, 2, 2, 'Člověk si může nějakou dobu odpočinout.', 1),
-(12, 3, 3, 'Chřipka ani všechny její důsledky nejsou ve skutečnosti důležité, můžu v klidu odpočívat než se uzdravím.', 0),
-(13, 3, 4, 'Zdraví lidí je řízeno vyšší mocí a nemá cenu se kvůli tomu trápit.', 0),
-(14, 4, 1, 'Je to strašné, vše mi jde tak pomalu, že ničeho v životě nedosáhnu.', 0),
-(15, 4, 2, 'Když mi jdou věci pomalu, alespoň toho nestihnu moc pokazit.', 0),
-(16, 4, 3, 'To, že jdou člověku věci pomalu není podstatné, pokud s tím neumí nic udělat.', 0),
-(17, 4, 4, 'Rychlost, jakou se věci v lidském světě dějí, řídí bůh. Pokud něco můžu zvládnout rychleji, udělám to, jinak je to v pořádku i pomalu.', 0),
-(18, 6, 1, 'Nikdy s nikým nevydržím nebo mě jiní opustí, a štěstí v životě nikdy nedosáhnu.', 0),
-(19, 6, 2, 'Nedá se nic dělat, mám teď čas si vše srovnat v hlavě a v budoucnu se třeba ještě seznámit s někým jiným.', 0),
-(20, 6, 3, 'Pokud se ztrátou partnera nemůžu už nic udělat, není to téhle chvíli důležité.', 0),
-(21, 6, 4, 'Láska a vztahy mezi lidmi jsou řízeny vyšší mocí.', 0),
-(22, 7, 1, 'Špatné vztahy v rodině negativně ovlivňují všechny ostatní oblasti života.', 0),
-(23, 7, 2, 'Je to dobré k tomu, že mě to vede k samostatnosti.', 0),
-(24, 7, 3, 'Chování ostatních lidí se nedá moc ovlivnit, takže to není důležité.', 0),
-(25, 7, 4, 'Chování ostatních lidí je projevem boží vůle - asi v tom je nějaký vyšší smysl a nemá cenu se kvůli tomu trápit.', 0);
+INSERT INTO `answers` (`id`, `id_lang`, `id_problem`, `id_cog_schema`, `answer`, `deleted`) VALUES
+(1, 1, 1, 1, 'Je to dost nepříjemné, dost mě to zlobí a ovlivňuje další věci', 0),
+(2, 1, 1, 2, 'Může to být dobré k tomu, že člověk hned vidí koho si nevšímat.', 0),
+(3, 1, 1, 3, 'Nedá se s tím nic dělat, ale je to bezvýznamné.', 0),
+(4, 1, 1, 4, 'Nedá se s tím nic dělat, ale bůh tomu tak zřejmě z nějakého důvodu chce.', 0),
+(5, 1, 2, 1, 'Ztráta zaměstnání je velmi špatná a má spoustu negativních důsledků', 0),
+(6, 1, 2, 2, 'Může to být dobré k tomu, že člověk bude mít nějakou dobu více času, a pak třeba pozná zase jiné zaměstnání.', 0),
+(7, 1, 2, 3, 'Ztráta zaměstnání ani žádný její důsledek ve skutečnosti nebrání tomu, aby byl člověk spokojen.', 0),
+(8, 1, 2, 4, 'Ztráta zaměstnání je možná nějaká vyšší vůle a nemá cenu se s tím nějak trápit.', 0),
+(9, 1, 3, 1, 'Je to nanic, spoustu věcí musím odložit a cítím se zle.', 0),
+(10, 1, 3, 2, 'Onemocnět čas od času zaktivuje imunitní systém', 0),
+(11, 1, 2, 2, 'Člověk si může nějakou dobu odpočinout.', 1),
+(12, 1, 3, 3, 'Chřipka ani všechny její důsledky nejsou ve skutečnosti důležité, můžu v klidu odpočívat než se uzdravím.', 0),
+(13, 1, 3, 4, 'Zdraví lidí je řízeno vyšší mocí a nemá cenu se kvůli tomu trápit.', 0),
+(14, 1, 4, 1, 'Je to strašné, vše mi jde tak pomalu, že ničeho v životě nedosáhnu.', 0),
+(15, 1, 4, 2, 'Když mi jdou věci pomalu, alespoň toho nestihnu moc pokazit.', 0),
+(16, 1, 4, 3, 'To, že jdou člověku věci pomalu není podstatné, pokud s tím neumí nic udělat.', 0),
+(17, 1, 4, 4, 'Rychlost, jakou se věci v lidském světě dějí, řídí bůh. Pokud něco můžu zvládnout rychleji, udělám to, jinak je to v pořádku i pomalu.', 0),
+(18, 1, 6, 1, 'Nikdy s nikým nevydržím nebo mě jiní opustí, a štěstí v životě nikdy nedosáhnu.', 0),
+(19, 1, 6, 2, 'Nedá se nic dělat, mám teď čas si vše srovnat v hlavě a v budoucnu se třeba ještě seznámit s někým jiným.', 0),
+(20, 1, 6, 3, 'Pokud se ztrátou partnera nemůžu už nic udělat, není to téhle chvíli důležité.', 0),
+(21, 1, 6, 4, 'Láska a vztahy mezi lidmi jsou řízeny vyšší mocí.', 0),
+(22, 1, 7, 1, 'Špatné vztahy v rodině negativně ovlivňují všechny ostatní oblasti života.', 0),
+(23, 1, 7, 2, 'Je to dobré k tomu, že mě to vede k samostatnosti.', 0),
+(24, 1, 7, 3, 'Chování ostatních lidí se nedá moc ovlivnit, takže to není důležité.', 0),
+(25, 1, 7, 4, 'Chování ostatních lidí je projevem boží vůle - asi v tom je nějaký vyšší smysl a nemá cenu se kvůli tomu trápit.', 0);
 
 -- --------------------------------------------------------
 
@@ -75,6 +76,7 @@ INSERT INTO `answers` (`id`, `id_problem`, `id_cog_schema`, `answer`, `deleted`)
 
 CREATE TABLE `cog_schema` (
   `id` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
   `name` varchar(40) COLLATE utf8_czech_ci NOT NULL,
   `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
@@ -83,12 +85,17 @@ CREATE TABLE `cog_schema` (
 -- Vypisuji data pro tabulku `cog_schema`
 --
 
-INSERT INTO `cog_schema` (`id`, `name`, `deleted`) VALUES
-(1, 'Chybná odpověď', 0),
-(2, 'Otáčení emocí', 0),
-(3, 'Princip subjektivity', 0),
-(4, 'Ví­ra v Boha', 0),
-(5, 'Přijímání a rušení problémů', 0);
+INSERT INTO `cog_schema` (`id`, `id_lang`, `name`, `deleted`) VALUES
+(1, 1, 'Chybná odpověď', 0),
+(2, 1, 'Otáčení emocí', 0),
+(3, 1, 'Princip subjektivity', 0),
+(4, 1, 'Ví­ra v Boha', 0),
+(5, 1, 'Přijímání a rušení problémů', 0),
+(6, 2, 'Wrong answer', 0),
+(7, 2, 'Turning emotions', 0),
+(8, 2, 'The principle of subjectivity', 0),
+(9, 2, 'Belief in God', 0),
+(10, 2, 'Accepting and canceling problems', 0);
 
 -- --------------------------------------------------------
 
@@ -119,7 +126,8 @@ INSERT INTO `languages` (`id`, `text_id`, `name`) VALUES
 (10, 'pt', 'Portugalština'),
 (11, 'ru', 'Ruština'),
 (12, 'es', 'Španělština'),
-(13, 'se', 'Švédština');
+(13, 'se', 'Švédština'),
+(14, 'dk', 'Dánština');
 
 -- --------------------------------------------------------
 
@@ -129,6 +137,7 @@ INSERT INTO `languages` (`id`, `text_id`, `name`) VALUES
 
 CREATE TABLE `problem` (
   `id` int(11) NOT NULL,
+  `id_lang` int(11) NOT NULL,
   `name` varchar(60) COLLATE utf8_czech_ci NOT NULL,
   `description` text COLLATE utf8_czech_ci,
   `deleted` int(1) NOT NULL DEFAULT '0'
@@ -138,20 +147,21 @@ CREATE TABLE `problem` (
 -- Vypisuji data pro tabulku `problem`
 --
 
-INSERT INTO `problem` (`id`, `name`, `description`, `deleted`) VALUES
-(1, 'Výsměch okolních lidí', '', 0),
-(2, 'Ztráta zaměstnání', '', 0),
-(3, 'Mám chřipku', '', 0),
-(4, 'Nic nestíhám, jde mi všechno strašně pomalu', '', 0),
-(6, 'Ztráta partnera', '', 0),
-(7, 'Problémy v rodině', '', 0),
-(8, 'Ztráta peněženky', '', 0),
-(9, 'Špatná investice peněz', '', 0),
-(10, 'Nerozhodnost', '', 0),
-(11, 'Hlasy', '', 0),
-(12, 'Špatný spánek', '', 0),
-(13, 'Špatné vstávání', '', 0),
-(14, 'Špatná finanční situace', '', 0);
+INSERT INTO `problem` (`id`, `id_lang`, `name`, `description`, `deleted`) VALUES
+(1, 1, 'Výsměch okolních lidí', '', 0),
+(2, 1, 'Ztráta zaměstnání', '', 0),
+(3, 1, 'Mám chřipku', '', 0),
+(4, 1, 'Nic nestíhám, jde mi všechno strašně pomalu', '', 0),
+(6, 1, 'Ztráta partnera', '', 0),
+(7, 1, 'Problémy v rodině', '', 0),
+(8, 1, 'Ztráta peněženky', '', 0),
+(9, 1, 'Špatná investice peněz', '', 0),
+(10, 1, 'Nerozhodnost', '', 0),
+(11, 1, 'Hlasy', '', 0),
+(12, 1, 'Špatný spánek', '', 0),
+(13, 1, 'Špatné vstávání', '', 0),
+(14, 1, 'Špatná finanční situace', '', 0),
+(15, 2, 'Ridicule of surrounding people', '', 0);
 
 -- --------------------------------------------------------
 
@@ -226,19 +236,19 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT pro tabulku `cog_schema`
 --
 ALTER TABLE `cog_schema`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pro tabulku `languages`
 --
 ALTER TABLE `languages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pro tabulku `problem`
 --
 ALTER TABLE `problem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pro tabulku `users`
