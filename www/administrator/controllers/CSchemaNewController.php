@@ -3,8 +3,14 @@ class CSchemaNewController extends Controller
 {
   public function ctrMain($parameters)
   {
-    $this->headr['title'] = "Nové kognitivní schéma";
-    $this->view = 'cschemaNew';
+      $langModel = new LanguagesModel();
+      $languages = $langModel->selectAll();
+      
+      $this->headr['title'] = "Nové kognitivní schéma";
+      
+      $this->data['langs'] = $languages;
+      
+      $this->view = 'cschemaNew';
   }
 }
 ?>

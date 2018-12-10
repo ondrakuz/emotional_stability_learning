@@ -7,6 +7,17 @@
               <input type="text" class="form-control" id="name" name="name">
             </div>
             <div class="form-group">
+              <label for="lang">Jazyk:</label>
+              <select class="form-control" id="lang" name="lang">
+              <?php
+                foreach($langs as $lang)
+                {
+                  echo("                  <option value=\"".$lang['id']."\" >[".$lang['text_id']."] ".$lang['name']."</option>\n");
+                }
+              ?>
+            </select>
+            </div>
+            <div class="form-group">
               <label for="description">Popis:</label>
               <textarea class="form-control" rows="5" id="description" name="description"></textarea>
             </div>

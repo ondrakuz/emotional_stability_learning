@@ -1,18 +1,25 @@
 <?php
 class ProblemModel
 {
-  public function selectAll()
-  {
-    global $lang;
-    $db = DbModel::getInstance();
-    $langModel = new LanguagesModel();
-    $language = $langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'");
+    public function selectA()
+    {
+        $db = DbModel::getInstance();
+        $problems = $db->selectAll('problem', 'id asc');
+        return $problems;
+    }
     
-    $problems = $db->selectArray(array ('problem'), array ('*'), array ('id_lang' => $language['id']), 'id asc');
-    return $problems;
-  }
-
-  public function selectById($id)
+    public function selectAll()
+    {
+        global $lang;
+        $db = DbModel::getInstance();
+        $langModel = new LanguagesModel();
+        $language = $langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'");
+        
+        $problems = $db->selectArray(array ('problem'), array ('*'), array ('id_lang' => $language['id']), 'id asc');
+        return $problems;
+    }
+    
+    public function selectById($id)
   {
     $db = DbModel::getInstance();
     $problem = $db->selectOne('problem', array ('id' => $id));

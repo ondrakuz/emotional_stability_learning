@@ -4,13 +4,19 @@ class ProblemEditController extends Controller
   public function ctrMain($parameters)
   {
     $id = array_shift($parameters);
+    
     $problemModel = new ProblemModel();
-    if ($problem = $problemModel->selectById($id))
-    {
-      $this->headr['title'] = "Editace problému \"$problem[name]\"";
-      $this->data['problem'] = $problem;
-      $this->view = 'problemEdit';
-    }
+    $langModel = new LanguagesModel();
+    
+    $problem = $problemModel->selectById($id);
+    $langs = $langModel->selectAll();
+    
+    $this->headr['title'] = "Editace problému \"$problem[name]\"";
+    
+    $this->data['problem'] = $problem;
+    $this->data['langs'] = $langs;
+    
+    $this->view = 'problemEdit';
   }
 }
 ?>

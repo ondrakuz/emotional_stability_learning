@@ -6,6 +6,17 @@
               <label for="name">Název:</label>
               <input type="text" class="form-control" id="name" name="name">
             </div>
+            <div class="form-group">
+              <label for="lang">Jazyk:</label>
+              <select class="form-control" id="lang" name="lang">
+              <?php
+                foreach($langs as $lang)
+                {
+                  echo("                  <option value=\"".$lang['id']."\" >[".$lang['text_id']."] ".$lang['name']."</option>\n");
+                }
+              ?>
+            </select>
+            </div>
             <button type="submit" class="btn btn-default" name="cschema" value="Save">Uložit</button>
           </form>
         </div><!-- /col-sm-4 -->
