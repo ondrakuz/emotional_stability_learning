@@ -9,9 +9,11 @@ class LearningController extends Controller
         $problemModel = new ProblemModel();
         $answersModel = new AnswerModel();
         
+        session_start();
+        
         $idcs = $_POST['idcs'];
         $idp = $_POST['idp'];
-        $problems = $_POST['problems'];
+        $problems = $_SESSION['problems'];
         if (empty($idcs)) //choosing cog. schema
         {
             $cschemas = $cschemaModel->selectAll();
@@ -59,6 +61,9 @@ class LearningController extends Controller
                     }
                 }
                 $problem = array_shift($problems);
+                $_SESSION['problems'] = $problems;
+//                 print_r($_SESSION);
+//                 exit;
                 
                 if ($idcs < 100)
                 {
@@ -87,48 +92,51 @@ class LearningController extends Controller
                 
                 $this->data['answers'] = $answers;
                 $this->data['problem'] = $problem;
-                $this->data['problems'] = $problems;
                 $this->data['cschema'] = $cschema;
                 
                 $this->view = 'learnProblem';
             }
-            else // next problems
+            else 
             {
 //                 echo("\n<br /><br />\$idp = $idp<br /><br />\n");
 //                 exit;
-                
-                if ($idcs < 100)
+//                 print_r($_SESSION);
+//                 exit;
+                if (!empty($_SESSION['problems'])) // next problems
                 {
-                    $cschema = $cschemaModel->selectById($idcs);
-                }
-                else
-                {
-                    $cschema['id'] = 100;
-                    $numA = count($answers);
-                    for( $i = 0; $i < $numA; $i++)
-                    {
-                        $cschemaA = $cschemaModel->selectById($answers[$i]['id_cog_schema']);
-                        $answers[$i]['name_cog_schema'] = $cschemaA['name'];
-                    }
-                }
-                
-                if (!empty($problems))
-                {
-                    $problem = array_shift($problems);
+                    $problem = array_shift($_SESSION['problems']);
                     
+                    if ($idcs < 100)
+                    {
+                        $cschema = $cschemaModel->selectById($idcs);
+                        $answers = $answersModel->selectByIds($problem['id'], $idcs);
+                    }
+                    else
+                    {
+                        $cschema['id'] = 100;
+                        $answers = $answersModel->selectByIdP($problem['id']);
+                        $numA = count($answers);
+                        for( $i = 0; $i < $numA; $i++)
+                        {
+                            $cschemaA = $cschemaModel->selectById($answers[$i]['id_cog_schema']);
+                            $answers[$i]['name_cog_schema'] = $cschemaA['name'];
+                        }
+                    }
+                
                     $this->headr['title'] = "$expressions[Learning] - $expressions[Problem]  \"$problem[name]\"";
                     $this->headr['key_words'] = "$expressions[Learning], $expressions[Problem], $problem[name]";
                     $this->headr['description'] = "$expressions[Learning] - $expressions[Problem] \"$problem[name]\"";
                     
                     $this->data['answers'] = $answers;
                     $this->data['problem'] = $problem;
-                    $this->data['problems'] = $problems;
                     $this->data['cschema'] = $cschema;
                     
                     $this->view = 'learnProblem';
                 }
-                else
+                else // end of learning
                 {
+                    session_destroy();
+                    
                     $this->data['cschema'] = $cschema;
                     
                     $this->headr['title'] = "$expressions[Learning] - $expressions[End]";
