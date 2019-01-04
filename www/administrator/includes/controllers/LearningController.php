@@ -10,7 +10,9 @@ class LearningController extends Controller
         $answersModel = new AnswerModel();
         
         $idcs = $_POST['idcs'];
-        if (empty($idcs))
+        $idp = $_POST['idp'];
+        $problems = $_POST['problems'];
+        if (empty($idcs)) //choosing cog. schema
         {
             $cschemas = $cschemaModel->selectAll();
             
@@ -24,23 +26,52 @@ class LearningController extends Controller
         }
         else
         {
-            $idp = $_POST['idp'];
-            if (empty($idp))
+            if (empty($idp)) // first problem
             {
-                $problems = $problemModel->selectAll();
+                $tmp = $problemModel->selectAll();
+                shuffle($tmp);
+                $numTmp = count($tmp);
+                $i = 0;
+                foreach($tmp as $item)
+                {
+                    if (!$item['deleted'])
+                    {
+                        if ($idcs<100)
+                        {
+                            if ($answersModel->selectByIds($item['id'], $idcs))
+                            {
+                                $problems[$i] = $item;
+                                $i++;
+                            }
+                        }
+                        else 
+                        {
+                            if ($answersModel->selectByIdP($item['id']))
+                            {
+                                $problems[$i] = $item;
+                                $i++;
+                            }
+                        }
+                        if ($i > 9)
+                        {
+                            break;
+                        }
+                    }
+                }
+                $problem = array_shift($problems);
                 
                 if ($idcs < 100)
                 {
 //                     print_r($problems);
 //                     exit;
-                    $answers = $answersModel->selectByIds($problems[0]['id'], $idcs);
+                    $answers = $answersModel->selectByIds($problem['id'], $idcs);
                     $cschema = $cschemaModel->selectById($idcs);
                 }
                 else
                 {
 //                     print_r($problems);
 //                     exit;
-                    $answers = $answersModel->selectByIdP($problems[0]['id']);
+                    $answers = $answersModel->selectByIdP($problem['id']);
                     $cschema['id'] = 100;
                     $numA = count($answers);
                     for( $i = 0; $i < $numA; $i++)
@@ -55,42 +86,16 @@ class LearningController extends Controller
                 $this->headr['description'] = "$expressions[Learning] - $expressions[Problem] \"$problems[0][name]\"";
                 
                 $this->data['answers'] = $answers;
-                $this->data['problem'] = $problems[0];
+                $this->data['problem'] = $problem;
+                $this->data['problems'] = $problems;
                 $this->data['cschema'] = $cschema;
                 
                 $this->view = 'learnProblem';
             }
-            else
+            else // next problems
             {
-                $idp++;
 //                 echo("\n<br /><br />\$idp = $idp<br /><br />\n");
 //                 exit;
-                $problems = $problemModel->selectAll();
-                $num = count($problems);
-                $deleted = true;
-                do {
-                    for($i = 0; $i < $num; $i++)
-                    {
-                        if ($problems[$i]['id'] == $idp)
-                        {
-                            $deleted = false;
-                            break;
-                        }
-                    }
-                    
-                    if ($idcs < 100)
-                    {
-                        $answers = $answersModel->selectByIds($idp, $idcs);
-                    }
-                    else
-                    {
-                        $answers = $answersModel->selectByIdP($idp);
-                    }
-                    
-                    $numa = count($answers);
-                    if (((!$deleted)&&(!empty($answers)))||($idp > ($problems[$num-1]['id']))) break;
-                    $idp++;
-                } while (1);
                 
                 if ($idcs < 100)
                 {
@@ -107,9 +112,9 @@ class LearningController extends Controller
                     }
                 }
                 
-                if (!$deleted&&($idp < ($problems[$num-1]['id']+1)))
+                if (!empty($problems))
                 {
-                    $problem = $problemModel->selectById($idp);
+                    $problem = array_shift($problems);
                     
                     $this->headr['title'] = "$expressions[Learning] - $expressions[Problem]  \"$problem[name]\"";
                     $this->headr['key_words'] = "$expressions[Learning], $expressions[Problem], $problem[name]";
@@ -117,6 +122,7 @@ class LearningController extends Controller
                     
                     $this->data['answers'] = $answers;
                     $this->data['problem'] = $problem;
+                    $this->data['problems'] = $problems;
                     $this->data['cschema'] = $cschema;
                     
                     $this->view = 'learnProblem';
