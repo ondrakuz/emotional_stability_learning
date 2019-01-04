@@ -9,6 +9,7 @@ $expressions = array (
     'Cognitive schemas' => 'Kognitivní schémata',
     'Learning' => 'Výuka',
     'Project' => 'Projekt',
+    'project' => 'projekt',
     'About project' => 'O projektu',
     'Problems overview' => 'Přehled problémů',
     'Add problem' => 'Přidat problém',
