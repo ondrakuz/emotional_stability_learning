@@ -51,5 +51,7 @@ $expressions = array (
     'Results of Test' => 'Results of Test',
     'Correct answers' => 'Correct answers',
     'Wrong answers' => 'Wrong answers',
+    'I can solve this' => 'I can solve this',
+    'Learning' => 'Learning',
     'Add solution' => 'Add solution');
 ?>

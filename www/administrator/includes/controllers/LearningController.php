@@ -18,9 +18,9 @@ class LearningController extends Controller
         {
             $cschemas = $cschemaModel->selectAll();
             
-            $this->headr['title'] = "$expressions[Test] - ".$expressions['Choosing of cognitive schema'];
-            $this->headr['key_words'] = "$expressions[Test], ".$expressions['Cognitive schema'];
-            $this->headr['description'] = "$expressions[Test] - ".$expressions['Choosing of cognitive schema'];
+            $this->headr['title'] = "$expressions[Learning] - ".$expressions['Choosing of cognitive schema'];
+            $this->headr['key_words'] = "$expressions[Learning], ".$expressions['Cognitive schema'];
+            $this->headr['description'] = "$expressions[Learning] - ".$expressions['Choosing of cognitive schema'];
             
             $this->data['cschemas'] = $cschemas;
             

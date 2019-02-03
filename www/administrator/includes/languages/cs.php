@@ -51,5 +51,7 @@ $expressions = array (
     'Results of Test' => 'Výsledky Testu',
     'Correct answers' => 'Správné odpovědi',
     'Wrong answers' => 'Chybné odpovědi',
+    'I can solve this' => 'Tohle umím vyřešit',
+    'Learning' => 'Výuka',
     'Add solution' => 'Přidat řešení');
 ?>
