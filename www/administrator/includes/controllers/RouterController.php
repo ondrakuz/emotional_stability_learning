@@ -61,7 +61,7 @@ class RouterController extends Controller
       $language = $langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'");
 //       print_r($language);
 //       exit;
-      if (empty($language)) $this->redirect('/cs'); // if not language in url, redirect to url with deafault language
+    if (empty($language)) $this->redirect('/cs'); // if not language in url, redirect to url with default language
     
     if (empty($parsedURL[0]))
     { 

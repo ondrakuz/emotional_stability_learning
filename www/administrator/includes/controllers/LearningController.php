@@ -116,7 +116,7 @@ class LearningController extends Controller
                         $cschema['id'] = 100;
                         $answers = $answersModel->selectByIdP($problem['id']);
                         $numA = count($answers);
-                        for( $i = 0; $i < $numA; $i++)
+                        for( $i = 0; $i < $numA; $i++ )
                         {
                             $cschemaA = $cschemaModel->selectById($answers[$i]['id_cog_schema']);
                             $answers[$i]['name_cog_schema'] = $cschemaA['name'];
