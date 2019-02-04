@@ -6,15 +6,16 @@
           <form method="post" action="http://<?= $this->siteName."/$lang" ?>/learning">
             <div class="form-group">
               <label for="idcs"><?=$expressions['Cognitive schema']?>:</label><br /><br />
-                <div class="testbox"><input type='radio' id="idcs" name='idcs' value="100" class="radio" /> <span class="radiotext"><?=$expressions['All schemas']?></span></div><br />
+                <table id="schemas">
+	                <tr><td><input type='radio' id="idcs" name='idcs' value="100" class="radio" /></td><td> <?=$expressions['All schemas']?></td></tr>
               <?php
                 foreach($cschemas as $cschema)
                 {
-                    if ($cschema['id'] != 1)
-                        echo("                  <div class=\"testbox\"><input type='radio' id=\"idcs\" name='idcs' value=\"$cschema[id]\" class=\"radio\" /> <span class=\"radiotext\">$cschema[name]</span></div><br />\n");
+                    if ($cschema['wrong'] != 1)
+                        echo("                  <tr><td><input type='radio' id=\"idcs\" name='idcs' value=\"$cschema[id]\" class=\"radio\" /></td><td> $cschema[name]</td></tr>\n");
                 }
               ?>
-              <hr class="cleaner" />
+              </table>
             </div> 
             <button type="submit" name="test1" value="Continue"><?=$expressions['Next']?></button>
           </form>

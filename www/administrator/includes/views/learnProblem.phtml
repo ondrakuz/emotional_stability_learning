@@ -7,21 +7,23 @@
             <input type="hidden" name="idp" value="<?=$problem['id']?>" />
             <input type="hidden" name="idcs" value="<?=$cschema['id']?>" />
             <div class="form-group">
+            	<table id="schemas">
               <?php
 //                 print_r($answers);
                 foreach($answers as $answer)
                 {
                     if ($cschema['id'] < 100)
                     {
-                        echo("                  <div class=\"testbox\"><input type='radio' id=\"answer\" name=\"answer\" value=\"$answer[id]\" class=\"radio\" /> <span class=\"radiotext\">$answer[answer]</span></div><br />\n");
+                        echo("                  <tr><td><input type='radio' id=\"answer\" name=\"answer\" value=\"$answer[id]\" class=\"radio\" /></td><td> $answer[answer]</td></tr>\n");
                     }
                     else
                     {
-                        if ($answer['id_cog_schema'] != 1) echo("                  <div class=\"testbox\"><span class=\"radiotext\"><strong>$answer[name_cog_schema]:</strong> $answer[answer]</span></div><br />\n");
+                        echo("                  <tr><td><span class=\"radiotext\"><strong>$answer[name_cog_schema]:</strong> $answer[answer]</span></td></tr>\n");
                     }
                 }
-                if ($cschema['id'] < 100) echo("                  <div class=\"testbox\"><input type='radio' id=\"answer\" name='answer' value=\"-1\" class=\"radio\" /> <span class=\"radiotext\">".$expressions['I can solve this']."</span></div><br />\n");
+                if ($cschema['id'] < 100) echo("                   <tr><td><input type='radio' id=\"answer\" name='answer' value=\"-1\" class=\"radio\" /></td><td> ".$expressions['I can solve this']."</td></tr>\n");
               ?>
+              </table>
             </div> 
             <button type="submit" name="learning" value="Continue"><?=$expressions['Next']?></button>
           </form>

@@ -1,5 +1,5 @@
 <?php
-class cdb { // trida cdb bude slouzit k praci s databazi
+class cdb {
   private $data, $querystring, $error, $conn;
   public $server, $user, $password, $db_name;
   
@@ -36,12 +36,12 @@ class cdb { // trida cdb bude slouzit k praci s databazi
     return(1);
   }
 
-  function query($dotaz) {
-    $this->querystring=$dotaz;
+  function query($sql) {
+    $this->querystring=$sql;
     $error = '';
     
     try {
-      $this->data=$this->conn->prepare($dotaz);
+      $this->data=$this->conn->prepare($sql);
     } catch (PDOException $e) {
       $error = 'Preparation of query failed: ' . $e->getMessage();
       $this->data=null;
@@ -59,8 +59,6 @@ class cdb { // trida cdb bude slouzit k praci s databazi
       if (!$result2) {
         $this->error=$error;
       }
-  //     print_r($this->data);
-  //     exit;
     }
     else
     {
@@ -88,7 +86,7 @@ class cdb { // trida cdb bude slouzit k praci s databazi
 
   function get_array() {
     $arr = array();
-    if ($this->data) $arr = $this->data->fetch(PDO::FETCH_ASSOC);
+    $arr = $this->data->fetch(PDO::FETCH_ASSOC);
     if (!empty($arr)) {return ($arr); }
     else { return 0; }
   }

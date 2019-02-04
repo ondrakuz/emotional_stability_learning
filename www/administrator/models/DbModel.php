@@ -80,16 +80,12 @@
         }
       }
       $query .= ";";
-//       echo('<br />'.$query.'<br />');
-//       exit;
       
       if (!$this->query($query))
       {
         RouterController::getInstance()->setError("DbModel::selectOne():".$this->get_error().'<br /><br />'.$query.'<br />');
       }
       $arr = $this->get_array();
-//       print_r($arr);
-//       exit;
       return $arr;
     }
     

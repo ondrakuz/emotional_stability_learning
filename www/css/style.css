@@ -13,10 +13,10 @@ td.logo { width: 80%; }
 td.header { background-color:#acacac; color:white; font-size:14px; font-weight: bold; text-align: center; }
 td.right { text-align: right; }
 
-button { background-color:white; color: acacac; border: 1px solid #acacac; border-radius: 5px; font-size: 12px; box-shadow: none; padding: 5px; }
+button { background-color:white; color: black!important/*acacac*/; border: 1px solid #acacac; border-radius: 5px; font-size: 12px; box-shadow: none; padding: 5px; }
 label { font-size: 14px; font-weight: bold; }
 
-#header { /*position: relative; width: 100%;*/ min-height: 128px; background-color: #acacac; border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 20px; text-align: center; vertical-align: center; }
+#header { /*position: relative; width: 100%;*/ min-height: 128px; background-color: #acacac;  border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 20px; text-align: center; vertical-align: center; }
 #header h1 { width: 100%; margin: 0; padding: 40px 20px 20px 20px; color: black; font-weight: bold; text-align: center; }
 #header a { color: white; text-decoration: none; }
 #footer { position: relative; width: 100%; font-size: 10px; color: #8c8c8c; background-color: #f7f7f7; padding: 10px; margin-top: 20px text-align: center; border-radius: 5px; border: 1px solid #dcdcdc }
@@ -48,6 +48,13 @@ label { font-size: 14px; font-weight: bold; }
 .message { font-size: 13px; font-weight: bold;/* width: 173px; text-align: center;*/  }
 .message a { color: black; text-decoration: none;  }
 .message a:hover { text-decoration: underline; }
+
+.panel { border: 1px solid #acacac; border-radius: 5px; }
+.panel .panel-heading { background-color: #f3f3f3; border-bottom: 1px solid #acacac; border-radius: 5px 5px 0 0; padding: 1em; }
+.panel .panel-body { padding: 1em; }
+.panel .panel-body .form-group { width: 100%; }
+
+table#schemas tr td { padding: 5px!important; }
 
 /* .ftglr-header { float: left;text-align: left; margin: 0; padding: 0; font-size: 14px; } */
 .red { color: red; }

@@ -53,5 +53,17 @@ $expressions = array (
     'Wrong answers' => 'Chybné odpovědi',
     'I can solve this' => 'Tohle umím vyřešit',
     'Learning' => 'Výuka',
+    'Users' => 'Uživatelé',
+    'Login' => 'Přihlášení',
+    'Registration' => 'Registrace',
+    'User' => 'Uživatel',
+    'Password' => 'Heslo',
+    'Password again' => 'Heslo znovu',
+    'login' => 'Přihlášení',
+    'Nick' => 'Přezdívka',
+    'Email' => 'Email',
+    'Lector' => 'Lektor',
+    'Student' => 'Student',
+    'User with this nick already exists. Try it again.' => 'Uživatel s tímto nickem už existuje. Zkuzte to znovu.',
     'Add solution' => 'Přidat řešení');
 ?>

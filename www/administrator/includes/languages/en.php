@@ -53,5 +53,17 @@ $expressions = array (
     'Wrong answers' => 'Wrong answers',
     'I can solve this' => 'I can solve this',
     'Learning' => 'Learning',
+    'Users' => 'Users',
+    'Login' => 'Login',
+    'Registration' => 'Registration',
+    'User' => 'User',
+    'Password' => 'Password',
+    'Password again' => 'Password again',
+    'login' => 'login',
+    'Nick' => 'Nick',
+    'Email' => 'Email',
+    'Lector' => 'Lector',
+    'Student' => 'Student',
+    'User with this nick already exists. Try it again.' => 'User with this nick already exists. Try it again.',
     'Add solution' => 'Add solution');
 ?>
