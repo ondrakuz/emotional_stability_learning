@@ -104,8 +104,22 @@ class LearningController extends Controller
 //                 exit;
                 if (!empty($_SESSION['problems'])) // next problems
                 {
-                    $problem = array_shift($_SESSION['problems']);
+//                     echo("\n<br /><br />\$answer = $_POST[answer]<br /><br />\n");
+//                     exit;
                     
+                    $ida = $_POST['answer'];
+                    if (!empty($ida)) {
+                        $result['idp'] = $idp;
+                        $result['ida'] = $ida;
+                        $_SESSION['results'][count($_SESSION['results'])] = $result; // from this array will be generated email to lector
+                                                                                     //  - system of users needed on frontend                        
+                        $problem = array_shift($_SESSION['problems']);
+                    }
+                    else //repeat last problem - no answer
+                    {
+                        $problem = $problemModel->selectById($idp);
+                    }
+                
                     if ($idcs < 100)
                     {
                         $cschema = $cschemaModel->selectById($idcs);
@@ -133,17 +147,57 @@ class LearningController extends Controller
                     
                     $this->view = 'learnProblem';
                 }
-                else // end of learning
+                else
                 {
-                    session_destroy();
-                    
-                    $this->data['cschema'] = $cschema;
-                    
-                    $this->headr['title'] = "$expressions[Learning] - $expressions[End]";
-                    $this->headr['key_words'] = "$expressions[Learning], $expressions[End]";
-                    $this->headr['description'] = $expressions['End of learning'];
-                    
-                    $this->view = 'learnEnd';
+                    $ida = $_POST['answer'];
+                    if (!empty($ida)) { // end of learning
+                        $result['idp'] = $idp;
+                        $result['ida'] = $ida;
+                        $_SESSION['results'][count($_SESSION['results'])] = $result;
+                        
+                        $results = $_SESSION['results'];
+                        session_destroy();
+                        
+                        $this->data['cschema'] = $cschema;
+                        $this->data['results'] = $results;
+                        
+                        $this->headr['title'] = "$expressions[Learning] - $expressions[End]";
+                        $this->headr['key_words'] = "$expressions[Learning], $expressions[End]";
+                        $this->headr['description'] = $expressions['End of learning'];
+                        
+                        $this->view = 'learnEnd';
+                    }
+                    else //repeat last problem - no answer
+                    {
+                        $problem = $problemModel->selectById($idp);
+                        
+                        if ($idcs < 100)
+                        {
+                            $cschema = $cschemaModel->selectById($idcs);
+                            $answers = $answersModel->selectByIds($problem['id'], $idcs);
+                        }
+                        else
+                        {
+                            $cschema['id'] = 100;
+                            $answers = $answersModel->selectByIdP($problem['id']);
+                            $numA = count($answers);
+                            for( $i = 0; $i < $numA; $i++ )
+                            {
+                                $cschemaA = $cschemaModel->selectById($answers[$i]['id_cog_schema']);
+                                $answers[$i]['name_cog_schema'] = $cschemaA['name'];
+                            }
+                        }
+                        
+                        $this->headr['title'] = "$expressions[Learning] - $expressions[Problem]  \"$problem[name]\"";
+                        $this->headr['key_words'] = "$expressions[Learning], $expressions[Problem], $problem[name]";
+                        $this->headr['description'] = "$expressions[Learning] - $expressions[Problem] \"$problem[name]\"";
+                        
+                        $this->data['answers'] = $answers;
+                        $this->data['problem'] = $problem;
+                        $this->data['cschema'] = $cschema;
+                        
+                        $this->view = 'learnProblem';
+                    }
                 }
             }
         }
