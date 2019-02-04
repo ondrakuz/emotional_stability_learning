@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: localhost
--- Vytvořeno: Pon 10. pro 2018, 07:58
+-- Vytvořeno: Pon 04. úno 2019, 22:16
 -- Verze serveru: 10.1.37-MariaDB
--- Verze PHP: 5.6.38
+-- Verze PHP: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -78,6 +78,7 @@ CREATE TABLE `cog_schema` (
   `id` int(11) NOT NULL,
   `id_lang` int(11) NOT NULL,
   `name` varchar(40) COLLATE utf8_czech_ci NOT NULL,
+  `wrong` int(1) NOT NULL DEFAULT '0',
   `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
@@ -85,17 +86,40 @@ CREATE TABLE `cog_schema` (
 -- Vypisuji data pro tabulku `cog_schema`
 --
 
-INSERT INTO `cog_schema` (`id`, `id_lang`, `name`, `deleted`) VALUES
-(1, 1, 'Chybná odpověď', 0),
-(2, 1, 'Otáčení emocí', 0),
-(3, 1, 'Princip subjektivity', 0),
-(4, 1, 'Ví­ra v Boha', 0),
-(5, 1, 'Přijímání a rušení problémů', 0),
-(6, 2, 'Wrong answer', 0),
-(7, 2, 'Turning emotions', 0),
-(8, 2, 'The principle of subjectivity', 0),
-(9, 2, 'Belief in God', 0),
-(10, 2, 'Accepting and canceling problems', 0);
+INSERT INTO `cog_schema` (`id`, `id_lang`, `name`, `wrong`, `deleted`) VALUES
+(1, 1, 'Chybná odpověď', 1, 0),
+(2, 1, 'Otáčení emocí', 0, 0),
+(3, 1, 'Princip subjektivity', 0, 0),
+(4, 1, 'Ví­ra v Boha', 0, 0),
+(5, 1, 'Přijímání a rušení problémů', 0, 0),
+(6, 2, 'Wrong answer', 1, 0),
+(7, 2, 'Turning emotions', 0, 0),
+(8, 2, 'The principle of subjectivity', 0, 0),
+(9, 2, 'Belief in God', 0, 0),
+(10, 2, 'Accepting and canceling problems', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `fusers`
+--
+
+CREATE TABLE `fusers` (
+  `id` int(5) NOT NULL,
+  `nick` varchar(20) COLLATE utf8_czech_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_czech_ci NOT NULL,
+  `student` int(1) NOT NULL DEFAULT '1',
+  `lector` int(1) NOT NULL DEFAULT '0',
+  `password` varchar(50) COLLATE utf8_czech_ci NOT NULL,
+  `deleted` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+
+--
+-- Vypisuji data pro tabulku `fusers`
+--
+
+INSERT INTO `fusers` (`id`, `nick`, `email`, `student`, `lector`, `password`, `deleted`) VALUES
+(1, 'rusuf', 'rusuf4476@gmail.com', 1, 0, 'acb91b9c2023d59475288215c620be0a920ac85b', 0);
 
 -- --------------------------------------------------------
 
@@ -203,6 +227,13 @@ ALTER TABLE `cog_schema`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Klíče pro tabulku `fusers`
+--
+ALTER TABLE `fusers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nick` (`nick`);
+
+--
 -- Klíče pro tabulku `languages`
 --
 ALTER TABLE `languages`
@@ -237,6 +268,12 @@ ALTER TABLE `answers`
 --
 ALTER TABLE `cog_schema`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT pro tabulku `fusers`
+--
+ALTER TABLE `fusers`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pro tabulku `languages`
