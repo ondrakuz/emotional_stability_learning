@@ -20,9 +20,9 @@ class LoginController extends Controller
       else
       {          
           $time = time()+60*60*24*61;
-          setcookie('user_id', $user['id'], $time);
-          setcookie('user_student', $user['student'], $time);
-          setcookie('user_lector', $user['lector'], $time);
+          setcookie('user_id', $user['id'], $time, '/');
+          setcookie('user_student', $user['student'], $time, '/');
+          setcookie('user_lector', $user['lector'], $time, '/');
           
           $this->redirect("/$lang");
       }

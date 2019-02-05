@@ -14,6 +14,7 @@ td.header { background-color:#acacac; color:white; font-size:14px; font-weight: 
 td.right { text-align: right; }
 
 button { background-color:white; color: black!important/*acacac*/; border: 1px solid #acacac; border-radius: 5px; font-size: 12px; box-shadow: none; padding: 5px; }
+button:hover { background-color: #f3f3f3 !important; }
 label { font-size: 14px; font-weight: bold; }
 
 #header { /*position: relative; width: 100%;*/ min-height: 128px; background-color: #acacac;  border-radius: 5px; font-size: 12px; padding:0; margin-bottom: 20px; text-align: center; vertical-align: center; }
@@ -49,9 +50,10 @@ label { font-size: 14px; font-weight: bold; }
 .message a { color: black; text-decoration: none;  }
 .message a:hover { text-decoration: underline; }
 
-.panel { border: 1px solid #acacac; border-radius: 5px; }
+.panel { border: 1px solid #acacac; border-radius: 5px; margin: 20px; font-size: 14px !important; }
 .panel .panel-heading { background-color: #f3f3f3; border-bottom: 1px solid #acacac; border-radius: 5px 5px 0 0; padding: 1em; }
 .panel .panel-body { padding: 1em; }
+.panel .panel-body button { font-size: 14px !important; padding: 0.5em !important; }
 .panel .panel-body .form-group { width: 100%; }
 
 table#schemas tr td { padding: 5px!important; }
