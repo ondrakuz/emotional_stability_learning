@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: localhost
--- Vytvořeno: Pon 04. úno 2019, 22:16
+-- Vytvořeno: Úte 05. úno 2019, 18:55
 -- Verze serveru: 10.1.37-MariaDB
 -- Verze PHP: 5.6.40
 
@@ -119,7 +119,9 @@ CREATE TABLE `fusers` (
 --
 
 INSERT INTO `fusers` (`id`, `nick`, `email`, `student`, `lector`, `password`, `deleted`) VALUES
-(1, 'rusuf', 'rusuf4476@gmail.com', 1, 0, 'acb91b9c2023d59475288215c620be0a920ac85b', 0);
+(1, 'rusuf', 'rusuf4476@gmail.com', 1, 0, 'acb91b9c2023d59475288215c620be0a920ac85b', 0),
+(2, 'ondrejk', 'ondrej.kuzel@gmail.com', 1, 1, '3190174a932c0f6ddfd8d4537037ce85f583c6ec', 0),
+(3, 'smazat', 'rusuf@seznam.cz', 1, 0, 'acb91b9c2023d59475288215c620be0a920ac85b', 1);
 
 -- --------------------------------------------------------
 
@@ -152,6 +154,24 @@ INSERT INTO `languages` (`id`, `text_id`, `name`) VALUES
 (12, 'es', 'Španělština'),
 (13, 'se', 'Švédština'),
 (14, 'dk', 'Dánština');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabulky `lectors`
+--
+
+CREATE TABLE `lectors` (
+  `student` int(5) NOT NULL,
+  `lector` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
+
+--
+-- Vypisuji data pro tabulku `lectors`
+--
+
+INSERT INTO `lectors` (`student`, `lector`) VALUES
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -241,6 +261,12 @@ ALTER TABLE `languages`
   ADD UNIQUE KEY `text_id` (`text_id`);
 
 --
+-- Klíče pro tabulku `lectors`
+--
+ALTER TABLE `lectors`
+  ADD UNIQUE KEY `relace` (`student`,`lector`) USING BTREE;
+
+--
 -- Klíče pro tabulku `problem`
 --
 ALTER TABLE `problem`
@@ -273,7 +299,7 @@ ALTER TABLE `cog_schema`
 -- AUTO_INCREMENT pro tabulku `fusers`
 --
 ALTER TABLE `fusers`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pro tabulku `languages`
