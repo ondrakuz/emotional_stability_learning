@@ -8,6 +8,8 @@ class LoginViewController extends Controller
       
       // Hlavička stránky
       $this->headr['title'] = $expressions['login'];
+      $this->headr['key_words'] = $expressions['login'];
+      $this->headr['description'] = $expressions['login'];
       // Nastavení šablony
       $this->view = 'loginView';
   }

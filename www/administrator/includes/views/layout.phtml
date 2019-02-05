@@ -50,10 +50,14 @@
             </ul>
           </div></li>
           <li class="list-group-item"><div class="category">
-            <img src="http://<?=$this->siteName?>/administrator/icons/user.png" width="16" height="16" alt="icon" /> <span class="title"><?=$expressions['Users']?></span><br/>
+            <img src="http://<?=$this->siteName?>/administrator/icons/user.png" width="16" height="16" alt="icon" /> <span class="title"><?=$expressions['Users']?><?php if (!empty($_COOKIE['user_id'])) { ?>: <?php } ?></span><?php if (!empty($_COOKIE['user_id'])) { echo($fuser['nick']); } ?><br/>
             <ul class="list-group">
+            <?php if (empty($_COOKIE['user_id'])) { ?>
               <li class="list-group-item"><a href="http://<?=$this->siteName?>/<?=$lang?>/login-view"><?=$expressions['Login']?></a></li>
               <li class="list-group-item"><a href="http://<?=$this->siteName?>/<?=$lang?>/registration-view"><?=$expressions['Registration']?></a></li>
+            <?php } else { ?>
+            <li class="list-group-item"><a href="http://<?=$this->siteName?>/<?=$lang?>/logout"><?=$expressions['Logout']?></a></li>
+            <?php } ?>
             </ul>
             <center><a href="http://<?=$this->siteName?>/en" title="Čeština"><img src="http://<?=$this->siteName?>/administrator/lang_icons/en.png" /></a> <a href="http://<?=$this->siteName?>/cs" title="English"><img src="http://<?=$this->siteName?>/administrator/lang_icons/cs.png" /></a></center>
           </div></li>

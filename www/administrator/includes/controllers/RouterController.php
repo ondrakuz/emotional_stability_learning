@@ -55,9 +55,10 @@ class RouterController extends Controller
 //       $lang = array_shift($parsedURL);
 //       print_r($parsedURL);
 //       exit;
+      $langModel = new LanguagesModel();
+      $fuserModel = new FUsersModel();
       
       $tmp = array_shift($parsedURL);
-      $langModel = new LanguagesModel();
       $language = $langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'");
 //       print_r($language);
 //       exit;
@@ -103,12 +104,22 @@ class RouterController extends Controller
     }
 //     echo ("view = ".$this->controller->view);
 //     exit;
+    if (!empty($_COOKIE['user_id'])) 
+    {
+        $fuser = $fuserModel->selectById($_COOKIE['user_id']);
+    }
+    else
+    {
+        $fuser = 0;
+    }
+    
     
     // setting variables of the templae
     $this->data = $this->controller->data;
     $this->data['expressions'] = $expressions;
     $this->data['lang'] = $lang;
-//     if (empty($this->data['path'])) $this->data['path'] = '../';
+    $this->data['fuser'] = $fuser;
+    //     if (empty($this->data['path'])) $this->data['path'] = '../';
     
     $this->data['title'] = $this->controller->headr['title'];
 

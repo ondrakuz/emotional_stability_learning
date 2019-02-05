@@ -6,9 +6,10 @@ class RegistrationViewController extends Controller
   {
       global $expressions, $lang;
       
-      // Hlavička stránky
       $this->headr['title'] = $expressions['Registration'];
-      // Nastavení šablony
+      $this->headr['key_words'] = $expressions['Registration'];
+      $this->headr['description'] = $expressions['Registration'];
+
       $this->view = 'registrationView';
   }
 }

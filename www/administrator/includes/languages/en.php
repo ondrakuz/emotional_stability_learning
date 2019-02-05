@@ -65,5 +65,6 @@ $expressions = array (
     'Lector' => 'Lector',
     'Student' => 'Student',
     'User with this nick already exists. Try it again.' => 'User with this nick already exists. Try it again.',
+    'Logout' => 'Logout',
     'Add solution' => 'Add solution');
 ?>
