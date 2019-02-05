@@ -1,0 +1,26 @@
+        <div class="col-sm-10">
+          <h4>Přehled Studentů a Lektorů</h4>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <caption class="text-center">Studenti a Lektoři</caption>
+              <thead><tr><th>Přezdívka</th><th>Email</th><th class="text-center">Přidat lektora</th><th class="text-center">Student</th><th class="text-center">Lektor</th><th class="text-center">Smazat</th></tr></thead>
+              <tbody>
+                <?php
+                  foreach ($fusers as $fuser) {
+                ?>
+                <tr>
+                  <td><?php echo($fuser['nick']); ?></td>
+                  <td><?php echo($fuser['email']); ?></td>
+                  <td class="text-center"><?php if ($fuser['student']) { ?><a href="http://<?= $this->siteName ?>/administrator/lectors/<?= $fuser['id'] ?>" title="Administer lectors"><?php } ?><img src="http://<?=$this->siteName?>/administrator/icons/add.png"/><?php if ($fuser['student']) { ?></a><?php } ?></td>
+				  <td class="text-center"><a href="http://<?= $this->siteName ?>/administrator/fusers-student/<?= $fuser['id'] ?>"><?php if ($fuser['student']) { ?><img src="http://<?=$this->siteName?>/administrator/icons/accept.png"/><?php } else { ?><img src="http://<?=$this->siteName?>/administrator/icons/cross.png"/><?php }; ?></a></td>
+                  <td class="text-center"><a href="http://<?= $this->siteName ?>/administrator/fusers-lector/<?= $fuser['id'] ?>"><?php if ($fuser['lector']) { ?><img src="http://<?=$this->siteName?>/administrator/icons/accept.png"/><?php } else { ?><img src="http://<?=$this->siteName?>/administrator/icons/cross.png"/><?php }; ?></a></td>
+                  <td class="text-center"><a href="http://<?= $this->siteName ?>/administrator/fusers-delete/<?= $fuser['id'] ?>" ><img src="icons/bin_closed.png" /></a></td>
+                </tr>
+                <?php
+              } ?>
+              </tbody>
+            </table>
+          </div>
+        </div><!-- /col-sm-10 -->
+
+        

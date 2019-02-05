@@ -22,6 +22,13 @@ class FUsersModel
         return $user;
     }
     
+    public function selectLectors()
+    {
+        $db = DbModel::getInstance();
+        $users = $db->selectArray(array ('fusers'), array ('*'), array ('lector' => 1));
+        return $users;
+    }
+    
     public function insert(array $values)
     {
         $db = DbModel::getInstance();
