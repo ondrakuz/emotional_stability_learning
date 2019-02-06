@@ -15,14 +15,13 @@ class LectorsSaveController extends Controller
             $value = $_POST["lector$lector[id]"] ? 1 : 0;
             if (($lectorsModel->selectByKeys($ids, $lector['id'])) && $value == 0)
             {
-                $r = $lectorsModel->delete($ids, $lector['id']);
-                if ($result != 0) $result = $r;
+                $result = $lectorsModel->delete($ids, $lector['id']);
             }
             else if (!($lectorsModel->selectByKeys($ids, $lector['id'])) && $value == 1)
             {
-                $r = $lectorsModel->insert(array ('student' => $ids, 'lector' => $lector['id']));
-                if ($result != 0) $result = $r;
+                $result = $lectorsModel->insert(array ('student' => $ids, 'lector' => $lector['id']));
             }
+            if ($result == 0) break;
         }
         if ($result == 1) 
         {
