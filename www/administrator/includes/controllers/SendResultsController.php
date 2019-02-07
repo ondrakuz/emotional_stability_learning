@@ -24,17 +24,14 @@ class SendResultsController extends Controller
         {
             $problem = $problemModel->selectById($results[$i]['idp']);
             $results_text .= "<p><strong>".$expressions['Problem'].":</strong> ".$problem['name']."<br />\n";
-            //$results[$i]['problem'] = $problem['name'];
             if ($results[$i]['ida'] == -1)
             {
                 $results_text .= "<strong>".$expressions['Solution'].":</strong> ".$expressions['I can solve this']."</p>\n";
-                //$results[$i]['answer'] = $expressions['I can solve this'];
             }
             else
             {
                 $answer = $answerModel->selectById($results[$i]['ida']);
                 $results_text .= "<strong>".$expressions['Solution'].":</strong> ".$answer['answer']."</p>\n";
-                //$results[$i]['answer'] = $answer['answer'];
             }
         }
         session_destroy();
