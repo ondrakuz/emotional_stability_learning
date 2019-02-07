@@ -66,5 +66,10 @@ $expressions = array (
     'Student' => 'Student',
     'User with this nick already exists. Try it again.' => 'Uživatel s tímto nickem už existuje. Zkuzte to znovu.',
     'Logout' => 'Odhlásit',
+    'End of learning' => 'Konec výuky',
+    'Choose, which lectors will be your results sent to' => 'Vyberte jakým lektorům se mají poslat Vaše odpověďi',
+    'Results of learning of user' => 'Výsledky výuky uživatele',
+    'on website' => 'na webu',
+    'Send' => 'Odeslat',
     'Add solution' => 'Přidat řešení');
 ?>

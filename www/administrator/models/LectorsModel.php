@@ -16,7 +16,7 @@ class LectorsModel
         return $lectors;
     }
     
-    public function selectByIsL($id)
+    public function selectByIdL($id)
     {
         $db = DbModel::getInstance();
         $lectors = $db->selectArray(array ('lectors'), array ('*'), array ('lector' => $id));

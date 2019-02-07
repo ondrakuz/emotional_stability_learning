@@ -8,6 +8,8 @@ class LearningController extends Controller
         $cschemaModel = new CSchemaModel();
         $problemModel = new ProblemModel();
         $answersModel = new AnswerModel();
+        $lectorsModel = new LectorsModel();
+        $fuserModel = new FUsersModel();
         
         session_start();
         
@@ -155,11 +157,21 @@ class LearningController extends Controller
                         $result['ida'] = $ida;
                         $_SESSION['results'][count($_SESSION['results'])] = $result;
                         
-                        $results = $_SESSION['results'];
-                        session_destroy();
+                        $ids = $_COOKIE['user_id'];
+                        $lectors = $lectorsModel->selectByIdS($ids);
+                        $numl = count($lectors);
+                        for($i = 0; $i < $numl; $i++)
+                        {
+                            $lector = $fuserModel->selectById($lectors[$i]['lector']);
+                            $lectors[$i]['lector_nick'] = $lector['nick'];
+                        }
+                        
+                        //$results = $_SESSION['results'];
+                        //session_destroy();
                         
                         $this->data['cschema'] = $cschema;
-                        $this->data['results'] = $results;
+                        $this->data['lectors'] = $lectors;
+                        $this->data['results'] = $_SESSION['results'];
                         
                         $this->headr['title'] = "$expressions[Learning] - $expressions[End]";
                         $this->headr['key_words'] = "$expressions[Learning], $expressions[End]";

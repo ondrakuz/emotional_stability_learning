@@ -1,7 +1,21 @@
+<?php global $expressions, $lang; ?>        
         <div class="col-sm-3"></div>
         <div class="col-sm-4">
-        	<h4>Konec výuky</h4><br />
-        	<div class="message">V databázi není další problém s odpověďmi.</div>
+        	<h4><?=$expressions['End of learning']?></h4><br />
+        	<div class="message"><?=$expressions['Choose, which lectors will be your results sent to']?>:</div>
+        	<form method="post" action="http://<?= $this->siteName."/$lang" ?>/send-results">
+        		<!-- input type='hidden' id="ids" name='ids' value="<?= $lectors[0]['student'] ?>" / -->
+            	<table id='schemas'>
+            		<?php
+            	    foreach($lectors as $lector)
+            	    {
+            	        ?>
+            	        <tr><td><input type='checkbox' id="idl<?= $lector['lector'] ?>" name='idl<?= $lector['lector'] ?>' /></td><td><?= $lector['lector_nick'] ?></td></tr><?php 
+            	    }
+            	    ?>
+            	    <tr><td><button type="submit" name="learning" value="Send"><?=$expressions['Send']?></button></td><td></td></tr>
+            	</table>
+        	</form>
         	<br /><?php print_r($results); ?>
         </div><!-- /col-sm-4 -->
         <div class="col-sm-3"></div>

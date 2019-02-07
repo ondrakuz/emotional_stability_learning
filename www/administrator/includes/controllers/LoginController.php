@@ -1,4 +1,4 @@
-<?php // this controller is just copy from administration, rewrite needed
+<?php
 class LoginController extends Controller
 {
 

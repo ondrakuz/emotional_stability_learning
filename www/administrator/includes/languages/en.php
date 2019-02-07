@@ -66,5 +66,10 @@ $expressions = array (
     'Student' => 'Student',
     'User with this nick already exists. Try it again.' => 'User with this nick already exists. Try it again.',
     'Logout' => 'Logout',
+    'End of learning' => 'End of learning',
+    'Choose, which lectors will be your results sent to' => 'Choose, which lectors will be your results sent to',
+    'Results of learning of user' => 'Results of learning of user',
+    'on website' => 'on website',
+    'Send' => 'Send',
     'Add solution' => 'Add solution');
 ?>
