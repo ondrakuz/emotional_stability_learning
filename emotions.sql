@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: localhost
--- Vytvořeno: Úte 05. úno 2019, 18:55
+-- Vytvořeno: Sob 09. úno 2019, 20:50
 -- Verze serveru: 10.1.37-MariaDB
 -- Verze PHP: 5.6.40
 
@@ -111,6 +111,7 @@ CREATE TABLE `fusers` (
   `student` int(1) NOT NULL DEFAULT '1',
   `lector` int(1) NOT NULL DEFAULT '0',
   `password` varchar(50) COLLATE utf8_czech_ci NOT NULL,
+  `gdpr` int(1) NOT NULL,
   `deleted` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_czech_ci;
 
@@ -118,10 +119,11 @@ CREATE TABLE `fusers` (
 -- Vypisuji data pro tabulku `fusers`
 --
 
-INSERT INTO `fusers` (`id`, `nick`, `email`, `student`, `lector`, `password`, `deleted`) VALUES
-(1, 'rusuf', 'rusuf4476@gmail.com', 1, 0, 'acb91b9c2023d59475288215c620be0a920ac85b', 0),
-(2, 'ondrejk', 'ondrej.kuzel@gmail.com', 1, 1, '3190174a932c0f6ddfd8d4537037ce85f583c6ec', 0),
-(3, 'smazat', 'rusuf@seznam.cz', 1, 0, 'acb91b9c2023d59475288215c620be0a920ac85b', 1);
+INSERT INTO `fusers` (`id`, `nick`, `email`, `student`, `lector`, `password`, `gdpr`, `deleted`) VALUES
+(1, 'rusuf', 'rusuf4476@gmail.com', 1, 0, 'acb91b9c2023d59475288215c620be0a920ac85b', 1, 0),
+(2, 'ondrejk', 'ondrej.kuzel@gmail.com', 0, 1, '3190174a932c0f6ddfd8d4537037ce85f583c6ec', 1, 0),
+(3, 'smazat', 'rusuf@seznam.cz', 1, 0, 'acb91b9c2023d59475288215c620be0a920ac85b', 1, 1),
+(4, 'henryok', 'henryok.93@gmail.com', 1, 1, 'c4380f939262997cd4baa61113ccc095d3da10ee', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -171,7 +173,8 @@ CREATE TABLE `lectors` (
 --
 
 INSERT INTO `lectors` (`student`, `lector`) VALUES
-(1, 2);
+(1, 2),
+(1, 4);
 
 -- --------------------------------------------------------
 
@@ -299,7 +302,7 @@ ALTER TABLE `cog_schema`
 -- AUTO_INCREMENT pro tabulku `fusers`
 --
 ALTER TABLE `fusers`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pro tabulku `languages`

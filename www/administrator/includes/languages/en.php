@@ -71,5 +71,7 @@ $expressions = array (
     'Results of learning of user' => 'Results of learning of user',
     'on website' => 'on website',
     'Send' => 'Send',
+    'I agree with storing data in accordance with GDPR' => 'I agree with storing data in accordance with GDPR',
+    'To successfull registration agreement with storing data is needed.' => 'To successfull registration agreement with storing data is needed.',
     'Add solution' => 'Add solution');
 ?>

@@ -50,7 +50,7 @@
             </ul>
           </div></li>
           <li class="list-group-item"><div class="category">
-            <img src="http://<?=$this->siteName?>/administrator/icons/user.png" width="16" height="16" alt="icon" /> <span class="title"><?=$expressions['Users']?><?php if (!empty($_COOKIE['user_id'])) { ?>: <?php } ?></span><?php if (!empty($_COOKIE['user_id'])) { echo($fuser['nick']); } ?><br/>
+            <img src="http://<?=$this->siteName?>/administrator/icons/user.png" width="16" height="16" alt="icon" /> <span class="title"><?=$expressions['Users']?><?php if (!empty($_COOKIE['user_id'])) { ?>:<?php } ?></span><?php if (!empty($_COOKIE['user_id'])) { echo(' '.$fuser['nick']); } ?><br/>
             <ul class="list-group">
             <?php if (empty($_COOKIE['user_id'])) { ?>
               <li class="list-group-item"><a href="http://<?=$this->siteName?>/<?=$lang?>/login-view"><?=$expressions['Login']?></a></li>

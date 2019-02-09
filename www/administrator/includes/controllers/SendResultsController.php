@@ -56,12 +56,14 @@ class SendResultsController extends Controller
         // Jméno a příjmení není povinné, rovněž u addCC(), addBCC() a addReplyTo()
         // Kopie a skrytá kopie - addCC() a addBCC()
         
+        $added = 0;
         foreach($lectors as $lector)
         {
             if ($_POST['idl'.$lector['lector']])
             {
                 $flector = $fusersModel->selectById($lector['lector']);
                 $mailer->addAddress("$flector[email]", "$flector[nick]");
+                $added = 1;
             }
         }
         // Nastavení jiného emailu pro odpověď, než z jaké byl odeslán
@@ -85,7 +87,14 @@ class SendResultsController extends Controller
           // V případě isHTML(false) nepoužívat
           $mailer->AltBody = "";
           
-          if($mailer->send())
+          if ($added == 1)
+          {
+              if($mailer->send())
+              {
+                  $this->redirect("/$lang");
+              }
+          }
+          else
           {
               $this->redirect("/$lang");
           }
