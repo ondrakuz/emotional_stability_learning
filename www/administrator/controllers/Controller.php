@@ -3,16 +3,24 @@ abstract class Controller
 {
 
 	// Pole, jehož indexy jsou poté viditelné v šabloně jako běžné proměnné
-  protected $data = array();
+    protected $data = array();
 	// Název šablony bez přípony
-  protected $view = "";
+    protected $view = "";
 	// Hlavička HTML stránky
 	protected $headr = array('title' => '', 'key_words' => '', 'description' => '');
-  protected $siteName;
-	
+    protected $siteName;
+    protected $protocol;
+    
 	public function __construct()
 	{
-    $this->siteName = $_SERVER['SERVER_NAME'];
+        $this->siteName = $_SERVER['SERVER_NAME'];
+        if (!empty($_SERVER['HTTPS'])) {
+            $this->protocol = 'https';
+        }
+        else
+        {
+            $this->protocol = 'http';
+        }
 	}
 
 	public function getView()
@@ -34,7 +42,7 @@ abstract class Controller
 	// Přesměruje na dané URL
 	public function redirect($url)
 	{
-		header("Location: http://".$this->siteName."$url");
+		header("Location: ".$this->protocol."://".$this->siteName."$url");
 		header("Connection: close");
     exit;
 	}

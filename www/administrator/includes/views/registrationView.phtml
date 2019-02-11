@@ -4,7 +4,7 @@
           <div class="panel">
             <div class="panel-heading"><?=$expressions['Registration']?></div>
             <div class="panel-body">
-              <form method="post" action="http://<?= $this->siteName."/$lang" ?>/registration">
+              <form method="post" action="<?= $this->protocol ?>://<?= $this->siteName."/$lang" ?>/registration">
                 <div class="form-group">
                   <label for="nick"><?=$expressions['Nick']?>:</label>
                   <input type="text" class="form-control" id="nick" name="nick">

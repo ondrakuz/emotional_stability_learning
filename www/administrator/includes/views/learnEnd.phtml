@@ -3,7 +3,7 @@
         <div class="col-sm-4">
         	<h4><?=$expressions['End of learning']?></h4><br />
         	<div class="message"><?=$expressions['Choose, which lectors will be your results sent to']?>:</div>
-        	<form method="post" action="http://<?= $this->siteName."/$lang" ?>/send-results">
+        	<form method="post" action="<?= $this->protocol ?>://<?= $this->siteName."/$lang" ?>/send-results">
         		<!-- input type='hidden' id="ids" name='ids' value="<?= $lectors[0]['student'] ?>" / -->
             	<table id='schemas'>
             		<?php

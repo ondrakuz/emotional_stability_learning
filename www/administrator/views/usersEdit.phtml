@@ -1,7 +1,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-4">
           <h4>Editace údajů uživatele</h4>
-          <form method="post" action="http://<?= $this->siteName ?>/administrator/users-update">
+          <form method="post" action="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/users-update">
             <input type="hidden" name="id" value="<?= $user['id'] ?>" />
             <div class="form-group">
               <label for="nick"><span class="red">* </span>Přezdívka:</label>

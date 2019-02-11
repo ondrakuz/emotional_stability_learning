@@ -3,7 +3,7 @@
         <div class="col-sm-4">
         <h4>Test</h4>
         <div class="message"><?=$expressions['Problem']?>: <?=$problem['name']?><br /><?=$expressions['Cognitive schema']?>: <?=$cschema['name']?></div><br /><br />
-          <form method="post" action="http://<?= $this->siteName."/$lang" ?>/test">
+          <form method="post" action="<?= $this->protocol ?>://<?= $this->siteName."/$lang" ?>/test">
             <input type="hidden" name="idp" value="<?=$problem['id']?>" />
             <input type="hidden" name="idcs" value="<?=$cschema['id']?>" />
             <input type="hidden" name="nWrong" value="<?=$nWrong?>" />

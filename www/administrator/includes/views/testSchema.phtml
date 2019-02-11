@@ -3,7 +3,7 @@
         <div class="col-sm-4">
         <h4>Test</h4>
         <div class="message"><?=$expressions['Select tested cognitive schema. Selected solution must correspond to this schema then.']?></div><br /><br />
-          <form method="post" action="http://<?= $this->siteName."/$lang" ?>/test">
+          <form method="post" action="<?= $this->protocol ?>://<?= $this->siteName."/$lang" ?>/test">
             <div class="form-group">
               <label for="idcs"><?=$expressions['Cognitive schema']?>:</label><br /><br />
               <?php

@@ -4,7 +4,7 @@
           <div class="panel">
             <div class="panel-heading"><?=$expressions['Login']?></div>
             <div class="panel-body">
-              <form method="post" action="http://<?= $this->siteName."/$lang" ?>/login">
+              <form method="post" action="<?= $this->protocol ?>://<?= $this->siteName."/$lang" ?>/login">
                 <div class="form-group">
                   <label for="login_user"><?=$expressions['User']?>:</label>
                   <input type="text" class="form-control" id="login_user" name="login_user">

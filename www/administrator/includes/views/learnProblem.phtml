@@ -3,7 +3,7 @@
         <div class="col-sm-4">
         <h4><?=$expressions['Learning']?></h4>
         <div class="message"><?=$expressions['Problem']?>: <?=$problem['name']?><br /><?php if ($cschema['id']<100) echo($expressions['Cognitive schema'].": $cschema[name]"); else echo($expressions['Solutions'].":"); ?></div><br /><br />
-          <form method="post" action="http://<?= $this->siteName."/$lang" ?>/learning">
+          <form method="post" action="<?= $this->protocol ?>://<?= $this->siteName."/$lang" ?>/learning">
             <input type="hidden" name="idp" value="<?=$problem['id']?>" />
             <input type="hidden" name="idcs" value="<?=$cschema['id']?>" />
             <div class="form-group">

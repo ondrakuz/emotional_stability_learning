@@ -8,11 +8,21 @@ abstract class Controller
     protected $view = "";
 	// Hlavička HTML stránky
 	protected $headr = array('title' => '', 'key_words' => '', 'description' => '');
-  protected $siteName;
+	protected $siteName;
+	protected $protocol;
 	
 	public function __construct()
 	{
-    $this->siteName = $_SERVER['SERVER_NAME'];
+        $this->siteName = $_SERVER['SERVER_NAME'];
+        if (!empty($_SERVER['HTTPS'])) {
+            $this->protocol = 'https';
+        }
+        else
+        {
+            $this->protocol = 'http';
+        }
+//         echo ('Protocol: '.$this->protocol);
+//         exit;
 	}
 
 	public function getView()
@@ -34,7 +44,7 @@ abstract class Controller
 	// Přesměruje na dané URL
 	public function redirect($uri)
 	{
-		header("Location: http://".$this->siteName."$uri");
+		header("Location: ".$this->protocol."://".$this->siteName."$uri");
 		header("Connection: close");
     exit;
 	}

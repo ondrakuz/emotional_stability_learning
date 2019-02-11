@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs-cz" lang="cs-cz">
+<html xmlns="<?= $this->protocol ?>://www.w3.org/1999/xhtml" xml:lang="cs-cz" lang="cs-cz">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Content-language" content="cs" />
@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="http://<?=$this->siteName?>/administrator/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/css/style.css" type="text/css" />
   </head>
   <body>
     <div class="container-fluid">
       <div id="header">
         <table class="header"><tr>
-          <td class="logo"><a href="http://<?=$this->siteName?>/administrator/"><h1>Emotional Stability Learning Administration</h1></a></td>
+          <td class="logo"><a href="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/"><h1>Emotional Stability Learning Administration</h1></a></td>
           <?php if (!empty($_SESSION)) { ?>
-            <td class="user">Uživatel: <img src="http://<?=$this->siteName?>/administrator/icons/<?php if ($_SESSION['permissions']) {echo "admin";} else {echo "user";}; ?>.png"/> <span<?php if ($_SESSION['permissions']) echo " class='red' "; ?>><?php echo $_SESSION['user']; ?></span><br /><a href="http://<?=$this->siteName?>/administrator/logout">Odhlášení</a></td>
+            <td class="user">Uživatel: <img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/<?php if ($_SESSION['permissions']) {echo "admin";} else {echo "user";}; ?>.png"/> <span<?php if ($_SESSION['permissions']) echo " class='red' "; ?>><?php echo $_SESSION['user']; ?></span><br /><a href="http://<?=$this->siteName?>/administrator/logout">Odhlášení</a></td>
           <?php }; ?>
         </tr></table>
       </div>
@@ -30,33 +30,33 @@
         <div class="col-sm-2" >
           <ul class="list-group" id="left_panel">
           <li class="list-group-item"><div class="category">
-            <img src="http://<?=$this->siteName?>/administrator/icons/application_side_list.png" width="16" height="16" alt="icon" /> <span class="title">Problémy</span><br />
+            <img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/application_side_list.png" width="16" height="16" alt="icon" /> <span class="title">Problémy</span><br />
             <ul class="list-group">
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/problem-overview">Přehled problémů</a></li>
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/problem-new">Přidat problém</a></li>
+              <li class="list-group-item"><a href="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/problem-overview">Přehled problémů</a></li>
+              <li class="list-group-item"><a href="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/problem-new">Přidat problém</a></li>
             </ul>
           </div></li>
           <li class="list-group-item"><div class="category">
-            <img src="http://<?=$this->siteName?>/administrator/icons/lightbulb.png" width="16" height="16" alt="icon" /> <span class="title">Kognitivní schémata</span><br/>
+            <img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/lightbulb.png" width="16" height="16" alt="icon" /> <span class="title">Kognitivní schémata</span><br/>
             <ul class="list-group">
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/c-schema-overview">Přehled schémat</a></li>
-              <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/c-schema-new">Přidat schéma</a></li>
+              <li class="list-group-item"><a href="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/c-schema-overview">Přehled schémat</a></li>
+              <li class="list-group-item"><a href="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/c-schema-new">Přidat schéma</a></li>
             </ul>
           </div></li>
             <li class="list-group-item"><div class="category">
-              <img src="http://<?=$this->siteName?>/administrator/icons/user.png" width="16" height="16" /> <span class="title">Uživatelé</span><br/>
+              <img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/user.png" width="16" height="16" /> <span class="title">Uživatelé</span><br/>
               <ul class="list-group">
                 <?php if ($_SESSION['permissions']) { ?>
-                <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/users-overview">Přehled uživatelů</a></li>
-                <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/users-new">Přidat uživatele</a></li>
+                <li class="list-group-item"><a href="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/users-overview">Přehled uživatelů</a></li>
+                <li class="list-group-item"><a href="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/users-new">Přidat uživatele</a></li>
                 <?php }; ?>
-                <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/users-edit/<?php echo($_SESSION['id_user']); ?>">Změna údajů</a></li>
+                <li class="list-group-item"><a href="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/users-edit/<?php echo($_SESSION['id_user']); ?>">Změna údajů</a></li>
               </ul>
             </div></li>
             <li class="list-group-item"><div class="category">
-              <img src="http://<?=$this->siteName?>/administrator/icons/book.png" width="16" height="16" /> <span class="title">Studenti a Lektoři</span><br/>
+              <img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/book.png" width="16" height="16" /> <span class="title">Studenti a Lektoři</span><br/>
               <ul class="list-group">
-                <li class="list-group-item"><a href="http://<?=$this->siteName?>/administrator/fusers-overview">Přehled</a></li>
+                <li class="list-group-item"><a href="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/fusers-overview">Přehled</a></li>
               </ul>
             </div></li>
           </ul>
@@ -68,7 +68,7 @@
       ?>
       </div>
         <div class="panel panel-default text-center margintop30">
-          <div class="panel-footer" id="footer">Copyleft &copy; <?php date_default_timezone_set('Europe/Prague'); echo date("Y"); ?> <a href="http://www.softstar.cz">Softstar s.r.o.</a><br /><a href="http://validator.w3.org/check?uri=referer" title="" onclick="return !window.open(this.href);">XHTML</a> a <a href="http://jigsaw.w3.org/css-validator/check/referer" title="" onclick="return !window.open(this.href);">CSS 3.0</a></div>
+          <div class="panel-footer" id="footer">Copyleft &copy; <?php date_default_timezone_set('Europe/Prague'); echo date("Y"); ?> <a href="<?= $this->protocol ?>://www.softstar.cz">Softstar s.r.o.</a><br /><a href="http://validator.w3.org/check?uri=referer" title="" onclick="return !window.open(this.href);">XHTML</a> a <a href="http://jigsaw.w3.org/css-validator/check/referer" title="" onclick="return !window.open(this.href);">CSS 3.0</a></div>
         </div>
       </div>
     </div><!-- /container -->
