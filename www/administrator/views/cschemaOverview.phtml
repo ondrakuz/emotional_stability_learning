@@ -19,8 +19,8 @@
                 <tr>
                   <td><?php echo($cschema['name']); ?></td>
                   <td><?php echo($cschema['lang']); ?></td>
-                  <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/c-schema-edit/".$cschema['id']."\">"); ?><img src="http://<?= $this->siteName ?>/administrator/icons/pencil.png" width="16" height="16" /></a></td>
-                  <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/c-schema-delete/".$cschema['id']."\">"); ?><img src="http://<?= $this->siteName ?>/administrator/icons/bin_closed.png" width="16" height="16" /></a></td>
+                  <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/c-schema-edit/".$cschema['id']."\">"); ?><img src="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/icons/pencil.png" width="16" height="16" /></a></td>
+                  <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/c-schema-delete/".$cschema['id']."\">"); ?><img src="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/icons/bin_closed.png" width="16" height="16" /></a></td>
                 </tr>
         <?php } ?>
               </tbody>

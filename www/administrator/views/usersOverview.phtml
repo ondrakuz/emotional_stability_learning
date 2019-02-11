@@ -11,8 +11,8 @@
                 <tr>
                   <td><?php echo($user['nick']); ?></td>
                   <td><?php echo($user['name']." ".$user['surname']); ?></td>
-                  <td class="text-center"><?php if (($user['id']!=1)&&($user['id']!=$_SESSION['id_user'])) {echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/users-admin/".$user['id']."\">");}; ?><?php if ($user['permissions']) { ?><img src="http://<?=$this->siteName?>/administrator/icons/accept.png"/><?php } else { ?><img src="http://<?=$this->siteName?>/administrator/icons/cross.png"/><?php }; if (($user['id']!=1)&&($user['id']!=$_SESSION['id_user'])) { echo "</a>"; }; ?></td>
-                  <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/users-edit/".$user['id']."\">"); ?><img src="http://<?=$this->siteName?>/administrator//icons/pencil.png" width="16" height="16" /></a></td>
+                  <td class="text-center"><?php if (($user['id']!=1)&&($user['id']!=$_SESSION['id_user'])) {echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/users-admin/".$user['id']."\">");}; ?><?php if ($user['permissions']) { ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/accept.png"/><?php } else { ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/cross.png"/><?php }; if (($user['id']!=1)&&($user['id']!=$_SESSION['id_user'])) { echo "</a>"; }; ?></td>
+                  <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/users-edit/".$user['id']."\">"); ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator//icons/pencil.png" width="16" height="16" /></a></td>
                   <td class="text-center"><?php if (($user['id']!=1)&&($user['id']!=$_SESSION['id_user'])) {echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/users-delete/".$user['id']."\">");}; ?><img src="icons/bin_closed.png" /><?php if (($user['id']!=1)&&($user['id']!=$_SESSION['id_user'])) { echo "</a>"; }; ?></td>
                 </tr>
                 <?php

@@ -11,9 +11,9 @@
                 <tr>
                   <td><?php echo($fuser['nick']); ?></td>
                   <td><?php echo($fuser['email']); ?></td>
-                  <td class="text-center"><?php if ($fuser['student']) { ?><a href="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/lectors/<?= $fuser['id'] ?>" title="Administer lectors"><?php } ?><img src="http://<?=$this->siteName?>/administrator/icons/add.png"/><?php if ($fuser['student']) { ?></a><?php } ?></td>
-				  <td class="text-center"><a href="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/fusers-student/<?= $fuser['id'] ?>"><?php if ($fuser['student']) { ?><img src="http://<?=$this->siteName?>/administrator/icons/accept.png"/><?php } else { ?><img src="http://<?=$this->siteName?>/administrator/icons/cross.png"/><?php }; ?></a></td>
-                  <td class="text-center"><a href="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/fusers-lector/<?= $fuser['id'] ?>"><?php if ($fuser['lector']) { ?><img src="http://<?=$this->siteName?>/administrator/icons/accept.png"/><?php } else { ?><img src="http://<?=$this->siteName?>/administrator/icons/cross.png"/><?php }; ?></a></td>
+                  <td class="text-center"><?php if ($fuser['student']) { ?><a href="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/lectors/<?= $fuser['id'] ?>" title="Administer lectors"><?php } ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/add.png"/><?php if ($fuser['student']) { ?></a><?php } ?></td>
+				  <td class="text-center"><a href="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/fusers-student/<?= $fuser['id'] ?>"><?php if ($fuser['student']) { ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/accept.png"/><?php } else { ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/cross.png"/><?php }; ?></a></td>
+                  <td class="text-center"><a href="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/fusers-lector/<?= $fuser['id'] ?>"><?php if ($fuser['lector']) { ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/accept.png"/><?php } else { ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/cross.png"/><?php }; ?></a></td>
                   <td class="text-center"><a href="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/fusers-delete/<?= $fuser['id'] ?>" ><img src="icons/bin_closed.png" /></a></td>
                 </tr>
                 <?php
