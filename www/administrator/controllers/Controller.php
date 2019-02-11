@@ -33,7 +33,10 @@ abstract class Controller
   {
     if ($this->view)
     {
-      extract($this->data);
+      extract($this->specialChars($this->data));
+      extract($this->data, EXTR_PREFIX_ALL, "");
+//       print_r($this->data);
+//       exit;
       require("./administrator/views/" . $this->view.".phtml");
 //       require("./views/" . $this->view.".phtml");
     }
@@ -53,6 +56,27 @@ abstract class Controller
       if (isset($_POST["$var"])) { return $_POST["$var"]; };
       if (isset($_GET["$var"])) { return $_GET["$var"]; };
     }else { return 0; };
+  }
+  
+  private function specialChars($x = null)
+  {
+      if (!isset($x)) 
+      {
+          return null;
+      }
+      elseif (is_string($x))
+      {
+          return htmlspecialchars($x, ENT_QUOTES);
+      }
+      elseif (is_array($x))
+      {
+          foreach($x as $k => $v)
+          {
+              $x[$k] = $this->specialChars($v);
+          }
+          return $x;
+      }
+      else return $x;
   }
   
 	// Hlavní metody controlleru

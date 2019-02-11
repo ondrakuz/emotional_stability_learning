@@ -1,3 +1,5 @@
+Some parts of this project is from http://www.itnetwork.cz or thanks to itnetwork written.
+
 This project is licenced under GPL3:
 
 GNU GENERAL PUBLIC LICENSE
