@@ -2,6 +2,10 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-4">
         	<h4><?=$expressions['End of learning']?></h4><br />
+        	<?php 
+        	if (!empty($_COOKIE['user_id']))
+        	{
+        	?>
         	<div class="message"><?=$expressions['Choose, which lectors will be your results sent to']?>:</div>
         	<form method="post" action="<?= $this->protocol ?>://<?= $this->siteName."/$lang" ?>/send-results">
         		<!-- input type='hidden' id="ids" name='ids' value="<?= $lectors[0]['student'] ?>" / -->
@@ -16,5 +20,12 @@
             	    <tr><td><button type="submit" name="learning" value="Send"><?=$expressions['Send']?></button></td><td></td></tr>
             	</table>
         	</form>
+        	<?php 
+        	} 
+            else
+            {
+            ?>
+            <a href="<?= $this->protocol ?>://<?= $this->siteName."/$lang" ?>/show-results"><button value="Show"><?=$expressions['Show results']?></button></a>
+        <?php } ?>
         </div><!-- /col-sm-4 -->
         <div class="col-sm-3"></div>

@@ -89,7 +89,7 @@ class RouterController extends Controller
       }
       else
       {
-        $this->controller= new ErrorController($expressions['Error 404: page not found']);
+        $this->controller= new ErrorController($expressions['Error 404: page not found']."<br /><br />Controller: $controllerClass");
       }
     }
     
@@ -97,7 +97,7 @@ class RouterController extends Controller
         
     if ($this->isError)
     {
-      $this->error.="<br /><br />View: ".$this->controller->view."<br /><br />";
+      $this->error.="<br />Controller: $controllerClass<br />View: ".$this->controller->view."<br />";
       $this->controller = null;
       $this->controller = new ErrorController($this->error);
       $this->controller->ctrMain($parameters);

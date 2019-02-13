@@ -77,7 +77,7 @@ abstract class Controller
       else return $x;
   }
   
-	// Hlavní metody controlleru
+	// Hlavní metoda controlleru
     abstract function ctrMain($parameters);
 }
 ?>

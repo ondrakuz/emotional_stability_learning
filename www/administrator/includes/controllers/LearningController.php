@@ -158,12 +158,15 @@ class LearningController extends Controller
                         $_SESSION['results'][count($_SESSION['results'])] = $result;
                         
                         $ids = $_COOKIE['user_id'];
-                        $lectors = $lectorsModel->selectByIdS($ids);
-                        $numl = count($lectors);
-                        for($i = 0; $i < $numl; $i++)
+                        if (!empty($ids))
                         {
-                            $lector = $fuserModel->selectById($lectors[$i]['lector']);
-                            $lectors[$i]['lector_nick'] = $lector['nick'];
+                            $lectors = $lectorsModel->selectByIdS($ids);
+                            $numl = count($lectors);
+                            for($i = 0; $i < $numl; $i++)
+                            {
+                                $lector = $fuserModel->selectById($lectors[$i]['lector']);
+                                $lectors[$i]['lector_nick'] = $lector['nick'];
+                            }
                         }
                         
                         //$results = $_SESSION['results'];
