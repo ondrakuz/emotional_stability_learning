@@ -4,7 +4,7 @@
            $num=count($answers);
            if (!$num) {
              ?>
-            <div class="message">Nejsou uloženy žádná řešení problému "<?php echo($problem['name']); ?>"<br /><a href="<?php echo("<?= $this->protocol ?>://".$this->siteName."/administrator/answer-new/".$problem['id']); ?>"><img src="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat řešení</a></div>
+            <div class="message">Nejsou uloženy žádná řešení problému "<?php echo($problem['name']); ?>"<br /><a href="<?php echo($this->protocol."://".$this->siteName."/administrator/answer-new/".$problem['id']); ?>"><img src="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat řešení</a></div>
              <?php
            } else {
            ?>
@@ -20,11 +20,11 @@
                   <td><?php echo($answer['answer']); ?></td>
                   <td><?php echo($answer['lang_name']); ?></td>
                   <td><strong><?php echo($answer['name']); ?></strong></td>
-                  <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/answer-edit/".$answer['id']."\">"); ?><img src="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/icons/pencil.png" width="16" height="16" /></a></td>
-                  <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/answer-delete/".$answer['id']."\">"); ?><img src="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/icons/bin_closed.png" width="16" height="16" /></a></td>
+                  <td class="text-center"><?php echo("<a href=\"".$this->protocol."://".$this->siteName."/administrator/answer-edit/".$answer['id']."\">"); ?><img src="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/icons/pencil.png" width="16" height="16" /></a></td>
+                  <td class="text-center"><?php echo("<a href=\"".$this->protocol."://".$this->siteName."/administrator/answer-delete/".$answer['id']."\">"); ?><img src="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/icons/bin_closed.png" width="16" height="16" /></a></td>
                 </tr>
                    <?php } ?>
-                <tr><td colspan="4"><a href="<?php echo("<?= $this->protocol ?>://".$this->siteName."/administrator/answer-new/".$answer['id_problem']); ?>"><img src="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat řešení</a></td>
+                <tr><td colspan="5"><a href="<?php echo($this->protocol."://".$this->siteName."/administrator/answer-new/".$answer['id_problem']); ?>"><img src="<?= $this->protocol ?>://<?= $this->siteName ?>/administrator/icons/add.png" width="10" height="10" />Přidat řešení</a></td>
               </tbody>
             </table>
            <?php } ?>

@@ -21,9 +21,9 @@
                     <td><?php echo($problem['name']); ?></td>
                     <td><?php echo($problem['description']); ?></td>
                     <td><?php echo($problem['lang']); ?></td>
-                    <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/problem-edit/".$problem['id']."\">"); ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/pencil.png" width="16" height="16" /></a></td>
-                    <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/answer-overview/".$problem['id']."\">"); ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/comment.png" width="16" height="16" /></a></td>
-                    <td class="text-center"><?php echo("<a href=\"<?= $this->protocol ?>://".$this->siteName."/administrator/problem-delete/".$problem['id']."\">"); ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/bin_closed.png" width="16" height="16" /></a></td>
+                    <td class="text-center"><?php echo("<a href=\"".$this->protocol."://".$this->siteName."/administrator/problem-edit/".$problem['id']."\">"); ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/pencil.png" width="16" height="16" /></a></td>
+                    <td class="text-center"><?php echo("<a href=\"".$this->protocol."://".$this->siteName."/administrator/answer-overview/".$problem['id']."\">"); ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/comment.png" width="16" height="16" /></a></td>
+                    <td class="text-center"><?php echo("<a href=\"".$this->protocol."://".$this->siteName."/administrator/problem-delete/".$problem['id']."\">"); ?><img src="<?= $this->protocol ?>://<?=$this->siteName?>/administrator/icons/bin_closed.png" width="16" height="16" /></a></td>
                   </tr>
                 <?php
                 }
