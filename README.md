@@ -17,7 +17,7 @@
    mysql> use emotions;
    mysql> source /var/www/emotional_stability_learning/emotions.sql
 
-3. Set DB connection(emotional_stability_learning/administrace/cfg/sql.php)
+3. Set DB connection(emotional_stability_learning/administrator/cfg/sql.php)
 
 4. Add the line to /etc/hosts (in windows windows/system32/drivers/etc/hosts as administrator)
 
