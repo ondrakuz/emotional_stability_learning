@@ -70,18 +70,15 @@ class RouterController extends Controller
   public function ctrMain($parameters)
   {
       // language should be 1. parameter of url
-      $parsedURL = $this->parseURL($parameters[0]);
-      global $expressions, $lang;
-//       $lang = array_shift($parsedURL);
-//       print_r($parsedURL);
-//       exit;
-      $langModel = new LanguagesModel();
-      $fuserModel = new FUsersModel();
-      
-      $tmp = array_shift($parsedURL);
-      $language = $langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'");
-//       print_r($language);
-//       exit;
+    $parsedURL = $this->parseURL($parameters[0]);
+    global $expressions, $lang;
+
+    $langModel = new LanguagesModel();
+    $fuserModel = new FUsersModel();
+     
+    $tmp = array_shift($parsedURL);
+    $language = $langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'");
+
     if (empty($language)) $this->redirect('/cs'); // if not language in url, redirect to url with default language
     
     if (empty($parsedURL[0]))

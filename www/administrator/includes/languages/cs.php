@@ -76,5 +76,16 @@ $expressions = array (
     'Show results' => 'Vypsat výsledky',
     'Results of learning' => 'Výsledky výuky',
     'Results' => 'Výsledky',
+    'Videos login' => 'Přihlášení na stránku s videi',
+    'Videos' => 'Videa',
+    'Login error: wrong password' => 'Chyba přihlášení: špatné heslo',
+    'Interpretation videos' => 'Videa s výkladem',
+    'Subjectivity of problems I - Emotions' => 'Subjektivita problémů I - Emoce',
+    'Subjectivity of problems II - Plasticity of neurons' => 'Subjektivita problémů II - Plasticita neuronů',
+    'Subjectivity of problems III - Mathematical description of problems' => 'Subjektivita problémů III - Matematický popis problémů',
+    'Subjectivity of problems IV - Subjectivity principle' => 'Subjektivita problémů IV - Princip subjektivity',
+    'Subjectivity of problems V - Emotional disorders' => 'Subjektivita problémů V - Emocionální poruchy',
+    'Subjectivity of problems VI - Practical demonstration' => 'Subjektivita problémů VI - Praktická ukázka',
+    'Subjectivity of problems VII - Mental health project' => 'Subjektivita problémů VII - Projekt v oblasti duševního zdraví',
     'Add solution' => 'Přidat odpověď');
 ?>

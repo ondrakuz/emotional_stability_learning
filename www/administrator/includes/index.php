@@ -36,7 +36,7 @@
   
   $tmp = preg_split("/\//", $uri[0]);
   $lang = $tmp[1];
-  if($langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'")) require_once("administrator/includes/languages/$lang.php");
+  if ($langModel->selectByTextId("'".htmlspecialchars($lang, ENT_QUOTES)."'")) require_once("administrator/includes/languages/$lang.php");
   
   $router = RouterController::getInstance();
   $router->ctrMain(array($_SERVER['REQUEST_URI']));

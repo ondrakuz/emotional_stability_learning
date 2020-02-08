@@ -76,5 +76,16 @@ $expressions = array (
     'Show results' => 'Show results',
     'Results of learning' => 'Results of learning',
     'Results' => 'Results',
+    'Videos login' => 'Videos login',
+    'Videos' => 'Videos',
+    'Login error: wrong password' => 'Login error: wrong password',
+    'Interpretation videos' => 'Interpretation videos',
+    'Subjectivity of problems I - Emotions' => 'Subjectivity of problems I - Emotions',
+    'Subjectivity of problems II - Plasticity of neurons' => 'Subjectivity of problems II - Plasticity of neurons',
+    'Subjectivity of problems III - Mathematical description of problems' => 'Subjectivity of problems III - Mathematical description of problems',
+    'Subjectivity of problems IV - Subjectivity principle' => 'Subjectivity of problems IV - Subjectivity principle',
+    'Subjectivity of problems V - Emotional disorders' => 'Subjectivity of problems V - Emotional disorders',
+    'Subjectivity of problems VI - Practical demonstration' => 'Subjectivity of problems VI - Practical demonstration',
+    'Subjectivity of problems VII - Mental health project' => 'Subjectivity of problems VII - Mental health project',
     'Add solution' => 'Add response');
 ?>

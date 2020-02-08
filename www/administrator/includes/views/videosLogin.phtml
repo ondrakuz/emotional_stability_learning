@@ -1,0 +1,16 @@
+        <div class="col-sm-3"></div>
+        <div class="col-sm-4">
+          <div class="panel">
+            <div class="panel-heading"><?=$expressions['Login']?></div>
+            <div class="panel-body">
+              <form method="post" action="<?= $this->protocol ?>://<?= $this->siteName."/$lang" ?>/videos">
+                <div class="form-group">
+                  <label for="login_passw"><?=$expressions['Password']?>:</label>
+                  <input type="password" class="form-control" id="login_passw" name="login_passw">
+                </div>
+                <button type="submit" name="login" value="login"><?=$expressions['login']?></button>
+              </form>
+            </div>
+          </div>
+        </div><!-- /col-sm-4 -->
+        <div class="col-sm-3"></div>
